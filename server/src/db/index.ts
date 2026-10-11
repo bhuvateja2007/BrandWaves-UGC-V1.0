@@ -344,9 +344,9 @@ class Database {
     if (filters?.category && filters.category !== 'all') {
       list = list.filter(p => p.category.toLowerCase() === filters.category!.toLowerCase());
     }
-    if (filters?.status) {
+    if (filters?.status && filters.status !== 'all') {
       list = list.filter(p => p.publicationStatus === filters.status);
-    } else {
+    } else if (!filters?.status) {
       // By default, public queries only return published posts
       list = list.filter(p => p.publicationStatus === 'published' && p.visibility === 'public');
     }
@@ -509,7 +509,7 @@ class Database {
   // --- Submissions (Workflow B: Brand Review Queue) ---
   getSubmissions(filters?: { status?: string; platform?: string; creatorId?: string; campaignId?: string }): Submission[] {
     let list = this.data.submissions;
-    if (filters?.status) {
+    if (filters?.status && filters.status !== 'all') {
       list = list.filter(s => s.status === filters.status);
     }
     if (filters?.platform) {
@@ -872,13 +872,26 @@ class Database {
   }
 
   // --- Analytics & Leaderboard ---
-  getAnalyticsOverview(): AnalyticsOverview {
-    const submissions = this.data.submissions;
-    const campaigns = this.data.campaigns;
+  getAnalyticsOverview(brandId?: string): AnalyticsOverview {
+    let submissions = this.data.submissions;
+    let campaigns = this.data.campaigns;
+
+    if (brandId) {
+      const bNorm = brandId.toLowerCase().trim();
+      campaigns = campaigns.filter(c => 
+        (c as any).brandId?.toLowerCase() === bNorm || 
+        c.brandName?.toLowerCase() === bNorm
+      );
+      const campIds = new Set(campaigns.map(c => c.id));
+      submissions = submissions.filter(s => 
+        campIds.has(s.campaignId) || 
+        s.brandName?.toLowerCase() === bNorm
+      );
+    }
 
     const totalSubmissions = submissions.length;
-    const activeCampaigns = campaigns.filter(c => c.status === 'active').length;
-    const pendingReviews = submissions.filter(s => s.status === 'pending').length;
+    const activeCampaigns = campaigns.filter(c => c.status === 'active' || (c.status as string) === 'published').length;
+    const pendingReviews = submissions.filter(s => s.status === 'pending' || (s.status as string) === 'submitted' || (s.status as string) === 'under_review').length;
 
     const approvedCount = submissions.filter(s => s.status === 'approved').length;
     const rejectedCount = submissions.filter(s => s.status === 'rejected').length;
@@ -888,14 +901,45 @@ class Database {
       ? Math.round((approvedCount / reviewedTotal) * 100)
       : 100;
 
+    // Calculate real 4-week submission velocity distribution
+    const now = Date.now();
+    const dayMs = 24 * 60 * 60 * 1000;
+
+    const w4Count = submissions.filter(s => {
+      const dateStr = s.submittedAt || s.createdAt;
+      const t = dateStr ? new Date(dateStr).getTime() : 0;
+      return t >= now - 7 * dayMs;
+    }).length;
+    const w3Count = submissions.filter(s => {
+      const dateStr = s.submittedAt || s.createdAt;
+      const t = dateStr ? new Date(dateStr).getTime() : 0;
+      return t >= now - 14 * dayMs && t < now - 7 * dayMs;
+    }).length;
+    const w2Count = submissions.filter(s => {
+      const dateStr = s.submittedAt || s.createdAt;
+      const t = dateStr ? new Date(dateStr).getTime() : 0;
+      return t >= now - 21 * dayMs && t < now - 14 * dayMs;
+    }).length;
+    const w1Count = submissions.filter(s => {
+      const dateStr = s.submittedAt || s.createdAt;
+      const t = dateStr ? new Date(dateStr).getTime() : 0;
+      return t >= now - 28 * dayMs && t < now - 21 * dayMs;
+    }).length;
+
+    const recentWeekly = w4Count;
+    const weeklyBreakdown = [w1Count, w2Count, w3Count, w4Count];
+
     return {
       totalSubmissions,
       activeCampaigns,
       pendingReviews,
       approvalRate,
-      weeklyVelocity: '14.2h',
-      velocityChange: '+24%',
-      totalUsers: this.data.users.length,
+      weeklyVelocity: `${recentWeekly}/wk`,
+      velocityChange: recentWeekly > 0 ? `+${Math.round((recentWeekly / Math.max(1, totalSubmissions)) * 100)}%` : '+0%',
+      weeklyBreakdown,
+      totalUsers: brandId 
+        ? new Set(submissions.map(s => s.creatorId)).size 
+        : this.data.users.length,
       totalPosts: this.data.posts.length,
     };
   }

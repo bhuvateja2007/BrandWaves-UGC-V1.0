@@ -1,16 +1,18 @@
 import React from 'react';
 import type { OnboardingAnswers, OnboardingPersona } from '../../lib/onboardingTypes';
 import { getStepsForPersona, getQuestionsForPersona } from '../../lib/onboardingQuestions';
-import { Edit3 } from 'lucide-react';
+import { Edit3, CheckCircle } from 'lucide-react';
+import { OnboardingIcon } from './OnboardingIcon';
 
-const PERSONA_LABELS: Record<OnboardingPersona, { label: string; emoji: string }> = {
-  creator: { label: 'Creator / Influencer', emoji: '🎨' },
-  brand: { label: 'Brand Owner / Business', emoji: '🏢' },
-  student: { label: 'Student', emoji: '🎓' },
-  developer: { label: 'Developer / Technical', emoji: '💻' },
-  educator: { label: 'Educator / Trainer', emoji: '📚' },
-  marketing: { label: 'Marketing / Agency', emoji: '📊' },
-  other: { label: 'Other', emoji: '✨' },
+const PERSONA_LABELS: Record<string, { label: string; icon: string }> = {
+  customer: { label: 'Customer / Shopper', icon: 'shopping-bag' },
+  creator: { label: 'Creator / Influencer', icon: 'camera' },
+  brand: { label: 'Brand Owner / Business', icon: 'building' },
+  student: { label: 'Student', icon: 'graduation-cap' },
+  developer: { label: 'Developer / Technical', icon: 'code' },
+  educator: { label: 'Educator / Trainer', icon: 'book-open' },
+  marketing: { label: 'Marketing / Agency', icon: 'trending-up' },
+  other: { label: 'Other', icon: 'sparkles' },
 };
 
 interface OnboardingSummaryProps {
@@ -35,7 +37,7 @@ export const OnboardingSummary: React.FC<OnboardingSummaryProps> = ({
   error,
 }) => {
   const personaMeta = persona ? PERSONA_LABELS[persona] : null;
-  const steps = getStepsForPersona(persona).slice(1); // Skip persona step itself
+  const steps = getStepsForPersona(persona);
 
   // Collect answer summaries
   const summaryItems: { label: string; value: string }[] = [];
@@ -53,12 +55,12 @@ export const OnboardingSummary: React.FC<OnboardingSummaryProps> = ({
         displayValue = ans
           .map((v) => {
             const opt = q.options?.find((o) => o.value === v);
-            return opt ? `${opt.emoji ?? ''} ${opt.label}`.trim() : v;
+            return opt ? opt.label : v;
           })
           .join(', ');
       } else {
         const opt = q.options?.find((o) => o.value === ans);
-        displayValue = opt ? `${opt.emoji ?? ''} ${opt.label}`.trim() : (ans as string);
+        displayValue = opt ? opt.label : (ans as string);
       }
 
       summaryItems.push({ label: q.label, value: displayValue });
@@ -70,10 +72,12 @@ export const OnboardingSummary: React.FC<OnboardingSummaryProps> = ({
       {/* Persona badge */}
       {personaMeta && (
         <div className="flex items-center gap-3 p-4 bg-white/10 rounded-2xl border border-white/20">
-          <span className="text-3xl" aria-hidden="true">{personaMeta.emoji}</span>
+          <div className="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white">
+            <OnboardingIcon name={personaMeta.icon} className="w-5 h-5" />
+          </div>
           <div>
-            <p className="text-xs text-white/50 uppercase tracking-wider font-semibold">Your Role</p>
-            <p className="text-white font-bold text-base">{personaMeta.label}</p>
+            <p className="text-xs text-white/50 uppercase tracking-wider font-semibold">Your Selected Profile</p>
+            <p className="text-base font-bold text-white">{personaMeta.label}</p>
           </div>
         </div>
       )}
@@ -113,7 +117,7 @@ export const OnboardingSummary: React.FC<OnboardingSummaryProps> = ({
               <span>Creating your experience...</span>
             </>
           ) : (
-            <span>Create my experience ✨</span>
+            <span>Complete Profile & Enter</span>
           )}
         </button>
 

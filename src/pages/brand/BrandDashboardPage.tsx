@@ -7,6 +7,7 @@ import { brandProductService, ExtendedProduct } from '../../services/brandProduc
 import { brandCampaignService } from '../../services/brandCampaignService';
 import { campaignApplicationService, CampaignApplication } from '../../services/campaignApplicationService';
 import { api } from '../../api/client';
+import { submissionService } from '../../services/submissionService';
 import { Submission } from '../../types';
 import { BrandNavHeader } from '../../components/brand/BrandNavHeader';
 import { ProfileCompletionCard, CompletionItem } from '../../components/common';
@@ -57,12 +58,9 @@ export const BrandDashboardPage: React.FC = () => {
       const apps = await campaignApplicationService.getApplicationsForBrand(brand.id);
       setApplications(apps);
 
-      // Real submissions from API
+      // Submissions via resilient submissionService
       try {
-        const subs = await api.getSubmissions();
-        const brandSubs = subs.filter(
-          (s) => s.brandName.toLowerCase() === brand.name.toLowerCase()
-        );
+        const brandSubs = await submissionService.getSubmissionsForBrand(brand, currentUser);
         setSubmissions(brandSubs);
       } catch {
         setSubmissions([]);

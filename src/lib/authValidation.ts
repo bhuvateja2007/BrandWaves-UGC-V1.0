@@ -104,6 +104,24 @@ export function getRoleLandingRoute(role?: UserRole | string): string {
 }
 
 /**
+ * Returns the intended user-facing destination route for an administrator
+ * switching to user view, without modifying their administrative role.
+ */
+export function getUserLandingRoute(targetView: 'marketplace' | 'customer' | 'creator' | 'brand' = 'marketplace'): string {
+  switch (targetView) {
+    case 'customer':
+      return '/customer';
+    case 'creator':
+      return '/creator';
+    case 'brand':
+      return '/brand';
+    case 'marketplace':
+    default:
+      return '/';
+  }
+}
+
+/**
  * Translates Supabase authentication errors into safe, user-friendly messages
  */
 export function formatAuthError(err: any): string {

@@ -22,16 +22,21 @@ import {
   Trash2,
   ChevronRight,
   Flame,
-  ArrowRight
+  ArrowRight,
+  Shirt,
+  Coffee,
+  Headphones,
+  Heart,
+  Package
 } from 'lucide-react';
 
 const POPULAR_CATEGORIES = [
-  { name: 'Skincare', icon: '✨', count: 4 },
-  { name: 'Beverage', icon: '🥤', count: 4 },
-  { name: 'Streetwear', icon: '🧢', count: 3 },
-  { name: 'Audio Hardware', icon: '🎧', count: 3 },
-  { name: 'Specialty Coffee', icon: '☕', count: 3 },
-  { name: 'Wellness', icon: '🌿', count: 3 },
+  { name: 'Skincare', icon: Sparkles, count: 4 },
+  { name: 'Beverage', icon: Package, count: 4 },
+  { name: 'Streetwear', icon: Shirt, count: 3 },
+  { name: 'Audio Hardware', icon: Headphones, count: 3 },
+  { name: 'Specialty Coffee', icon: Coffee, count: 3 },
+  { name: 'Wellness', icon: Heart, count: 3 },
 ];
 
 interface EditorialCollection {
@@ -244,7 +249,9 @@ export const CustomerDashboardPage: React.FC = () => {
               onClick={() => navigate(`/customer/products?category=${encodeURIComponent(cat.name)}`)}
               className="liquid-glass-card p-4 rounded-2xl text-left hover:border-[#3F72AF] transition-all group cursor-pointer flex flex-col justify-between"
             >
-              <span className="text-2xl mb-2 block">{cat.icon}</span>
+              <div className="w-10 h-10 rounded-xl bg-[#DBE2EF]/60 flex items-center justify-center text-[#3F72AF] group-hover:bg-[#3F72AF] group-hover:text-white transition-all mb-3 shadow-2xs">
+                <cat.icon className="w-5 h-5" />
+              </div>
               <div>
                 <span className="text-xs font-bold text-[#112D4E] group-hover:text-[#3F72AF] transition-colors block truncate">
                   {cat.name}

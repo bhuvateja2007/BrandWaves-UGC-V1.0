@@ -16,7 +16,6 @@ import {
   Sparkles
 } from 'lucide-react';
 import { AnimatedCounter } from '../../components/common';
-import { CyberCell } from '../../components/admin/cyber-cell';
 
 export const AdminOverview: React.FC = () => {
   const [stats, setStats] = useState<any>(null);
@@ -87,10 +86,10 @@ export const AdminOverview: React.FC = () => {
             <Users className="w-4 h-4 text-[#3F72AF]" />
           </div>
           <div className="text-3xl font-black text-[#112D4E] tabular-nums">
-            {loading ? '...' : <AnimatedCounter value={stats?.totalUsers || 3} />}
+            {loading ? '...' : <AnimatedCounter value={stats?.totalUsers ?? 0} />}
           </div>
           <span className="text-xs font-semibold text-emerald-600 mt-1 block">
-            {stats?.activeUsers || 3} active accounts
+            {stats?.activeUsers ?? 0} active accounts
           </span>
         </div>
 
@@ -100,10 +99,10 @@ export const AdminOverview: React.FC = () => {
             <Compass className="w-4 h-4 text-[#3F72AF]" />
           </div>
           <div className="text-3xl font-black text-[#112D4E] tabular-nums">
-            {loading ? '...' : <AnimatedCounter value={stats?.activeCampaigns || 6} />}
+            {loading ? '...' : <AnimatedCounter value={stats?.activeCampaigns ?? 0} />}
           </div>
           <span className="text-xs font-medium text-gray-500 mt-1 block">
-            {stats?.totalCampaigns || 6} total briefs
+            {stats?.totalCampaigns ?? 0} total briefs
           </span>
         </div>
 
@@ -113,7 +112,7 @@ export const AdminOverview: React.FC = () => {
             <Inbox className="w-4 h-4 text-amber-500" />
           </div>
           <div className="text-3xl font-black text-[#112D4E] tabular-nums">
-            {loading ? '...' : <AnimatedCounter value={stats?.pendingReviews || 1} />}
+            {loading ? '...' : <AnimatedCounter value={stats?.pendingReviews ?? 0} />}
           </div>
           <span className="text-xs font-semibold text-amber-600 mt-1 block">
             Requires brand audit
@@ -126,16 +125,13 @@ export const AdminOverview: React.FC = () => {
             <Flag className="w-4 h-4 text-rose-500" />
           </div>
           <div className="text-3xl font-black text-[#112D4E] tabular-nums">
-            {loading ? '...' : <AnimatedCounter value={stats?.pendingReports || 1} />}
+            {loading ? '...' : <AnimatedCounter value={stats?.pendingReports ?? 0} />}
           </div>
           <span className="text-xs font-semibold text-rose-600 mt-1 block">
             Pending resolution
           </span>
         </div>
       </div>
-
-      {/* CYBER CELL: Live Traffic Intelligence Control Center */}
-      <CyberCell />
 
       {/* Main Sections: Quick Actions + Audit Stream */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

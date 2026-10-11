@@ -18,7 +18,8 @@ import {
   ShoppingBag,
   LayoutDashboard,
   Menu,
-  X
+  X,
+  HelpCircle
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -95,6 +96,16 @@ export const Header: React.FC = () => {
               }
             >
               Campaigns
+            </NavLink>
+            <NavLink
+              to="/faq"
+              className={({ isActive }) =>
+                `px-3 py-1.5 rounded-lg transition-colors ${
+                  isActive ? 'bg-[#DBE2EF] text-[#112D4E]' : 'hover:bg-white/60 hover:text-[#112D4E]'
+                }`
+              }
+            >
+              FAQ
             </NavLink>
             <NavLink
               to="/brand"
@@ -340,10 +351,18 @@ export const Header: React.FC = () => {
                   )}
 
                   <div className="border-t border-[#DBE2EF]/60 mt-1 pt-1">
+                    <Link
+                      to="/faq"
+                      onClick={() => setProfileDropdownOpen(false)}
+                      className="flex items-center gap-2 px-4 py-2 text-xs text-gray-700 hover:bg-[#F9F7F7] transition-colors"
+                    >
+                      <HelpCircle className="w-4 h-4 text-[#3F72AF]" />
+                      <span>Help & FAQs</span>
+                    </Link>
                     <button
                       type="button"
                       onClick={() => { setProfileDropdownOpen(false); signOut(); navigate('/login'); }}
-                      className="w-full flex items-center gap-2 px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 transition-colors text-left"
+                      className="w-full flex items-center gap-2 px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 transition-colors text-left cursor-pointer"
                     >
                       <LogOut className="w-4 h-4" />
                       <span>Sign Out</span>
@@ -355,6 +374,12 @@ export const Header: React.FC = () => {
           </>
         ) : (
           <div className="flex items-center gap-1.5 sm:gap-2.5">
+            <Link
+              to="/faq"
+              className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold text-[#3F72AF] hover:bg-white/60 transition-colors inline-flex items-center gap-1"
+            >
+              <span>FAQ</span>
+            </Link>
             <Link
               to="/creator"
               className="hidden sm:inline-flex px-3 py-1.5 rounded-xl text-xs font-bold text-[#112D4E] hover:bg-white/60 transition-colors"
@@ -368,15 +393,15 @@ export const Header: React.FC = () => {
               Sign In
             </Link>
             <Link
-              to="/products"
-              className="hidden sm:inline-flex px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold bg-[#112D4E] text-white hover:bg-[#153D56] transition-all shadow-xs"
+              to="/signup"
+              className="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold bg-[#3F72AF] hover:bg-[#112D4E] text-white transition-all shadow-xs"
             >
-              Start Exploring
+              Sign Up
             </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-xl text-[#112D4E] hover:bg-white/80 transition-colors"
+              className="lg:hidden p-2 rounded-xl text-[#112D4E] hover:bg-white/80 transition-colors cursor-pointer"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >
@@ -388,7 +413,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile unauthenticated navigation drawer */}
       {!currentUser && mobileMenuOpen && (
-        <div className="md:hidden absolute top-16 inset-x-0 bg-white/95 backdrop-blur-xl border-b border-[#DBE2EF] shadow-2xl p-5 flex flex-col gap-4 animate-scaleUp z-50 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="lg:hidden absolute top-16 inset-x-0 bg-white/95 backdrop-blur-xl border-b border-[#DBE2EF] shadow-2xl p-5 flex flex-col gap-4 animate-scaleUp z-50 max-h-[calc(100vh-4rem)] overflow-y-auto">
           {/* Mobile search bar */}
           <div className="relative w-full">
             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">
@@ -475,12 +500,12 @@ export const Header: React.FC = () => {
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#E7F2F8] text-[#153D56] font-bold">Open</span>
             </Link>
             <Link
-              to="/customer"
+              to="/faq"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold text-[#153D56] hover:bg-[#E7F2F8] transition-colors"
             >
-              <span>Shopper Hub</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#E7F2F8] text-[#153D56] font-bold">Open</span>
+              <span>Help & FAQ</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#E7F2F8] text-[#153D56] font-bold">Help</span>
             </Link>
           </div>
 
@@ -493,11 +518,11 @@ export const Header: React.FC = () => {
               Sign In
             </Link>
             <Link
-              to="/products"
+              to="/signup"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2.5 rounded-xl bg-[#112D4E] text-white text-xs font-bold hover:bg-[#153D56]"
+              className="w-full text-center py-2.5 rounded-xl bg-[#3F72AF] text-white text-xs font-bold hover:bg-[#112D4E]"
             >
-              Start Exploring
+              Sign Up
             </Link>
           </div>
         </div>

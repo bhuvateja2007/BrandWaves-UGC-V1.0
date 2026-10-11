@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Campaign, Submission, CreatorStats } from '../types';
 import { api } from '../api/client';
 import { ActivityHeatmap } from '../components/heatmap/ActivityHeatmap';
-import { SkyFooter } from '../components/layout/SkyFooter';
 import { AnimatedCounter } from '../components/common/AnimatedCounter';
 import { MotionButton } from '../components/common/MotionButton';
 
@@ -365,8 +364,6 @@ export const CreatorDashboard: React.FC = () => {
           userId="user_alex"
         />
       </main>
-
-      <SkyFooter />
     </div>
   );
 };

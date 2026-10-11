@@ -6,8 +6,10 @@
 
 /** All supported onboarding personas (UX labels only, not DB roles) */
 export type OnboardingPersona =
+  | 'customer'
   | 'creator'
   | 'brand'
+  | 'brand_owner'
   | 'student'
   | 'developer'
   | 'educator'
@@ -25,8 +27,7 @@ export interface QuestionOption {
   value: string;
   label: string;
   description?: string;
-  icon?: string; // lucide icon name or emoji
-  emoji?: string;
+  icon?: string; // lucide icon identifier (e.g., 'camera', 'building', 'briefcase')
 }
 
 /** The type of input to render for a question step */

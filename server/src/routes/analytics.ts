@@ -1,11 +1,91 @@
 import { Router } from 'express';
 import { db } from '../db/index.js';
+import { supabaseServer, isServerSupabaseConfigured } from '../lib/supabase.js';
 
 export const analyticsRouter = Router();
 
 // GET /api/analytics/overview - Overall platform / Brand Admin analytics
-analyticsRouter.get('/overview', (req, res) => {
-  const overview = db.getAnalyticsOverview();
+analyticsRouter.get('/overview', async (req, res) => {
+  const brandId = (req.query.brandId as string) || (req.headers['x-brand-id'] as string) || undefined;
+
+  if (isServerSupabaseConfigured) {
+    try {
+      let campaignsQuery = supabaseServer.from('campaigns').select('id, brand_id, status, end_date', { count: 'exact' });
+      let submissionsQuery = supabaseServer.from('submissions').select('id, campaign_id, status, created_at', { count: 'exact' });
+
+      if (brandId) {
+        campaignsQuery = campaignsQuery.eq('brand_id', brandId);
+      }
+
+      const [
+        { data: sbCampaigns, error: campErr },
+        { data: sbSubmissions, error: subErr },
+      ] = await Promise.all([
+        campaignsQuery,
+        submissionsQuery,
+      ]);
+
+      if (!campErr && !subErr && sbCampaigns) {
+        let relevantSubs = sbSubmissions || [];
+        if (brandId) {
+          const campIds = new Set(sbCampaigns.map(c => c.id));
+          relevantSubs = relevantSubs.filter(s => campIds.has(s.campaign_id));
+        }
+
+        const totalSubmissions = relevantSubs.length;
+        const activeCampaigns = sbCampaigns.filter(c => c.status === 'published' || c.status === 'active' || c.status === 'open').length;
+        const pendingReviews = relevantSubs.filter(s => s.status === 'submitted' || s.status === 'under_review' || s.status === 'pending').length;
+
+        const approvedCount = relevantSubs.filter(s => s.status === 'approved').length;
+        const rejectedCount = relevantSubs.filter(s => s.status === 'rejected').length;
+        const reviewedTotal = approvedCount + rejectedCount;
+
+        const approvalRate = reviewedTotal > 0
+          ? Math.round((approvedCount / reviewedTotal) * 100)
+          : 100;
+
+        const now = Date.now();
+        const dayMs = 24 * 60 * 60 * 1000;
+        const w4Count = relevantSubs.filter(s => {
+          const t = s.created_at ? new Date(s.created_at).getTime() : 0;
+          return t >= now - 7 * dayMs;
+        }).length;
+        const w3Count = relevantSubs.filter(s => {
+          const t = s.created_at ? new Date(s.created_at).getTime() : 0;
+          return t >= now - 14 * dayMs && t < now - 7 * dayMs;
+        }).length;
+        const w2Count = relevantSubs.filter(s => {
+          const t = s.created_at ? new Date(s.created_at).getTime() : 0;
+          return t >= now - 21 * dayMs && t < now - 14 * dayMs;
+        }).length;
+        const w1Count = relevantSubs.filter(s => {
+          const t = s.created_at ? new Date(s.created_at).getTime() : 0;
+          return t >= now - 28 * dayMs && t < now - 21 * dayMs;
+        }).length;
+        const recentWeekly = w4Count;
+        const weeklyBreakdown = [w1Count, w2Count, w3Count, w4Count];
+
+        return res.json({
+          success: true,
+          analytics: {
+            totalSubmissions,
+            activeCampaigns,
+            pendingReviews,
+            approvalRate,
+            weeklyVelocity: `${recentWeekly}/wk`,
+            velocityChange: recentWeekly > 0 ? `+${Math.round((recentWeekly / Math.max(1, totalSubmissions)) * 100)}%` : '+0%',
+            weeklyBreakdown,
+            totalUsers: db.getUsers().length,
+            totalPosts: db.getPosts({ status: 'all' }).length,
+          },
+        });
+      }
+    } catch (sbErr) {
+      console.warn('Notice querying Supabase analytics overview:', sbErr);
+    }
+  }
+
+  const overview = db.getAnalyticsOverview(brandId);
   res.json({ success: true, analytics: overview });
 });
 
@@ -18,26 +98,45 @@ analyticsRouter.get('/heatmap', (req, res) => {
   res.json({ success: true, heatmap });
 });
 
-// GET /api/analytics/creator-summary - Specific creator dashboard metrics
-analyticsRouter.get('/creator-summary', (req, res) => {
-  const currentUser = db.getCurrentUser();
-  const submissions = db.getSubmissions({ creatorId: currentUser.id });
-  
-  const activeSubmissions = submissions.filter(s => s.status === 'pending').length;
-  const approvedSubmissions = 28 + submissions.filter(s => s.status === 'approved').length; // historical base + current
-  const revisionRequests = submissions.filter(s => s.status === 'revision_requested').length;
-  const campaignsJoined = 12 + new Set(submissions.map(s => s.campaignId)).size;
+// GET /api/analytics/creator-summary - Specific creator dashboard metrics (Exact counts, zero magic numbers)
+analyticsRouter.get('/creator-summary', async (req, res) => {
+  const userId = (req.query.userId as string) || (req.headers['x-user-id'] as string);
+  const currentUser = userId ? (db.getUserById(userId) || db.getCurrentUser()) : db.getCurrentUser();
 
+  if (isServerSupabaseConfigured) {
+    try {
+      const { data, error } = await supabaseServer
+        .from('submissions')
+        .select('id, status, campaign_id')
+        .eq('creator_id', currentUser.id);
+
+      if (!error && Array.isArray(data)) {
+        const activeSubmissions = data.filter(s => s.status === 'pending' || s.status === 'submitted' || s.status === 'under_review').length;
+        const approvedSubmissions = data.filter(s => s.status === 'approved').length;
+        const revisionRequests = data.filter(s => s.status === 'revision_requested').length;
+        const campaignsJoined = new Set(data.map(s => s.campaign_id)).size;
+
+        return res.json({
+          success: true,
+          stats: {
+            activeSubmissions,
+            approvedSubmissions,
+            revisionRequests,
+            campaignsJoined,
+            pendingValidationCount: activeSubmissions,
+            actionRequiredCount: revisionRequests,
+          },
+        });
+      }
+    } catch (sbErr) {
+      console.warn('Notice querying Supabase creator stats:', sbErr);
+    }
+  }
+
+  const stats = db.getCreatorStats(currentUser.id);
   res.json({
     success: true,
-    stats: {
-      activeSubmissions,
-      approvedSubmissions,
-      revisionRequests,
-      campaignsJoined,
-      pendingValidationCount: activeSubmissions,
-      actionRequiredCount: revisionRequests,
-    },
+    stats,
   });
 });
 

@@ -1,7 +1,9 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
-import { getStepsForPersona } from '../lib/onboardingQuestions';
+import { useAuth } from '../context/AuthContext';
+import { getStepsForRole } from '../lib/onboardingQuestions';
+import { getRoleLandingRoute } from '../lib/authValidation';
+import { loadOnboardingData, saveOnboardingData } from '../services/onboardingService';
 import type {
   OnboardingPersona,
   OnboardingAnswers,
@@ -12,6 +14,7 @@ const SAVE_DEBOUNCE_MS = 1500;
 
 export function useOnboarding() {
   const navigate = useNavigate();
+  const { currentUser, refreshOnboarding } = useAuth();
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [state, setState] = useState<OnboardingState>({
@@ -26,28 +29,37 @@ export function useOnboarding() {
     direction: 'forward',
   });
 
-  /** Computed: steps visible for the currently selected persona */
-  const visibleSteps = getStepsForPersona(state.selectedPersona);
+  // Derive active persona from authoritative user role first, then fallback to questionnaire choice
+  const effectiveRole = currentUser?.role || state.selectedPersona || 'customer';
+  const visibleSteps = getStepsForRole(effectiveRole);
   const totalSteps = visibleSteps.length;
   const currentStep = visibleSteps[state.currentStepIndex] ?? null;
   const isLastStep = state.currentStepIndex >= totalSteps - 1;
   const progress = totalSteps > 0 ? ((state.currentStepIndex + 1) / (totalSteps + 1)) * 100 : 0;
 
-  /** Save progress to Supabase (debounced for partial saves) */
+  /** Save progress to Supabase and local cache */
   const saveProgress = useCallback(
     async (answers: OnboardingAnswers, persona: OnboardingPersona | null, completed = false) => {
-      if (!isSupabaseConfigured) return;
+      if (!currentUser?.id) return;
 
       try {
         setState((s) => ({ ...s, isSaving: true, saveError: null }));
 
-        const { error } = await supabase.rpc('upsert_onboarding_preferences', {
-          p_persona: persona ?? '',
-          p_answers: answers,
-          p_completed: completed,
+        const result = await saveOnboardingData({
+          userId: currentUser.id,
+          role: currentUser.role || persona || 'customer',
+          answers,
+          markCompleted: completed,
+          currentStep: state.currentStepIndex + 1,
         });
 
-        if (error) throw error;
+        if (!result.success) {
+          throw new Error(result.error || 'Failed to save onboarding responses');
+        }
+
+        if (completed && refreshOnboarding) {
+          await refreshOnboarding();
+        }
       } catch (err: any) {
         console.error('Failed to save onboarding progress:', err);
         setState((s) => ({
@@ -59,7 +71,7 @@ export function useOnboarding() {
         setState((s) => ({ ...s, isSaving: false }));
       }
     },
-    []
+    [currentUser, refreshOnboarding]
   );
 
   /** Debounced auto-save for partial progress */
@@ -79,7 +91,6 @@ export function useOnboarding() {
       setState((s) => {
         const newAnswers = { ...s.answers, [questionId]: value };
 
-        // If answering the persona question, capture the selected persona
         const newPersona =
           questionId === 'persona' ? (value as OnboardingPersona) : s.selectedPersona;
 
@@ -102,12 +113,11 @@ export function useOnboarding() {
     for (const question of currentStep.questions) {
       if (!question.required) continue;
 
-      // Filter for persona
       const isVisible = !question.showForPersonas
         ? true
         : Array.isArray(question.showForPersonas)
-        ? question.showForPersonas.includes(state.selectedPersona as any)
-        : question.showForPersonas === state.selectedPersona;
+        ? question.showForPersonas.includes(effectiveRole as any)
+        : question.showForPersonas === effectiveRole;
 
       if (!isVisible) continue;
 
@@ -131,52 +141,59 @@ export function useOnboarding() {
     }
 
     return null;
-  }, [currentStep, state.answers, state.selectedPersona]);
+  }, [currentStep, state.answers, effectiveRole]);
 
-  /** Navigate forward to the next step */
+  /** Complete onboarding and persist to database */
+  const completeOnboarding = useCallback(async () => {
+    try {
+      setState((s) => ({ ...s, isCompleting: true }));
+      await saveProgress(state.answers, state.selectedPersona, true);
+      setState((s) => ({
+        ...s,
+        isCompleting: false,
+        isCompleted: true,
+        completionAnimating: true,
+      }));
+
+      // Navigate after completion animation to role landing route
+      setTimeout(() => {
+        const destination = getRoleLandingRoute(currentUser?.role);
+        navigate(destination, { replace: true });
+      }, 2400);
+    } catch {
+      setState((s) => ({ ...s, isCompleting: false }));
+    }
+  }, [saveProgress, state.answers, state.selectedPersona, currentUser, navigate]);
+
+  /** Navigate forward to the next step or review */
   const goNext = useCallback(async () => {
-    const validationError = validateCurrentStep();
-    if (validationError) {
-      setState((s) => ({ ...s, saveError: validationError }));
-      return;
+    // Only validate if on a question step
+    if (state.currentStepIndex < totalSteps) {
+      const validationError = validateCurrentStep();
+      if (validationError) {
+        setState((s) => ({ ...s, saveError: validationError }));
+        return;
+      }
     }
 
     setState((s) => ({ ...s, saveError: null, direction: 'forward' }));
 
-    if (isLastStep) {
-      // Final completion
-      try {
-        setState((s) => ({ ...s, isCompleting: true }));
-        await saveProgress(state.answers, state.selectedPersona, true);
-        setState((s) => ({
-          ...s,
-          isCompleting: false,
-          isCompleted: true,
-          completionAnimating: true,
-        }));
-
-        // Navigate after animation
-        setTimeout(() => {
-          navigate('/dashboard', { replace: true });
-        }, 2800);
-      } catch {
-        setState((s) => ({ ...s, isCompleting: false }));
-      }
+    if (state.currentStepIndex >= totalSteps) {
+      // In review step, complete
+      await completeOnboarding();
     } else {
-      // Recalculate visible steps based on potentially updated persona
-      const newSteps = getStepsForPersona(
-        state.answers['persona'] as OnboardingPersona | null ?? state.selectedPersona
-      );
-      const nextIndex = Math.min(state.currentStepIndex + 1, newSteps.length - 1);
+      // Advance to next step (if on last question step, advances to totalSteps = review phase)
       setState((s) => ({
         ...s,
-        currentStepIndex: nextIndex,
-        // Re-sync persona in case persona step was just completed
-        selectedPersona:
-          (s.answers['persona'] as OnboardingPersona | null) ?? s.selectedPersona,
+        currentStepIndex: s.currentStepIndex + 1,
       }));
     }
-  }, [isLastStep, state.answers, state.selectedPersona, state.currentStepIndex, validateCurrentStep, saveProgress, navigate]);
+  }, [
+    state.currentStepIndex,
+    totalSteps,
+    validateCurrentStep,
+    completeOnboarding,
+  ]);
 
   /** Navigate backward to the previous step */
   const goBack = useCallback(() => {
@@ -198,25 +215,29 @@ export function useOnboarding() {
     }));
   }, [totalSteps]);
 
-  /** Load previously saved partial progress */
+  /** Load previously saved progress from Supabase & local cache */
   const loadSavedProgress = useCallback(async () => {
-    if (!isSupabaseConfigured) return;
+    if (!currentUser?.id) return;
     try {
-      const { data, error } = await supabase.rpc('get_my_onboarding_status');
-      if (error || !data || data.length === 0) return;
-
-      const row = data[0];
-      if (row.onboarding_answers && Object.keys(row.onboarding_answers).length > 0) {
+      const loaded = await loadOnboardingData(currentUser.id);
+      if (loaded && loaded.answers && Object.keys(loaded.answers).length > 0) {
         setState((s) => ({
           ...s,
-          answers: row.onboarding_answers,
-          selectedPersona: (row.onboarding_persona as OnboardingPersona) || null,
+          answers: loaded.answers,
+          selectedPersona: loaded.persona || (currentUser.role as OnboardingPersona) || null,
         }));
       }
     } catch (err) {
-      console.error('Could not load saved onboarding progress:', err);
+      console.warn('Could not load saved onboarding progress:', err);
     }
-  }, []);
+  }, [currentUser]);
+
+  // Auto-load on mount or user change
+  useEffect(() => {
+    if (currentUser?.id) {
+      loadSavedProgress();
+    }
+  }, [currentUser?.id, loadSavedProgress]);
 
   return {
     state,
@@ -229,6 +250,7 @@ export function useOnboarding() {
     goNext,
     goBack,
     skipStep,
+    completeOnboarding,
     validateCurrentStep,
     loadSavedProgress,
   };

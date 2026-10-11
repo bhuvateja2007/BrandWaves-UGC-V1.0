@@ -145,4 +145,3 @@ npm run build
 3. **Multi-Tenant Brand Isolation:** Brand owners can only access, modify, and review deliverables for their verified authorized brand.
 4. **Creator Isolation:** Creators can only view, edit, resubmit, or withdraw their own deliverables and applications.
 5. **No Secret Leaks:** `SUPABASE_SERVICE_ROLE_KEY` and third-party API keys are strictly confined to server-side processes and excluded from client bundles.
->>>>>>> d388c49 (Initial project upload)

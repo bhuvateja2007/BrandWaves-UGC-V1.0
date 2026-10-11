@@ -1,0 +1,51 @@
+sequenceDiagram
+    autonumber
+    actor Brand as Brand Manager
+    actor Creator as Content Creator
+    participant App as BrandWaves Frontend
+    participant Supa as Supabase PostgreSQL
+    participant AI as Gemini AI Copilot
+
+    Note over Brand, AI: 1. Campaign Creation & Publishing
+    Brand->>App: Creates campaign (Title, Budget, Deliverables, Deadline)
+    opt Use AI Copilot
+        Brand->>App: Requests AI Brief Generation
+        App->>AI: generateBrief(prompt)
+        AI-->>App: Structured brief & hooks
+    end
+    Brand->>App: Click 'Publish Campaign'
+    App->>Supa: INSERT INTO campaigns (status: 'published', brand_id)
+    Supa-->>App: 201 Created (campaign_id)
+
+    Note over Creator, Supa: 2. Application & Acceptance
+    Creator->>App: Discovers campaign in marketplace
+    Creator->>App: Submits application (Pitch, proposed_rate)
+    App->>Supa: INSERT INTO campaign_applications (status: 'pending')
+    Brand->>App: Views BrandDashboard / Applications
+    App->>Supa: SELECT * FROM campaign_applications WHERE campaign_id IN (owned_campaigns)
+    Brand->>App: Approves application
+    App->>Supa: UPDATE campaign_applications SET status='approved'
+
+    Note over Creator, Brand: 3. Deliverable Submission & Review Loop
+    Creator->>App: Uploads deliverable in SubmissionPortal (URL, caption, type)
+    App->>Supa: INSERT INTO submissions (status: 'submitted', creator_id, campaign_id)
+    Brand->>App: Opens ReviewQueue (/review)
+    App->>Supa: SELECT submissions JOIN campaigns JOIN profiles
+    alt Brand Requests Revision
+        Brand->>App: Selects 'Request Revision' + Feedback notes
+        App->>Supa: INSERT INTO reviews (decision: 'revision_requested', feedback)
+        App->>Supa: UPDATE submissions SET status='pending'
+        Creator->>App: Sees feedback in MySubmissions & resubmits updated content
+        App->>Supa: INSERT INTO submission_versions
+        App->>Supa: UPDATE submissions SET status='submitted'
+    else Brand Approves Deliverable
+        Brand->>App: Selects 'Approve Deliverable'
+        App->>Supa: INSERT INTO reviews (decision: 'approved')
+        App->>Supa: UPDATE submissions SET status='approved'
+        App->>Supa: UPDATE campaigns (recalculate deliverables count)
+    end
+
+    Note over Brand, Supa: 4. Analytics Update
+    Brand->>App: Views BrandDashboard analytics
+    App->>Supa: Computes exact totalSubmissions, approvalRate, weeklyBreakdown
+    App-->>Brand: Renders synchronized metrics & dynamic 4-week SVG velocity curve

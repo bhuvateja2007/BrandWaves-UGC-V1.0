@@ -1,0 +1,50 @@
+graph TB
+    subgraph Users ["Actors & User Roles"]
+        Customer["Customer / Public Shopper"]
+        Creator["Content Creator"]
+        Brand["Brand Manager / Owner"]
+        Admin["Platform Administrator"]
+    end
+
+    subgraph BrandWaves_App ["BrandWaves Web Application (React + Vite SPA)"]
+        PublicViews["Public Marketplace & Catalog<br/>(/, /creators, /campaigns)"]
+        CustomerPortal["Customer Feedback & Wishlist<br/>(/products, /portal)"]
+        CreatorPortal["Creator Studio & Submissions<br/>(/creator/*, /submissions)"]
+        BrandPortal["Brand Operations & Review Queue<br/>(/brand/*, /review)"]
+        AdminPortal["Admin Control Center & Moderation<br/>(/admin/*)"]
+    end
+
+    subgraph Services ["Service & Coordination Layer"]
+        BFF["Express API Server (Port 3001)<br/>Analytics, AI Copilot, Moderation"]
+        SupabaseClient["Supabase JavaScript SDK<br/>PostgREST Client + Auth Session"]
+    end
+
+    subgraph Backend_Infrastructure ["Backend & Persistence Infrastructure"]
+        SupaAuth["Supabase Auth (GoTrue)<br/>JWT, Session Management"]
+        SupaDB["PostgreSQL 15 (Supabase Cloud)<br/>Row-Level Security (RLS)"]
+        SupaStorage["Supabase Storage<br/>Buckets: avatars, deliverables"]
+        GeminiAPI["Google Gemini 1.5 Flash API<br/>Briefs, Matchmaking, AI Review"]
+    end
+
+    Customer --> PublicViews
+    Customer --> CustomerPortal
+    Creator --> CreatorPortal
+    Brand --> BrandPortal
+    Admin --> AdminPortal
+
+    PublicViews --> SupabaseClient
+    CustomerPortal --> SupabaseClient
+    CreatorPortal --> SupabaseClient
+    BrandPortal --> SupabaseClient
+    AdminPortal --> BFF
+    AdminPortal --> SupabaseClient
+
+    CreatorPortal -.->|AI Recommendations| BFF
+    BrandPortal -.->|Copilot & Matchmaker| BFF
+
+    SupabaseClient -->|Bearer JWT| SupaAuth
+    SupabaseClient -->|PostgREST with RLS| SupaDB
+    SupabaseClient -->|Uploads and Assets| SupaStorage
+
+    BFF -->|Admin Queries & Analytics| SupaDB
+    BFF -->|REST Gemini 1.5 Flash| GeminiAPI

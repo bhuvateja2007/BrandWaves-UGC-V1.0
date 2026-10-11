@@ -440,6 +440,42 @@ export const campaignApplicationService = {
    */
   async getApplicationsForCampaign(campaignId: string): Promise<CampaignApplication[]> {
     if (!campaignId) return [];
+
+    const isAvailable = await probeApplicationTableAvailability();
+    if (isAvailable && isSupabaseConfigured) {
+      try {
+        const { data, error } = await supabase
+          .from('campaign_applications')
+          .select('*')
+          .eq('campaign_id', campaignId)
+          .order('created_at', { ascending: false });
+
+        if (!error && data) {
+          return data.map((d: any) => ({
+            id: d.id,
+            campaignId: d.campaign_id,
+            campaignTitle: d.campaign_title || 'Active Campaign',
+            brandId: d.brand_id || '',
+            brandName: d.brand_name || 'Brand Partner',
+            brandLogo: d.brand_logo,
+            creatorId: d.creator_id,
+            creatorName: d.creator_name || 'Creator',
+            creatorHandle: d.creator_handle || '@creator',
+            creatorAvatar: d.creator_avatar || '',
+            pitch: d.pitch,
+            proposedDeliverable: d.proposed_deliverable,
+            portfolioSampleUrl: d.portfolio_sample_url,
+            status: d.status,
+            appliedAt: d.created_at,
+            reviewedAt: d.reviewed_at,
+            reviewerNotes: d.reviewer_notes,
+          }));
+        }
+      } catch (err) {
+        console.warn('[CampaignApplicationService] Supabase fetch for campaign failed:', err);
+      }
+    }
+
     const local = getLocalApplications();
     return local.filter((a) => a.campaignId === campaignId);
   },

@@ -1,0 +1,116 @@
+erDiagram
+    profiles ||--o{ campaigns : "creates / owns (as brand)"
+    profiles ||--o{ campaign_applications : "applies (as creator)"
+    profiles ||--o{ submissions : "submits deliverables (as creator)"
+    profiles ||--o{ reviews : "authors review (as brand/admin)"
+    profiles ||--o{ community_posts : "authors posts"
+    profiles ||--o{ post_likes : "likes posts"
+    profiles ||--o{ post_comments : "comments on posts"
+    profiles ||--o{ activity_logs : "triggers activity"
+
+    campaigns ||--o{ campaign_applications : "receives"
+    campaigns ||--o{ submissions : "contains deliverables"
+    campaigns ||--o{ engagement_metrics : "measures"
+
+    campaign_applications ||--o{ submissions : "links to"
+    submissions ||--o{ reviews : "evaluated by"
+    submissions ||--o{ submission_versions : "archives history"
+
+    community_posts ||--o{ post_likes : "has"
+    community_posts ||--o{ post_comments : "has"
+
+    profiles {
+        uuid id PK
+        text email
+        text display_name
+        text avatar_url
+        text role "creator | brand | admin | customer"
+        text bio
+        text website
+        jsonb social_links
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    campaigns {
+        uuid id PK
+        uuid brand_id FK
+        text title
+        text description
+        numeric budget
+        text status "draft | published | active | completed"
+        timestamptz deadline
+        jsonb requirements
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    campaign_applications {
+        uuid id PK
+        uuid campaign_id FK
+        uuid creator_id FK
+        text status "pending | approved | rejected"
+        text pitch
+        numeric proposed_rate
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    submissions {
+        uuid id PK
+        uuid campaign_id FK
+        uuid creator_id FK
+        uuid application_id FK
+        text title
+        text caption
+        text content_url
+        text content_type "video | image | carousel | reel"
+        text status "submitted | pending | approved | rejected"
+        timestamptz submitted_at
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    reviews {
+        uuid id PK
+        uuid submission_id FK
+        uuid reviewer_id FK
+        text decision "approved | rejected | revision_requested"
+        text feedback
+        timestamptz created_at
+    }
+
+    submission_versions {
+        uuid id PK
+        uuid submission_id FK
+        int version_number
+        text content_url
+        text caption
+        timestamptz submitted_at
+    }
+
+    community_posts {
+        uuid id PK
+        uuid author_id FK
+        text content
+        text media_url
+        text publication_status "published | hidden | pending"
+        timestamptz created_at
+    }
+
+    engagement_metrics {
+        uuid id PK
+        uuid campaign_id FK
+        int views
+        int clicks
+        int conversions
+        timestamptz recorded_at
+    }
+
+    activity_logs {
+        uuid id PK
+        uuid user_id FK
+        text action
+        jsonb metadata
+        timestamptz created_at
+    }

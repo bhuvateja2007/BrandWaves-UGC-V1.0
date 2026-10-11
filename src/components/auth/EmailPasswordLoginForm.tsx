@@ -10,30 +10,73 @@ interface EmailPasswordLoginFormProps {
   onRoleMismatch?: (detectedRole: string) => void;
   signUpLink?: string;
   submitLabel?: string;
+  initialEmail?: string;
+  initialPassword?: string;
 }
 
 export const EmailPasswordLoginForm: React.FC<EmailPasswordLoginFormProps> = ({
   expectedRole,
   onRoleMismatch,
-  signUpLink = '/register',
+  signUpLink = '/signup',
   submitLabel = 'Sign in to Account',
+  initialEmail = '',
+  initialPassword = '',
 }) => {
-  const { signIn } = useAuth();
+  const { signIn, resendVerificationEmail } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(initialEmail);
+  const [password, setPassword] = useState(initialPassword);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
   const [generalError, setGeneralError] = useState<string | null>(null);
+  const [resendStatus, setResendStatus] = useState<string | null>(null);
+  const [resendCooldown, setResendCooldown] = useState(0);
+
+  // Sync when initial credentials change (e.g., via "Use Demo Account")
+  React.useEffect(() => {
+    if (initialEmail) {
+      setEmail(initialEmail);
+      setFieldErrors((prev) => ({ ...prev, email: undefined }));
+    }
+  }, [initialEmail]);
+
+  React.useEffect(() => {
+    if (initialPassword) {
+      setPassword(initialPassword);
+      setFieldErrors((prev) => ({ ...prev, password: undefined }));
+    }
+  }, [initialPassword]);
+
+  const handleResend = async () => {
+    if (!email.trim() || resendCooldown > 0) return;
+    setResendStatus(null);
+    try {
+      const res = await resendVerificationEmail(email.trim());
+      setResendStatus(res.message);
+      setResendCooldown(60);
+      const timer = setInterval(() => {
+        setResendCooldown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } catch (e: any) {
+      setResendStatus(e.message || 'Could not send verification email.');
+    }
+  };
 
   const from = (location.state as any)?.from?.pathname;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setGeneralError(null);
+    setResendStatus(null);
     setFieldErrors({});
 
     // Validate inputs
@@ -77,10 +120,34 @@ export const EmailPasswordLoginForm: React.FC<EmailPasswordLoginFormProps> = ({
       {generalError && (
         <div 
           role="alert" 
-          className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-start gap-2.5"
+          className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs space-y-2 animate-shake"
         >
-          <AlertCircle className="w-4 h-4 shrink-0 text-rose-500 mt-0.5" />
-          <span className="leading-relaxed">{generalError}</span>
+          <div className="flex items-start gap-2.5">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-500 mt-0.5" />
+            <span className="leading-relaxed">{generalError}</span>
+          </div>
+
+          {/* Email Confirmation Guidance & Action */}
+          {generalError.toLowerCase().includes('verified') || generalError.toLowerCase().includes('confirm') ? (
+            <div className="pt-1 border-t border-rose-200/60 flex items-center justify-between">
+              <span className="text-[11px] text-gray-600">Need a fresh activation email?</span>
+              <button
+                type="button"
+                onClick={handleResend}
+                disabled={resendCooldown > 0 || !email.trim()}
+                className="text-xs font-bold text-[#3F72AF] hover:underline disabled:opacity-50 cursor-pointer"
+              >
+                {resendCooldown > 0 ? `Resend in ${resendCooldown}s` : 'Resend confirmation link'}
+              </button>
+            </div>
+          ) : null}
+        </div>
+      )}
+
+      {resendStatus && (
+        <div className="p-3 bg-blue-50 border border-blue-200 text-[#112D4E] text-xs rounded-xl flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-[#3F72AF] shrink-0" />
+          <span>{resendStatus}</span>
         </div>
       )}
 
@@ -184,12 +251,18 @@ export const EmailPasswordLoginForm: React.FC<EmailPasswordLoginFormProps> = ({
         )}
       </button>
 
-      {/* 4. Secondary Sign Up Link */}
-      <div className="text-center pt-2">
+      {/* 4. Secondary Sign Up & FAQ Link */}
+      <div className="text-center pt-2 space-y-1.5">
         <p className="text-xs text-gray-500">
           Don't have an account yet?{' '}
           <Link to={signUpLink} className="font-bold text-[#3F72AF] hover:underline">
             Create account
+          </Link>
+        </p>
+        <p className="text-[11px] text-gray-400">
+          Need assistance?{' '}
+          <Link to="/faq" className="text-[#3F72AF] font-semibold hover:underline">
+            Read the FAQ
           </Link>
         </p>
       </div>

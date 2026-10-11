@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Submission } from '../types';
 import { api } from '../api/client';
-import { SkyFooter } from '../components/layout/SkyFooter';
+import { submissionService } from '../services/submissionService';
+import { useAuth } from '../context/AuthContext';
 import { StatusBadge } from '../components/common/StatusBadge';
 import { AnimatedCounter } from '../components/common/AnimatedCounter';
 import { History, RotateCcw, AlertTriangle, ExternalLink, Sparkles } from 'lucide-react';
 
 export const MySubmissions: React.FC = () => {
+  const { currentUser } = useAuth();
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [platformFilter, setPlatformFilter] = useState<string>('all');
@@ -23,22 +25,21 @@ export const MySubmissions: React.FC = () => {
   const [actionSuccess, setActionSuccess] = useState<string | null>(null);
   const [expandedHistoryId, setExpandedHistoryId] = useState<string | null>(null);
 
-  const loadSubmissions = () => {
+  const loadSubmissions = async () => {
     setLoading(true);
-    api.getCreatorSubmissions()
-      .then((subs) => {
-        setSubmissions(subs);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to load submissions:', err);
-        setLoading(false);
-      });
+    try {
+      const subs = await submissionService.getCreatorSubmissions(currentUser);
+      setSubmissions(subs);
+    } catch (err: any) {
+      console.error('Failed to load submissions:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     loadSubmissions();
-  }, []);
+  }, [currentUser]);
 
   const handleResubmit = async (id: string) => {
     if (!updatedUrl.trim() || (!updatedUrl.startsWith('http://') && !updatedUrl.startsWith('https://'))) {
@@ -48,7 +49,7 @@ export const MySubmissions: React.FC = () => {
     try {
       setResubmitting(true);
       setResubmitError(null);
-      await api.resubmitSubmission(id, {
+      await submissionService.resubmitSubmission(id, {
         videoUrl: updatedUrl,
         caption: updatedCaption,
       });
@@ -472,8 +473,6 @@ export const MySubmissions: React.FC = () => {
           )}
         </section>
       </main>
-
-      <SkyFooter />
     </div>
   );
 };

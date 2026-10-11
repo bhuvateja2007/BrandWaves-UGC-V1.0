@@ -77,8 +77,19 @@ export const AudienceRegisterPage: React.FC = () => {
   const isLocked = pathname.includes('/join/');
 
   return (
-    <div className="min-h-[82vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 animate-fadeIn">
-      <div className="max-w-xl w-full bg-white p-8 sm:p-10 rounded-3xl border border-[#DBE2EF] shadow-lg space-y-6">
+    <div className="min-h-[82vh] flex flex-col items-center justify-center py-8 px-4 sm:px-6 lg:px-8 animate-fadeIn max-w-xl mx-auto w-full space-y-4">
+      {/* Top Banner Quick Links */}
+      <div className="w-full flex items-center justify-between px-1 text-xs text-gray-500">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-gray-600 hover:text-[#112D4E] font-medium transition-colors">
+          <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+          <span>Back to Marketplace</span>
+        </Link>
+        <Link to="/faq" className="inline-flex items-center gap-1 text-[#3F72AF] hover:text-[#112D4E] font-bold transition-colors">
+          <span>Registration FAQ</span>
+        </Link>
+      </div>
+
+      <div className="w-full bg-white p-8 sm:p-10 rounded-3xl border border-[#DBE2EF] shadow-lg space-y-6">
         {/* Header */}
         <div className="text-center">
           <Link 
@@ -130,7 +141,7 @@ export const AudienceRegisterPage: React.FC = () => {
         <div className="text-center pt-3 border-t border-[#DBE2EF]/60 space-y-2">
           <p className="text-xs text-gray-500">
             Want to register for another role?{' '}
-            <Link to="/register" className="font-bold text-[#3F72AF] hover:underline">
+            <Link to="/signup" className="font-bold text-[#3F72AF] hover:underline">
               View all account types
             </Link>
           </p>
@@ -140,6 +151,11 @@ export const AudienceRegisterPage: React.FC = () => {
             <Link to="/join/creator" className="hover:text-[#112D4E]">Creator</Link>
             <span>•</span>
             <Link to="/join/brand" className="hover:text-[#112D4E]">Brand Owner</Link>
+          </div>
+          <div className="pt-2 border-t border-[#DBE2EF]/40">
+            <Link to="/faq" className="text-xs font-semibold text-[#3F72AF] hover:underline">
+              Have questions about registration or privacy? Read our FAQ
+            </Link>
           </div>
         </div>
       </div>

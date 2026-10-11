@@ -60,8 +60,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
     general?: string;
   }>({});
 
-  // Verification state after submission
+  // Verification and success states after submission
   const [verificationPending, setVerificationPending] = useState(false);
+  const [creationSuccess, setCreationSuccess] = useState(false);
   const [resendStatus, setResendStatus] = useState<string | null>(null);
   const [resendCooldown, setResendCooldown] = useState(0);
 
@@ -154,7 +155,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
       if (res.needsVerification) {
         setVerificationPending(true);
       } else {
-        navigate('/dashboard', { replace: true });
+        setCreationSuccess(true);
       }
     } catch (err: any) {
       setErrors({ general: err.message || 'Registration failed. Please review your details and try again.' });
@@ -163,19 +164,62 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
     }
   };
 
-  // If email verification is required by Supabase configuration
+  // Immediate Account Creation Success Screen
+  if (creationSuccess) {
+    return (
+      <div className="space-y-6 text-center animate-fadeIn py-2">
+        <div className="w-16 h-16 rounded-3xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
+          <CheckCircle2 className="w-8 h-8" />
+        </div>
+
+        <div>
+          <h2 className="text-xl sm:text-2xl font-black text-[#112D4E]">
+            Your account was created successfully!
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">
+            Your BrandWaves account has been created. You can continue to the next step.
+          </p>
+        </div>
+
+        <div className="p-4 bg-[#F9F7F7] rounded-2xl border border-[#DBE2EF] text-left text-xs space-y-2 text-gray-600">
+          <div className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span>Profile established as <strong>{roleDescriptions[role].label}</strong>.</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#3F72AF] shrink-0 mt-0.5" />
+            <span>Your session is authenticated and protected by Row Level Security.</span>
+          </div>
+        </div>
+
+        <div className="pt-2">
+          <button
+            type="button"
+            onClick={() => navigate('/onboarding', { replace: true })}
+            className="w-full py-3.5 px-4 bg-[#3F72AF] hover:bg-[#112D4E] text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Continue to Onboarding</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // If email confirmation is required by Supabase configuration
   if (verificationPending) {
     return (
-      <div className="space-y-6 text-center animate-fadeIn">
+      <div className="space-y-6 text-center animate-fadeIn py-2">
         <div className="w-16 h-16 rounded-3xl bg-[#DBE2EF] text-[#3F72AF] flex items-center justify-center mx-auto shadow-sm">
           <Mail className="w-8 h-8" />
         </div>
 
         <div>
-          <h2 className="text-xl sm:text-2xl font-black text-[#112D4E]">Verify your email address</h2>
+          <h2 className="text-xl sm:text-2xl font-black text-[#112D4E]">
+            Verify your email to continue
+          </h2>
           <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">
-            We have sent an activation link to <strong className="text-[#112D4E]">{email}</strong>. 
-            Please check your inbox to confirm your account and activate your {roleDescriptions[role].label} access.
+            Your account registration was accepted. Check your inbox for a confirmation link before signing in.
           </p>
         </div>
 
@@ -186,7 +230,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
           </div>
           <div className="flex items-start gap-2">
             <ShieldCheck className="w-4 h-4 text-[#3F72AF] shrink-0 mt-0.5" />
-            <span>Unverified accounts cannot access privileged campaign submissions or brand dashboards.</span>
+            <span>Unverified accounts cannot access campaign submissions or commercial brand management.</span>
           </div>
         </div>
 
@@ -204,7 +248,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             disabled={resendCooldown > 0}
             className="w-full py-2.5 px-4 bg-white hover:bg-[#F9F7F7] text-[#112D4E] border border-[#DBE2EF] font-bold text-xs rounded-xl shadow-xs transition-colors disabled:opacity-50 cursor-pointer"
           >
-            {resendCooldown > 0 ? `Resend email in ${resendCooldown}s` : 'Resend verification email'}
+            {resendCooldown > 0 ? `Resend email in ${resendCooldown}s` : 'Resend confirmation link'}
           </button>
 
           <Link
@@ -223,10 +267,13 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
       {errors.general && (
         <div 
           role="alert" 
-          className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-start gap-2.5"
+          className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs space-y-1.5 animate-shake"
         >
-          <AlertCircle className="w-4 h-4 shrink-0 text-rose-500 mt-0.5" />
-          <span className="leading-relaxed">{errors.general}</span>
+          <div className="flex items-center gap-2 font-bold text-rose-900 text-sm">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+            <span>Your account wasn't created</span>
+          </div>
+          <p className="leading-relaxed text-rose-700 pl-6">{errors.general}</p>
         </div>
       )}
 
@@ -443,12 +490,18 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         )}
       </button>
 
-      {/* Secondary Sign In Link */}
-      <div className="text-center pt-2">
+      {/* Secondary Sign In Link & FAQ */}
+      <div className="text-center pt-2 space-y-1.5">
         <p className="text-xs text-gray-500">
           Already registered?{' '}
           <Link to={loginLink} className="font-bold text-[#112D4E] hover:underline">
             Sign in
+          </Link>
+        </p>
+        <p className="text-[11px] text-gray-400">
+          Have questions about onboarding?{' '}
+          <Link to="/faq" className="text-[#3F72AF] font-semibold hover:underline">
+            Read the FAQ
           </Link>
         </p>
       </div>

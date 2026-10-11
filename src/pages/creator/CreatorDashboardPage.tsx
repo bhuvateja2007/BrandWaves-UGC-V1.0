@@ -232,7 +232,7 @@ export const CreatorDashboardPage: React.FC = () => {
                 Active Deliverables
               </span>
               <p className="text-2xl sm:text-3xl font-black text-[#112D4E] mt-1 font-mono">
-                {loading ? '...' : <AnimatedCounter value={stats?.activeSubmissions ?? 2} />}
+                {loading ? '...' : <AnimatedCounter value={stats?.activeSubmissions ?? 0} />}
               </p>
             </div>
             <div className="w-10 h-10 rounded-xl bg-[#DBE2EF] flex items-center justify-center text-[#3F72AF]">
@@ -255,7 +255,7 @@ export const CreatorDashboardPage: React.FC = () => {
                 Approved Deliverables
               </span>
               <p className="text-2xl sm:text-3xl font-black text-[#112D4E] mt-1 font-mono">
-                {loading ? '...' : <AnimatedCounter value={stats?.approvedSubmissions ?? 28} />}
+                {loading ? '...' : <AnimatedCounter value={stats?.approvedSubmissions ?? 0} />}
               </p>
             </div>
             <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -264,7 +264,11 @@ export const CreatorDashboardPage: React.FC = () => {
           </div>
           <div className="mt-3 pt-3 border-t border-[#DBE2EF]/60 flex items-center justify-between text-xs">
             <span className="text-gray-500">Lifetime approved</span>
-            <span className="font-bold text-emerald-700">100% Quality Rate</span>
+            {(() => {
+              const reviewed = (stats?.approvedSubmissions || 0) + (stats?.revisionRequests || 0);
+              const rate = reviewed > 0 ? Math.round(((stats?.approvedSubmissions || 0) / reviewed) * 100) : 100;
+              return <span className="font-bold text-emerald-700">{rate}% Quality Rate</span>;
+            })()}
           </div>
         </div>
 

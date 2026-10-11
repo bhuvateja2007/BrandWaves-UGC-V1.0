@@ -153,7 +153,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         // Authoritative database role resolution
         if (profile.role === 'admin') {
           resolvedRole = 'admin';
-        } else if (profile.role === 'brand_owner' || profile.role === 'brand_admin') {
+        } else if (profile.role === 'brand_owner' || profile.role === 'brand_admin' || profile.role === 'brand') {
           resolvedRole = 'brand_owner';
         } else if (profile.role === 'customer') {
           resolvedRole = 'customer';
@@ -495,7 +495,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const isAdmin = Boolean(currentUser?.role === 'admin');
   const isBrandOwner = Boolean(
     currentUser?.role === 'brand_owner' || 
-    currentUser?.role === 'brand_admin'
+    currentUser?.role === 'brand_admin' ||
+    (currentUser?.role as string) === 'brand'
   );
   const isBrandAdmin = Boolean(isAdmin || isBrandOwner);
   const isCreator = Boolean(currentUser?.role === 'creator');

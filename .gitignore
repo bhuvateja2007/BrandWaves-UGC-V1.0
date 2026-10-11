@@ -32,3 +32,5 @@ dist-ssr
 # Nested clones
 BrandWaves-UGC-V1.0/
 
+# Scratch & temporary test scripts
+scratch/

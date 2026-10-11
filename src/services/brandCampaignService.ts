@@ -235,8 +235,17 @@ export const brandCampaignService = {
       productName = prod.name;
     }
 
+    const isUuidUser = typeof user.id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(user.id);
+    const generatedUuid = (typeof crypto !== 'undefined' && crypto.randomUUID) 
+      ? crypto.randomUUID() 
+      : '00000000-0000-4000-a000-' + Math.random().toString(16).substring(2, 14).padEnd(12, '0');
+
+    const campaignId = isUuidUser 
+      ? generatedUuid 
+      : `camp_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+
     const newCampaign: MarketplaceCampaign = {
-      id: `camp_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      id: campaignId,
       brandId: payload.brandId,
       brandName: brand.name,
       brandLogo: brand.logo,
@@ -263,27 +272,31 @@ export const brandCampaignService = {
       relatedCreatorIds: [],
     };
 
-    // If Supabase table is available, attempt remote insert
-    const isAvailable = await probeCampaignTableAvailability();
-    if (isAvailable && isSupabaseConfigured) {
+    // If Supabase table is available and user is authenticated UUID, perform authoritative remote insert
+    if (isSupabaseConfigured && isUuidUser) {
       try {
-        await supabase.from('campaigns').insert({
-          id: newCampaign.id,
-          brand_name: newCampaign.brandName,
-          brand_logo: newCampaign.brandLogo,
+        const rewardNum = parseFloat(String(payload.rewardAmount || '500').replace(/[^0-9.]/g, '')) || 500;
+        const budgetNum = rewardNum * (payload.spotsTotal || 5);
+        const { error: sbErr } = await supabase.from('campaigns').insert({
+          id: campaignId,
+          brand_id: user.id,
           title: newCampaign.title,
-          category: newCampaign.category,
-          platform: newCampaign.platform,
-          format: newCampaign.format,
           description: newCampaign.description,
+          brief: newCampaign.brief,
+          category: newCampaign.category,
+          budget: budgetNum,
+          reward_amount: rewardNum,
+          slots: newCampaign.spotsTotal,
           requirements: newCampaign.deliverables,
-          reward_type: newCampaign.rewardType,
-          reward_amount: newCampaign.rewardAmount,
-          spots_total: newCampaign.spotsTotal,
-          spots_filled: 0,
-          deadline: newCampaign.deadline,
-          status: newCampaign.status === 'open' ? 'active' : newCampaign.status,
+          cover_image_url: brand.logo || 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400',
+          status: 'published',
+          end_date: payload.endDate || (payload.deadline ? new Date(payload.deadline).toISOString() : null),
         });
+        if (sbErr) {
+          console.warn('[BrandCampaignService] Supabase insert warning:', sbErr.message);
+        } else {
+          cachedTableAvailable = true;
+        }
       } catch (err) {
         console.warn('[BrandCampaignService] Supabase insert failed, saving locally:', err);
       }
@@ -293,6 +306,58 @@ export const brandCampaignService = {
     const updated = [newCampaign, ...all];
     saveStoredCampaigns(updated);
     return newCampaign;
+  },
+
+  /**
+   * Fetches campaigns from Supabase database with seamless fallback
+   */
+  async fetchCampaigns(filters?: { brandId?: string; status?: string; search?: string }): Promise<MarketplaceCampaign[]> {
+    if (isSupabaseConfigured) {
+      try {
+        let query = supabase.from('campaigns').select('*, profiles:brand_id(display_name, avatar_url)');
+        if (filters?.status && filters.status !== 'all') {
+          const dbStatus = filters.status === 'open' ? 'published' : filters.status;
+          query = query.eq('status', dbStatus);
+        }
+        const { data, error } = await query;
+        if (!error && data && data.length > 0) {
+          const mapped: MarketplaceCampaign[] = data.map((c: any) => ({
+            id: c.id,
+            brandId: c.brand_id,
+            brandName: c.profiles?.display_name || 'Brand Partner',
+            brandLogo: c.profiles?.avatar_url || c.cover_image_url || 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400',
+            title: c.title,
+            brief: c.brief || c.description,
+            description: c.description,
+            objective: c.brief || c.description,
+            category: c.category || 'Lifestyle',
+            platform: 'Multi-platform',
+            format: '9:16 Vertical Video',
+            deliverables: Array.isArray(c.requirements) ? c.requirements : [c.requirements || 'Product Showcase'],
+            targetNiches: [c.category || 'General'],
+            requiredFormats: ['9:16 Vertical Video'],
+            eligibility: ['Active creator', 'Original content'],
+            deadline: c.end_date || new Date(Date.now() + 30 * 86400000).toISOString(),
+            rewardType: 'fixed',
+            rewardAmount: c.reward_amount ? `$${c.reward_amount}` : '$500',
+            status: c.status === 'published' ? 'open' : c.status,
+            spotsTotal: c.slots || 5,
+            spotsFilled: 0,
+            isFeatured: false,
+            relatedCreatorIds: [],
+          }));
+
+          const stored = getStoredCampaigns();
+          const remoteIds = new Set(mapped.map(m => m.id));
+          const combined = [...mapped, ...stored.filter(s => !remoteIds.has(s.id))];
+          saveStoredCampaigns(combined);
+          return this.getCampaigns(filters);
+        }
+      } catch (err) {
+        console.warn('Notice querying Supabase campaigns:', err);
+      }
+    }
+    return this.getCampaigns(filters);
   },
 
   /**

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { Campaign } from '../types';
 import { api } from '../api/client';
-import { SkyFooter } from '../components/layout/SkyFooter';
+import { Music, Camera, Play, CheckCircle2 } from 'lucide-react';
 
 export const SubmissionPortal: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -17,7 +17,7 @@ export const SubmissionPortal: React.FC = () => {
   const [platform, setPlatform] = useState<'TikTok' | 'Instagram' | 'YouTube'>('TikTok');
   const [videoUrl, setVideoUrl] = useState<string>('https://www.tiktok.com/@alex.creates/video/7482910482910');
   const [videoTitle, setVideoTitle] = useState<string>('High Velocity Training Reel — Authentic Drop');
-  const [caption, setCaption] = useState<string>('Testing out the new athletic drop with raw movement and sprint pacing. Loving the hold! 🔥 #BrandWaves #UGC');
+  const [caption, setCaption] = useState<string>('Testing out the new athletic drop with raw movement and sprint pacing. Loving the hold! #BrandWaves #UGC');
   const [tags, setTags] = useState<string>('#VeloxSpeed, #RunnerGear, #BrandWaves');
   const [complianceAgreed, setComplianceAgreed] = useState<boolean>(true);
 
@@ -134,7 +134,7 @@ export const SubmissionPortal: React.FC = () => {
               <span className={`material-symbols-outlined text-[16px] ${draftSaved ? 'text-emerald-600 animate-icon-pop' : 'text-gray-400'}`}>
                 {draftSaved ? 'check_circle' : 'bookmark_border'}
               </span>
-              <span>{draftSaved ? 'Draft Saved ✓' : 'Save Draft'}</span>
+              <span>{draftSaved ? 'Draft Saved' : 'Save Draft'}</span>
             </button>
           </div>
         </div>
@@ -164,7 +164,7 @@ export const SubmissionPortal: React.FC = () => {
                       : 'bg-brand-surface text-secondary'
                   }`}
                 >
-                  {st.done && !st.active ? '✓' : st.num}
+                  {st.done && !st.active ? <CheckCircle2 className="w-3.5 h-3.5" /> : st.num}
                 </div>
                 <div className="hidden sm:flex flex-col">
                   <span className="text-[10px] uppercase font-bold text-secondary">Step {st.num}</span>
@@ -229,7 +229,15 @@ export const SubmissionPortal: React.FC = () => {
                         : 'bg-white text-secondary border-brand-surface hover:bg-brand-surface/50'
                     }`}
                   >
-                    <span>{plat === 'TikTok' ? '🎵' : plat === 'Instagram' ? '📸' : '▶️'}</span>
+                    <span className="flex items-center justify-center">
+                      {plat === 'TikTok' ? (
+                        <Music className="w-4 h-4" />
+                      ) : plat === 'Instagram' ? (
+                        <Camera className="w-4 h-4" />
+                      ) : (
+                        <Play className="w-4 h-4" />
+                      )}
+                    </span>
                     <span>{plat}</span>
                   </button>
                 ))}
@@ -372,8 +380,6 @@ export const SubmissionPortal: React.FC = () => {
           </div>
         </div>
       </main>
-
-      <SkyFooter />
     </div>
   );
 };

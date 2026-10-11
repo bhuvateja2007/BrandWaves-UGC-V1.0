@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import type { QuestionOption } from '../../lib/onboardingTypes';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
+import { OnboardingIcon } from './OnboardingIcon';
+
 interface PersonaCardProps {
   option: QuestionOption;
   isSelected: boolean;
@@ -58,15 +60,15 @@ const PersonaCard: React.FC<PersonaCardProps> = ({ option, isSelected, onSelect 
       style={{ WebkitTapHighlightColor: 'transparent' }}
     >
       <div className="p-4 sm:p-5 flex flex-col gap-2.5">
-        {/* Emoji icon */}
-        <span
-          className={`text-3xl select-none transition-transform duration-300 ${
-            isSelected ? 'scale-110' : ''
+        {/* Lucide vector icon */}
+        <div
+          className={`w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 ${
+            isSelected ? 'bg-brand-blue text-white scale-110 shadow-sm' : 'bg-white/10 text-white/80'
           }`}
           aria-hidden="true"
         >
-          {option.emoji}
-        </span>
+          <OnboardingIcon name={option.icon || option.value} className="w-5 h-5" />
+        </div>
 
         {/* Label */}
         <div>
@@ -119,13 +121,13 @@ export const PersonaSelectionStep: React.FC<PersonaSelectionStepProps> = ({
 }) => {
   // Import options from the question config
   const personaOptions: QuestionOption[] = [
-    { value: 'creator', label: 'Creator / Influencer', description: 'I create content and collaborate with brands.', emoji: '🎨' },
-    { value: 'brand', label: 'Brand Owner / Business', description: 'I want to promote my brand and launch campaigns.', emoji: '🏢' },
-    { value: 'student', label: 'Student', description: "I'm learning, building my portfolio and exploring opportunities.", emoji: '🎓' },
-    { value: 'developer', label: 'Developer / Technical', description: 'I build products, tools or digital experiences.', emoji: '💻' },
-    { value: 'educator', label: 'Educator / Trainer', description: 'I teach, mentor or create educational content.', emoji: '📚' },
-    { value: 'marketing', label: 'Marketing / Agency', description: 'I manage campaigns, audiences or brand growth.', emoji: '📊' },
-    { value: 'other', label: 'Other', description: 'My role is different.', emoji: '✨' },
+    { value: 'creator', label: 'Creator / Influencer', description: 'I create content and collaborate with brands.', icon: 'camera' },
+    { value: 'brand', label: 'Brand Owner / Business', description: 'I want to promote my brand and launch campaigns.', icon: 'building' },
+    { value: 'student', label: 'Student', description: "I'm learning, building my portfolio and exploring opportunities.", icon: 'graduation-cap' },
+    { value: 'developer', label: 'Developer / Technical', description: 'I build products, tools or digital experiences.', icon: 'code' },
+    { value: 'educator', label: 'Educator / Trainer', description: 'I teach, mentor or create educational content.', icon: 'book-open' },
+    { value: 'marketing', label: 'Marketing / Agency', description: 'I manage campaigns, audiences or brand growth.', icon: 'trending-up' },
+    { value: 'other', label: 'Other', description: 'My role is different.', icon: 'sparkles' },
   ];
 
   return (

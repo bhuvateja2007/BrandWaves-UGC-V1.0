@@ -4,8 +4,14 @@ import { Brand } from '../../types/marketplace';
 import { Submission } from '../../types';
 import { brandOwnerService } from '../../services/brandOwnerService';
 import { brandCampaignService } from '../../services/brandCampaignService';
+import { 
+  submissionService, 
+  getSubmissionsStorageStatus, 
+  isDemoModeEnabled, 
+  setDemoModeEnabled, 
+  SubmissionStorageStatus 
+} from '../../services/submissionService';
 import { MarketplaceCampaign } from '../../types/marketplace';
-import { api } from '../../api/client';
 import { BrandNavHeader } from '../../components/brand/BrandNavHeader';
 import { ReviewModal } from '../../components/reviews/ReviewModal';
 import {
@@ -22,6 +28,11 @@ import {
   RefreshCw,
   Sparkles,
   History,
+  Database,
+  Server,
+  ToggleLeft,
+  ToggleRight,
+  ShieldCheck,
   X
 } from 'lucide-react';
 
@@ -32,6 +43,8 @@ export const BrandSubmissionsPage: React.FC = () => {
   const [brandCampaigns, setBrandCampaigns] = useState<MarketplaceCampaign[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [storageStatus, setStorageStatus] = useState<SubmissionStorageStatus>(getSubmissionsStorageStatus());
+  const [demoActive, setDemoActive] = useState<boolean>(isDemoModeEnabled());
 
   // Filters
   const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'approved' | 'revision_requested' | 'rejected'>('all');
@@ -55,21 +68,18 @@ export const BrandSubmissionsPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const subs = await api.getSubmissions();
-      const camps = brandCampaignService.getCampaignsForBrand(brand.id);
+      const [subs, camps] = await Promise.all([
+        submissionService.getSubmissionsForBrand(brand, currentUser),
+        Promise.resolve(brandCampaignService.getCampaignsForBrand(brand.id)),
+      ]);
 
-      // Filter submissions belonging to this brand
-      const brandSubs = subs.filter((s: Submission) => {
-        const matchesBrandName = s.brandName.toLowerCase() === brand.name.toLowerCase();
-        const matchesCampaign = camps.some((c: MarketplaceCampaign) => c.id === s.campaignId);
-        return matchesBrandName || matchesCampaign;
-      });
-
-      setSubmissions(brandSubs);
+      setSubmissions(subs);
       setBrandCampaigns(camps);
+      setStorageStatus(getSubmissionsStorageStatus());
     } catch (err: any) {
       console.error('[BrandSubmissionsPage] Failed to load submissions:', err);
       setError(err.message || 'Failed to load campaign submissions.');
+      setStorageStatus(getSubmissionsStorageStatus());
     } finally {
       setLoading(false);
     }
@@ -81,9 +91,33 @@ export const BrandSubmissionsPage: React.FC = () => {
     }
   }, [activeBrand]);
 
+  // Listen for background updates
+  useEffect(() => {
+    const handleUpdate = () => {
+      if (activeBrand) {
+        loadData(activeBrand);
+      }
+    };
+    window.addEventListener('brandwaves_submissions_updated', handleUpdate);
+    window.addEventListener('brandwaves_demo_mode_toggled', handleUpdate);
+    return () => {
+      window.removeEventListener('brandwaves_submissions_updated', handleUpdate);
+      window.removeEventListener('brandwaves_demo_mode_toggled', handleUpdate);
+    };
+  }, [activeBrand]);
+
   const handleBrandChange = (brand: Brand) => {
     brandOwnerService.setActiveBrandId(brand.id);
     setActiveBrand(brand);
+  };
+
+  const handleToggleDemoMode = () => {
+    const next = !demoActive;
+    setDemoModeEnabled(next);
+    setDemoActive(next);
+    if (activeBrand) {
+      loadData(activeBrand);
+    }
   };
 
   // Filtered submissions
@@ -142,20 +176,96 @@ export const BrandSubmissionsPage: React.FC = () => {
           subtitle="Inspect UGC video deliverables against your campaign briefs. Approve for publication or request creative revisions."
         />
 
-        {/* Global Error Banner */}
-        {error && (
-          <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
-              <span>{error}</span>
-            </div>
+        {/* Telemetry and Storage Data Source Ribbon */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-white border border-[#DBE2EF] shadow-xs">
+          <div className="flex items-center gap-2.5 flex-wrap">
+            {storageStatus.mode === 'supabase' && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <Database className="w-3.5 h-3.5 text-emerald-600" />
+                Live Supabase Cloud (PostgreSQL RLS)
+              </span>
+            )}
+            {storageStatus.mode === 'api' && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#3F72AF] border border-blue-200">
+                <Server className="w-3.5 h-3.5 text-[#3F72AF]" />
+                Live Express Backend API (:3001)
+              </span>
+            )}
+            {storageStatus.mode === 'demo' && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-amber-50 text-amber-800 border border-amber-300">
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                DEMO DATA (Deterministic Marketplace Fixtures)
+              </span>
+            )}
+            <span className="text-xs text-gray-500 hidden md:inline">
+              {storageStatus.message}
+            </span>
+          </div>
+
+          {/* Demo Mode Controller */}
+          <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
+            <span className="text-xs font-bold text-gray-600">Demo Mode:</span>
             <button
               type="button"
-              onClick={() => setError(null)}
-              className="text-red-500 hover:text-red-800"
+              onClick={handleToggleDemoMode}
+              className={`px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                demoActive
+                  ? 'bg-amber-100 text-amber-900 hover:bg-amber-200'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+              title="Toggle between deterministic demonstration fixtures and live backend database"
             >
-              <X className="w-4 h-4" />
+              {demoActive ? (
+                <>
+                  <ToggleRight className="w-4 h-4 text-amber-600" />
+                  <span>Enabled (Fixtures)</span>
+                </>
+              ) : (
+                <>
+                  <ToggleLeft className="w-4 h-4 text-gray-400" />
+                  <span>Disabled (Live Only)</span>
+                </>
+              )}
             </button>
+          </div>
+        </div>
+
+        {/* Global Error Banner */}
+        {error && (
+          <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-800 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-start gap-2.5">
+              <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+              <div>
+                <span className="font-bold block">Backend Communication Notice:</span>
+                <span>{error}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => activeBrand && loadData(activeBrand)}
+                className="px-3 py-1.5 rounded-xl bg-red-600 text-white text-xs font-bold hover:bg-red-700 transition-colors flex items-center gap-1 cursor-pointer"
+              >
+                <RefreshCw className="w-3.5 h-3.5" />
+                <span>Retry Connection</span>
+              </button>
+              {!demoActive && (
+                <button
+                  type="button"
+                  onClick={handleToggleDemoMode}
+                  className="px-3 py-1.5 rounded-xl bg-white text-red-700 border border-red-300 text-xs font-bold hover:bg-red-50 transition-colors cursor-pointer"
+                >
+                  Enable Demo Fixtures
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setError(null)}
+                className="text-red-500 hover:text-red-800 p-1"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         )}
 
@@ -279,6 +389,15 @@ export const BrandSubmissionsPage: React.FC = () => {
                 ? `There are currently no UGC video deliverables submitted for ${activeBrand?.name || 'this brand'}. As creators complete assigned briefs, their videos will appear here for review.`
                 : 'No deliverables match your active search and filter selections.'}
             </p>
+            {submissions.length === 0 && !demoActive && (
+              <button
+                type="button"
+                onClick={handleToggleDemoMode}
+                className="px-4 py-2 rounded-xl bg-[#3F72AF] text-white text-xs font-bold cursor-pointer hover:bg-[#112D4E] transition-colors"
+              >
+                Load Demonstration Fixtures
+              </button>
+            )}
             {submissions.length > 0 && (
               <button
                 type="button"

@@ -7,6 +7,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { LegalTrustModal, LegalModalType } from './LegalTrustModal';
+import { SkyCommunityMotionSection } from './SkyCommunityMotionSection';
 
 export const SkyFooter: React.FC = () => {
   const [activeModal, setActiveModal] = useState<LegalModalType>(null);
@@ -57,10 +58,13 @@ export const SkyFooter: React.FC = () => {
 
   return (
     <footer
-      className="relative w-full bg-[#F8FAFC] border-t border-[#DCE5EB] mt-20 select-none"
+      className="relative w-full bg-[#F8FAFC] mt-16 select-none"
       role="contentinfo"
       aria-label="BrandWaves Marketplace Footer"
     >
+      {/* Living Atmospheric Sky & Monochrome Walking Crowd Animation */}
+      <SkyCommunityMotionSection />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
         {/* EDITORIAL BANNER (Brand Statement & Call to Action) */}
         <div className="mb-14 p-8 sm:p-10 rounded-2xl bg-white border border-[#DCE5EB] shadow-subtle">
@@ -157,6 +161,9 @@ export const SkyFooter: React.FC = () => {
               </Link>
               <Link to="/leaderboard" className="text-[#64748B] hover:text-[#163B53] transition-colors inline-block">
                 Creator Hall of Fame
+              </Link>
+              <Link to="/faq" className="text-[#397AA8] font-bold hover:text-[#163B53] transition-colors inline-block">
+                Help Center &amp; FAQs
               </Link>
             </nav>
           </div>

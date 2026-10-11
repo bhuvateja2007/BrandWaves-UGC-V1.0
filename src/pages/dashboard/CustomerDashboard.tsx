@@ -145,7 +145,7 @@ export const CustomerDashboard: React.FC = () => {
           <div className="p-3 bg-[#F9F7F7] rounded-xl border border-[#DBE2EF]">
             <span className="text-gray-400 block mb-0.5">Email Verified</span>
             <span className="font-semibold text-emerald-700">
-              {currentUser?.emailVerified ? 'Verified ✓' : 'Verification Pending'}
+              {currentUser?.emailVerified ? 'Verified' : 'Verification Pending'}
             </span>
           </div>
         </div>

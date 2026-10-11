@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Submission, SmartReviewResult } from '../../types';
 import { api } from '../../api/client';
+import { submissionService } from '../../services/submissionService';
 import { smartReviewService } from '../../services/smartReviewService';
 import {
   Sparkles,
@@ -128,7 +129,7 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
       setSubmitting(true);
       setError(null);
 
-      const reviewed = await api.reviewSubmission(submission.id, {
+      const reviewed = await submissionService.reviewSubmission(submission.id, {
         status: decision,
         reviewerNotes: notes,
         smartReview: smartReview || undefined,

@@ -2,9 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Submission } from '../types';
 import { api } from '../api/client';
+import { submissionService } from '../services/submissionService';
 import { useAuth } from '../context/AuthContext';
 import { ReviewModal } from '../components/reviews/ReviewModal';
-import { SkyFooter } from '../components/layout/SkyFooter';
 import {
   RotateCcw,
   History,
@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 
 export const ReviewQueue: React.FC = () => {
-  const { currentUser, switchUser, isBrandAdmin, isSupabaseMode } = useAuth();
+  const { currentUser, switchUser, isBrandAdmin, isAdmin, isSupabaseMode } = useAuth();
   const [allSubmissions, setAllSubmissions] = useState<Submission[]>([]);
   const [statusFilter, setStatusFilter] = useState<string>('pending');
   const [campaignFilter, setCampaignFilter] = useState<string>('all');
@@ -31,19 +31,18 @@ export const ReviewQueue: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedSubForReview, setSelectedSubForReview] = useState<Submission | null>(null);
 
-  const loadSubmissions = () => {
-    setLoading(true);
-    setError(null);
-    api.getSubmissions()
-      .then((subs) => {
-        setAllSubmissions(subs);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to load review queue:', err);
-        setError('Failed to fetch deliverables. Please verify backend connection.');
-        setLoading(false);
-      });
+  const loadSubmissions = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const subs = await submissionService.getAllSubmissions(currentUser);
+      setAllSubmissions(subs);
+    } catch (err: any) {
+      console.error('Failed to load review queue:', err);
+      setError(err.message || 'Failed to fetch deliverables. Please verify backend connection.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -136,43 +135,42 @@ export const ReviewQueue: React.FC = () => {
   }, [allSubmissions, statusFilter, campaignFilter, searchQuery, sortOrder]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F9F7F7]">
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 flex flex-col gap-6">
-        {/* Header */}
-        <section className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-[#DBE2EF]">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#3F72AF]">
-                Brand Governance
-              </span>
-              <span className="text-gray-300">•</span>
-              <span className="text-xs text-gray-500">Asset Verification & Smart Review</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#112D4E] tracking-tight">
-              Submission Review Queue
-            </h1>
-            <p className="text-sm text-gray-600 mt-1 max-w-3xl">
-              Inspect creator UGC deliverables against campaign requirements with automated compliance checks,
-              AI-assisted draft feedback, and human-in-the-loop decisions.
-            </p>
+    <div className="w-full flex flex-col gap-6 animate-fadeIn pb-12">
+      {/* Header */}
+      <section className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-[#DBE2EF]">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#3F72AF]">
+              Brand &amp; Admin Governance
+            </span>
+            <span className="text-gray-300">•</span>
+            <span className="text-xs text-gray-500">Asset Verification &amp; Smart Review</span>
           </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#112D4E] tracking-tight">
+            Submission Review Queue
+          </h1>
+          <p className="text-sm text-gray-600 mt-1 max-w-3xl">
+            Inspect creator UGC deliverables against campaign requirements with automated compliance checks,
+            AI-assisted draft feedback, and human-in-the-loop decisions.
+          </p>
+        </div>
 
-          {!isBrandAdmin && !isSupabaseMode && (
-            <div className="p-3.5 bg-white rounded-2xl border border-amber-200 shadow-2xs flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
-              <span className="text-xs text-[#112D4E] font-medium">
-                Viewing as Creator. Switch to Brand Owner to evaluate deliverables.
-              </span>
-              <button
-                type="button"
-                onClick={() => switchUser('user_sarah')}
-                className="px-3 py-1.5 rounded-xl bg-[#3F72AF] text-white text-xs font-bold shadow-xs hover:bg-[#112D4E] transition-colors cursor-pointer shrink-0"
-              >
-                Switch to Sarah
-              </button>
-            </div>
-          )}
-        </section>
+        {!isBrandAdmin && !isAdmin && !isSupabaseMode && (
+          <div className="p-3.5 bg-white rounded-2xl border border-amber-200 shadow-2xs flex items-center gap-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+            <span className="text-xs text-[#112D4E] font-medium">
+              Viewing as Creator. Switch to Brand Owner to evaluate deliverables.
+            </span>
+            <button
+              type="button"
+              onClick={() => switchUser('user_sarah')}
+              className="px-3 py-1.5 rounded-xl bg-[#3F72AF] text-white text-xs font-bold shadow-xs hover:bg-[#112D4E] transition-colors cursor-pointer shrink-0"
+            >
+              Switch to Sarah
+            </button>
+          </div>
+        )}
+      </section>
 
         {error && (
           <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
@@ -354,9 +352,14 @@ export const ReviewQueue: React.FC = () => {
                         )}
                       </div>
 
-                      <h3 className="text-base font-bold text-[#112D4E] truncate">
-                        {sub.videoTitle}
-                      </h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-base font-bold text-[#112D4E] truncate">
+                          {sub.videoTitle}
+                        </h3>
+                        <span className="text-[10px] text-gray-400 font-mono px-1.5 py-0.5 rounded bg-gray-100">
+                          ID: {sub.id}
+                        </span>
+                      </div>
 
                       {/* Creator Identity with profile link */}
                       <div className="flex items-center gap-2 text-xs text-gray-600">
@@ -442,7 +445,6 @@ export const ReviewQueue: React.FC = () => {
             })
           )}
         </section>
-      </main>
 
       {/* Review Decision Modal */}
       <ReviewModal
@@ -451,8 +453,6 @@ export const ReviewQueue: React.FC = () => {
         onClose={() => setSelectedSubForReview(null)}
         onReviewed={handleReviewed}
       />
-
-      <SkyFooter />
     </div>
   );
 };

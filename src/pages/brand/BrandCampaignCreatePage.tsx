@@ -259,7 +259,7 @@ export const BrandCampaignCreatePage: React.FC = () => {
           <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-bold flex items-center gap-2 mb-6 animate-fadeIn">
             <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
             <span>
-              ✨ AI Campaign draft applied into form! Review and fine-tune all fields below before submitting. (AI never publishes campaigns automatically).
+              AI Campaign draft applied into form! Review and fine-tune all fields below before submitting. (AI never publishes campaigns automatically).
             </span>
           </div>
         )}

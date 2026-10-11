@@ -9,7 +9,8 @@ import { PersonaSelectionStep } from '../../components/onboarding/PersonaSelecti
 import { AdaptiveQuestionStep } from '../../components/onboarding/AdaptiveQuestionStep';
 import { OnboardingSummary } from '../../components/onboarding/OnboardingSummary';
 import { OnboardingCompletion } from '../../components/onboarding/OnboardingCompletion';
-import { ChevronLeft, ChevronRight, SkipForward } from 'lucide-react';
+import { ChevronLeft, ChevronRight, SkipForward, HelpCircle, X } from 'lucide-react';
+import { FAQS } from '../../lib/faqData';
 
 /** True if a step is the review/summary step (injected as the final step) */
 const SUMMARY_STEP_ID = '__summary__';
@@ -23,6 +24,12 @@ export const OnboardingWizard: React.FC = () => {
   const { currentUser, loading } = useAuth();
   const onboarding = useOnboarding();
   const [stepKey, setStepKey] = useState(0); // Forces transition re-render
+  const [showFaqModal, setShowFaqModal] = useState(false);
+
+  // Quick onboarding FAQs
+  const onboardingFaqs = FAQS.filter(
+    (f) => f.category === 'Onboarding' || f.category === 'Registration & Login' || f.category === 'Privacy'
+  ).slice(0, 6);
 
   // Guard: redirect unauthenticated users
   if (!loading && !currentUser) {
@@ -109,12 +116,24 @@ export const OnboardingWizard: React.FC = () => {
     <div className="min-h-screen relative flex flex-col items-center justify-center p-4 sm:p-6">
       <LiquidGlassBackground />
 
-      {/* BrandWaves wordmark */}
-      <div className="relative z-10 mb-6 flex items-center gap-2">
-        <div className="w-8 h-8 rounded-xl bg-brand-blue flex items-center justify-center shadow-[0_0_16px_rgba(63,114,175,0.4)]">
-          <span className="material-symbols-outlined text-white text-[18px]">waves</span>
+      {/* BrandWaves header bar with FAQ trigger */}
+      <div className="relative z-10 mb-6 w-full max-w-2xl flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-xl bg-brand-blue flex items-center justify-center shadow-[0_0_16px_rgba(63,114,175,0.4)]">
+            <span className="material-symbols-outlined text-white text-[18px]">waves</span>
+          </div>
+          <span className="text-white font-black text-lg tracking-tight">BrandWaves</span>
         </div>
-        <span className="text-white font-black text-lg tracking-tight">BrandWaves</span>
+
+        <button
+          type="button"
+          onClick={() => setShowFaqModal(true)}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 text-xs font-bold transition-all border border-white/15 backdrop-blur-md cursor-pointer"
+          aria-label="Open Onboarding FAQ Help"
+        >
+          <HelpCircle className="w-3.5 h-3.5 text-brand-blue" />
+          <span>Need Help? FAQ</span>
+        </button>
       </div>
 
       {/* Main glass panel */}
@@ -153,7 +172,7 @@ export const OnboardingWizard: React.FC = () => {
               persona={state.selectedPersona}
               answers={state.answers}
               onEdit={onboarding.goBack}
-              onComplete={handleGoToReview}
+              onComplete={onboarding.completeOnboarding}
               isCompleting={state.isCompleting}
               error={state.saveError}
             />
@@ -245,6 +264,52 @@ export const OnboardingWizard: React.FC = () => {
       <p className="relative z-10 mt-6 text-xs text-white/35 text-center max-w-xs">
         Your answers personalize BrandWaves. They are kept private and never shared without your consent.
       </p>
+
+      {/* Accessible Quick FAQ Modal */}
+      {showFaqModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fadeIn"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Onboarding FAQ Assistance"
+        >
+          <div className="w-full max-w-lg bg-[#112D4E] text-white p-6 rounded-3xl border border-white/20 shadow-2xl space-y-4 max-h-[85vh] flex flex-col">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-[#3F72AF]" />
+                <h2 className="text-base font-extrabold text-white">Onboarding Quick Help & FAQ</h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowFaqModal(false)}
+                className="p-1 rounded-xl text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                aria-label="Close FAQ Modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1 text-xs">
+              {onboardingFaqs.map((faq) => (
+                <div key={faq.id} className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                  <span className="font-bold text-white block text-xs">{faq.question}</span>
+                  <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-2 border-t border-white/10 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowFaqModal(false)}
+                className="py-2.5 px-5 rounded-xl bg-[#3F72AF] hover:bg-[#3F72AF]/90 text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
+              >
+                Resume Onboarding
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

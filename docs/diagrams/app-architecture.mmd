@@ -1,0 +1,34 @@
+graph TD
+    App["App.tsx (Root Router)"] --> AuthProv["AuthContext (Supabase Auth & Profile Session)"]
+    AuthProv --> ScrollTop["ScrollToTop (Global Scroll Restoration)"]
+    ScrollTop --> LayoutShell["App Layout Container (porcelain-to-atmospheric gradient)"]
+
+    LayoutShell --> Navbar["Navbar (Role-aware navigation & Switcher)"]
+    LayoutShell --> RouterOutlet["React Router Routes"]
+    LayoutShell --> SkySection["SkyCommunityMotionSection"]
+    SkySection --> SkyCanvas["AnimatedSky & CrowdAnimation (Monochrome Canvas)"]
+    LayoutShell --> SkyFooter["SkyFooter (BrandWaves Links, Socials, Copyright)"]
+
+    subgraph RouteGroups ["Route Groups & Protected Layouts"]
+        PublicRoutes["Public Marketplace<br/>Landing, Catalog, CreatorDirectory, CampaignBoard"]
+        CreatorRoutes["Creator Layout & Pages<br/>CreatorDashboard, MySubmissions, SubmissionPortal, ProfileSettings"]
+        BrandRoutes["Brand Layout & Pages<br/>BrandDashboard, CampaignManager, ReviewQueue, BrandProducts"]
+        AdminRoutes["Admin Layout & Modules<br/>AdminOverview, SubmissionQueue, AdminModeration, SystemSettings"]
+    end
+
+    RouterOutlet --> PublicRoutes
+    RouterOutlet --> CreatorRoutes
+    RouterOutlet --> BrandRoutes
+    RouterOutlet --> AdminRoutes
+
+    subgraph ServiceLayer ["Client Services & API Client"]
+        ClientAPI["src/api/client.ts (Backend Axios Client)"]
+        SupaSync["src/services/submissionService.ts & brandCampaignService.ts"]
+        AIProxy["src/services/campaignCopilotService.ts & creatorMatchmakerService.ts"]
+    end
+
+    CreatorRoutes --> SupaSync
+    BrandRoutes --> SupaSync
+    BrandRoutes --> AIProxy
+    AdminRoutes --> ClientAPI
+    AdminRoutes --> SupaSync

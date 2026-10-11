@@ -11,7 +11,8 @@ import {
   Search,
   Sparkles,
   Flame,
-  Star
+  Star,
+  Crown
 } from 'lucide-react';
 import { api } from '../api/client';
 import { LeaderboardEntry } from '../types';
@@ -172,7 +173,7 @@ export const Leaderboard: React.FC = () => {
                   className="w-24 h-24 rounded-full object-cover ring-4 ring-amber-400 shadow-md"
                 />
                 <span className="absolute bottom-0 right-0 w-7 h-7 rounded-full bg-amber-400 text-white flex items-center justify-center text-sm font-extrabold border-2 border-white shadow-xs">
-                  👑
+                  <Crown className="w-3.5 h-3.5 text-white" />
                 </span>
               </div>
               <div className="flex items-center gap-1.5">

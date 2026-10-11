@@ -5,6 +5,7 @@ import { Header } from './components/layout/Header';
 import { Sidebar } from './components/layout/Sidebar';
 import { MobileBottomNav } from './components/layout/MobileBottomNav';
 import { SkyFooter } from './components/layout/SkyFooter';
+import { ScrollToTop } from './components/layout/ScrollToTop';
 import { api } from './api/client';
 
 // Public & Normal-User Pages
@@ -45,7 +46,6 @@ import { AdminUsers } from './pages/admin/AdminUsers';
 import { AdminModeration } from './pages/admin/AdminModeration';
 import { AdminReports } from './pages/admin/AdminReports';
 import { AdminSettings } from './pages/admin/AdminSettings';
-import { AdminCyberCell } from './pages/admin/AdminCyberCell';
 
 // Onboarding
 import { OnboardingWizard } from './pages/onboarding/OnboardingWizard';
@@ -84,11 +84,15 @@ import { BrandCreatorsPage } from './pages/brand/BrandCreatorsPage';
 import { BrandMatchmakerPage } from './pages/brand/BrandMatchmakerPage';
 import { BrandApplicationsPage } from './pages/brand/BrandApplicationsPage';
 import { BrandSubmissionsPage } from './pages/brand/BrandSubmissionsPage';
+import { FaqPage } from './pages/FaqPage';
 
 import { getRoleLandingRoute } from './lib/authValidation';
 
 const RoleBasedDashboard: React.FC = () => {
   const { currentUser, loading, onboardingCompleted, isAdmin } = useAuth();
+  const [searchParams] = React.useMemo(() => {
+    return [new URLSearchParams(window.location.search)];
+  }, []);
 
   if (loading) {
     return (
@@ -108,8 +112,24 @@ const RoleBasedDashboard: React.FC = () => {
     return <Navigate to="/onboarding" replace />;
   }
 
-  // Authoritative role destination
-  return <Navigate to={getRoleLandingRoute(currentUser.role)} replace />;
+  // If an administrator navigated to /dashboard with an explicit view mode parameter
+  if (isAdmin) {
+    const view = searchParams.get('view');
+    if (view === 'customer') return <Navigate to="/customer" replace />;
+    if (view === 'creator') return <Navigate to="/creator" replace />;
+    if (view === 'brand') return <Navigate to="/brand" replace />;
+    if (view === 'user' || view === 'marketplace') return <Navigate to="/" replace />;
+    return <Navigate to="/admin" replace />;
+  }
+
+  // Render role-specific dashboard views directly for /dashboard
+  if (currentUser.role === 'creator') {
+    return <CreatorDashboardPage />;
+  }
+  if (currentUser.role === 'brand_owner' || currentUser.role === 'brand_admin' || (currentUser.role as string) === 'brand') {
+    return <BrandDashboardPage />;
+  }
+  return <CustomerDashboardPage />;
 };
 
 // Wrapper that conditionally renders the Normal User shell (Sidebar/Header/Footer)
@@ -173,12 +193,20 @@ export const App: React.FC = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         {/* =========================================================================
-            0. ONBOARDING — Full-screen, no shell, outside normal layout
-            Only shown to authenticated users who have not completed onboarding.
+            0. DEDICATED ONBOARDING WIZARD (Protected)
+            Full-screen, clean shell, requires authenticated session.
             ========================================================================= */}
-        <Route path="/onboarding" element={<OnboardingWizard />} />
+        <Route 
+          path="/onboarding" 
+          element={
+            <ProtectedRoute>
+              <OnboardingWizard />
+            </ProtectedRoute>
+          } 
+        />
 
         {/* =========================================================================
             1. PROTECTED ADMINISTRATOR PORTAL (/admin)
@@ -193,7 +221,6 @@ export const App: React.FC = () => {
           }
         >
           <Route index element={<AdminOverview />} />
-          <Route path="traffic" element={<AdminCyberCell />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="campaigns" element={<ExploreCampaigns />} />
           <Route path="submissions" element={<ReviewQueue />} />
@@ -208,34 +235,29 @@ export const App: React.FC = () => {
             Clean layout separation: NO marketplace navigation, NO global search bar.
             ========================================================================= */}
         <Route element={<AuthLayout />}>
-          {/* Phase 2: Audience Onboarding & Registration Entry Hubs */}
+          {/* Signup & Registration Routes */}
+          <Route path="/signup" element={<AudienceRegisterPage />} />
+          <Route path="/register" element={<AudienceRegisterPage />} />
           <Route path="/join/customer" element={<AudienceRegisterPage />} />
           <Route path="/join/creator" element={<AudienceRegisterPage />} />
           <Route path="/join/brand" element={<AudienceRegisterPage />} />
-          <Route path="/register" element={<AudienceRegisterPage />} />
 
-          {/* Phase 2: Audience Tailored Login */}
+          {/* Login & Signin Routes */}
           <Route path="/login" element={<AudienceLoginPage />} />
+          <Route path="/signin" element={<AudienceLoginPage />} />
           <Route path="/login/customer" element={<AudienceLoginPage />} />
           <Route path="/login/creator" element={<AudienceLoginPage />} />
           <Route path="/login/brand" element={<AudienceLoginPage />} />
 
-          {/* Phase 2: Session Exchange & Recovery Callbacks */}
+          {/* Session Exchange & Recovery Callbacks */}
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/auth/verify" element={<AuthVerify />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
         </Route>
 
-        {/* Dedicated Onboarding Wizard (Protected) */}
-        <Route 
-          path="/onboarding" 
-          element={
-            <ProtectedRoute>
-              <OnboardingWizard />
-            </ProtectedRoute>
-          } 
-        />
+        {/* Top-Level Public FAQ Route */}
+        <Route path="/faq" element={<UserShell><FaqPage /></UserShell>} />
 
         {/* =========================================================================
             3. PUBLIC WEBSITE & NORMAL-USER PORTAL (UserShell)
@@ -274,7 +296,7 @@ export const App: React.FC = () => {
               <Route 
                 path="/account" 
                 element={
-                  <RoleGuard allowedRoles={['customer', 'user']} allowAdminBypass={false}>
+                  <RoleGuard allowedRoles={['customer', 'user']}>
                     <CustomerDashboardPage />
                   </RoleGuard>
                 } 
@@ -284,7 +306,7 @@ export const App: React.FC = () => {
               <Route 
                 path="/customer" 
                 element={
-                  <RoleGuard allowedRoles={['customer', 'user']} allowAdminBypass={false}>
+                  <RoleGuard allowedRoles={['customer', 'user']}>
                     <CustomerDashboardPage />
                   </RoleGuard>
                 } 
@@ -292,7 +314,7 @@ export const App: React.FC = () => {
               <Route 
                 path="/customer/products" 
                 element={
-                  <RoleGuard allowedRoles={['customer', 'user']} allowAdminBypass={false}>
+                  <RoleGuard allowedRoles={['customer', 'user']}>
                     <CustomerProductsPage />
                   </RoleGuard>
                 } 
@@ -300,7 +322,7 @@ export const App: React.FC = () => {
               <Route 
                 path="/customer/products/:productId" 
                 element={
-                  <RoleGuard allowedRoles={['customer', 'user']} allowAdminBypass={false}>
+                  <RoleGuard allowedRoles={['customer', 'user']}>
                     <ProductDetailPage />
                   </RoleGuard>
                 } 
@@ -308,7 +330,7 @@ export const App: React.FC = () => {
               <Route 
                 path="/customer/creators" 
                 element={
-                  <RoleGuard allowedRoles={['customer', 'user']} allowAdminBypass={false}>
+                  <RoleGuard allowedRoles={['customer', 'user']}>
                     <CustomerCreatorsPage />
                   </RoleGuard>
                 } 
@@ -316,7 +338,7 @@ export const App: React.FC = () => {
               <Route 
                 path="/customer/saved" 
                 element={
-                  <RoleGuard allowedRoles={['customer', 'user']} allowAdminBypass={false}>
+                  <RoleGuard allowedRoles={['customer', 'user']}>
                     <SavedProductsPage />
                   </RoleGuard>
                 } 
@@ -324,7 +346,7 @@ export const App: React.FC = () => {
               <Route 
                 path="/customer/profile" 
                 element={
-                  <RoleGuard allowedRoles={['customer', 'user']} allowAdminBypass={false}>
+                  <RoleGuard allowedRoles={['customer', 'user']}>
                     <CustomerProfilePage />
                   </RoleGuard>
                 } 
@@ -559,6 +581,9 @@ export const App: React.FC = () => {
 
               {/* Creator Hall of Fame */}
               <Route path="/leaderboard" element={<Leaderboard />} />
+
+              {/* Dynamic Role-Specific FAQ System */}
+              <Route path="/faq" element={<FaqPage />} />
 
               {/* Protected User Profile & Notifications */}
               <Route 

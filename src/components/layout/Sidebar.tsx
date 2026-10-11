@@ -15,7 +15,8 @@ import {
   Bookmark,
   ShoppingBag,
   Users,
-  Sparkles
+  Sparkles,
+  HelpCircle
 } from 'lucide-react';
 
 export const Sidebar: React.FC = () => {
@@ -482,6 +483,20 @@ export const Sidebar: React.FC = () => {
           >
             <UserIcon className="w-4 h-4 shrink-0" />
             <span>Profile & Settings</span>
+          </NavLink>
+
+          <NavLink
+            to="/faq"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-bold tab-transition btn-tactile ${
+                isActive
+                  ? 'wave-flow-active text-white shadow-xs'
+                  : 'text-gray-600 hover:bg-[#DBE2EF]/60 hover:text-[#112D4E]'
+              }`
+            }
+          >
+            <HelpCircle className="w-4 h-4 shrink-0 text-[#3F72AF]" />
+            <span>Help & FAQs</span>
           </NavLink>
         </div>
       </div>

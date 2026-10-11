@@ -34,14 +34,21 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           </span>
         </Link>
 
-        {/* Minimal return action */}
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-[#112D4E] px-3 py-1.5 rounded-xl hover:bg-white/60 transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Marketplace</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/faq"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3F72AF] hover:text-[#112D4E] px-3 py-1.5 rounded-xl hover:bg-white/60 transition-colors"
+          >
+            <span>Help & FAQ</span>
+          </Link>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-[#112D4E] px-3 py-1.5 rounded-xl hover:bg-white/60 transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Marketplace</span>
+          </Link>
+        </div>
       </header>
 
       {/* Main Form Content Container */}
@@ -57,6 +64,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
             <Link to="/" className="hover:text-[#112D4E] transition-colors">Marketplace</Link>
             <Link to="/products" className="hover:text-[#112D4E] transition-colors">Products</Link>
             <Link to="/creators" className="hover:text-[#112D4E] transition-colors">Creators</Link>
+            <Link to="/faq" className="hover:text-[#112D4E] transition-colors font-semibold text-[#3F72AF]">FAQ</Link>
           </div>
         </div>
       </footer>

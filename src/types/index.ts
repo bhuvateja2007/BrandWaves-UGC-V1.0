@@ -165,6 +165,7 @@ export interface AnalyticsOverview {
   approvalRate: number;
   weeklyVelocity: string;
   velocityChange: string;
+  weeklyBreakdown?: number[];
   totalUsers?: number;
   totalPosts?: number;
 }

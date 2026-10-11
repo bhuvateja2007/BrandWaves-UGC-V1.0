@@ -105,6 +105,7 @@ export interface Submission {
   reviewedAt?: string;
   revisions?: SubmissionRevision[];
   smartReview?: SmartReviewResult;
+  submittedAt?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -156,6 +157,7 @@ export interface AnalyticsOverview {
   approvalRate: number;
   weeklyVelocity: string;
   velocityChange: string;
+  weeklyBreakdown?: number[];
   totalUsers?: number;
   totalPosts?: number;
 }

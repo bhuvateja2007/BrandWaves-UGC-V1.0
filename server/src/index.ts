@@ -72,6 +72,8 @@ if (fs.existsSync(distPath)) {
   });
 }
 
-app.listen(PORT, () => {
+export const server = app.listen(PORT, () => {
   console.log(`🚀 BrandWaves Backend Server running on http://localhost:${PORT}`);
 });
+
+export { app };

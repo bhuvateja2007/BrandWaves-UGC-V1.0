@@ -37,7 +37,27 @@ function makeRequest(path, options = {}) {
   });
 }
 
-test('VAPT Security Suite — HTTP Security Headers & Defense Controls', async (t) => {
+let serverInstance = null;
+
+await test('VAPT Security Suite — HTTP Security Headers & Defense Controls', async (t) => {
+  // Ensure server is reachable, or launch ephemeral instance
+  try {
+    await makeRequest('/api/health');
+  } catch {
+    const serverModule = await import('../src/index.ts');
+    serverInstance = serverModule.server || null;
+    if (serverInstance && typeof serverInstance.unref === 'function') {
+      serverInstance.unref();
+    }
+    await new Promise((r) => setTimeout(r, 200));
+  }
+
+  t.after(() => {
+    if (serverInstance && typeof serverInstance.close === 'function') {
+      serverInstance.close();
+    }
+  });
+
   await t.test('Security Headers: Verifies anti-sniffing, clickjacking and CSP headers', async () => {
     const res = await makeRequest('/api/health');
     assert.equal(res.statusCode, 200);
@@ -92,3 +112,8 @@ test('VAPT Security Suite — HTTP Security Headers & Defense Controls', async (
     assert.equal(({}).polluted, undefined, 'Object prototype must not be polluted');
   });
 });
+
+if (serverInstance && typeof serverInstance.close === 'function') {
+  serverInstance.close();
+}
+process.exit(0);

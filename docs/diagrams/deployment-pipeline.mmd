@@ -1,0 +1,23 @@
+graph LR
+    subgraph GitRepository ["GitHub Version Control"]
+        MainBranch["main branch (Release Target)"]
+    end
+
+    subgraph VercelCI ["Vercel Deployment Pipeline"]
+        Trigger["GitHub Webhook / Push Trigger"]
+        BuildStep["Build: tsc && vite build<br/>Node.js 20.x, Output: dist/"]
+        EdgeNetwork["Vercel Global Edge Network<br/>SPA Fallback (/index.html)<br/>Security Headers: X-Frame, CSP, HSTS"]
+    end
+
+    subgraph BackendTargets ["API & Persistence Targets"]
+        SupaProd["Supabase PostgreSQL 15 & Auth<br/>Production Database Cluster<br/>Row-Level Security Policies"]
+        ExpressApp["Express API Backend (Render / Railway / Serverless)<br/>Port 3001: Analytics, Moderation, Gemini API"]
+    end
+
+    MainBranch --> Trigger
+    Trigger --> BuildStep
+    BuildStep --> EdgeNetwork
+    EdgeNetwork -->|Client SPA Requests| BrowserClient["End User Browsers"]
+    BrowserClient -->|Direct PostgREST with Auth JWT| SupaProd
+    BrowserClient -->|BFF API Calls /api/*| ExpressApp
+    ExpressApp -->|Service Role or Direct DB Connection| SupaProd

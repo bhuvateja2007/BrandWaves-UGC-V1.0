@@ -9,11 +9,13 @@ interface AdaptiveQuestionStepProps {
   onAnswer: (questionId: string, value: AnswerValue) => void;
 }
 
+import { OnboardingIcon } from './OnboardingIcon';
+
 // ---------------------------------------------------------------------------
 // Chip (single or multi-select pill)
 // ---------------------------------------------------------------------------
 interface ChipProps {
-  option: { value: string; label: string; emoji?: string };
+  option: { value: string; label: string; icon?: string };
   isSelected: boolean;
   onToggle: () => void;
   multiSelect: boolean;
@@ -37,8 +39,8 @@ const Chip: React.FC<ChipProps> = ({ option, isSelected, onToggle, multiSelect }
     `}
     style={{ WebkitTapHighlightColor: 'transparent' }}
   >
-    {option.emoji && <span className="text-base leading-none" aria-hidden="true">{option.emoji}</span>}
-    {option.label}
+    {option.icon && <OnboardingIcon name={option.icon} className="w-3.5 h-3.5 text-current" />}
+    <span>{option.label}</span>
   </button>
 );
 
@@ -46,7 +48,7 @@ const Chip: React.FC<ChipProps> = ({ option, isSelected, onToggle, multiSelect }
 // Selection Card (smaller than persona cards)
 // ---------------------------------------------------------------------------
 interface SelectionCardProps {
-  option: { value: string; label: string; description?: string; emoji?: string };
+  option: { value: string; label: string; description?: string; icon?: string };
   isSelected: boolean;
   onSelect: () => void;
 }
@@ -69,8 +71,12 @@ const SelectionCard: React.FC<SelectionCardProps> = ({ option, isSelected, onSel
     style={{ WebkitTapHighlightColor: 'transparent' }}
   >
     <div className="flex items-start gap-3">
-      {option.emoji && (
-        <span className="text-xl mt-0.5 shrink-0" aria-hidden="true">{option.emoji}</span>
+      {option.icon && (
+        <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+          isSelected ? 'bg-brand-blue text-white' : 'bg-white/10 text-white/70'
+        }`}>
+          <OnboardingIcon name={option.icon} className="w-4 h-4" />
+        </div>
       )}
       <div>
         <p className={`text-sm font-semibold ${isSelected ? 'text-white' : 'text-white/85'}`}>
