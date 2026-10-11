@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-low": "#f3f4f0",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-highest": "#e1e3df",
+          "surface": "#f8faf6",
+          "surface-bright": "#f8faf6",
+          "surface-container-high": "#e7e9e5",
+          "on-secondary-fixed-variant": "#454747",
+          "tertiary-fixed": "#ffdbcc",
+          "on-tertiary-fixed": "#351000",
+          "primary-container": "#5146e5",
+          "on-secondary-fixed": "#1a1c1c",
+          "error": "#ba1a1a",
+          "on-primary-fixed-variant": "#3522cb",
+          "secondary": "#5d5f5f",
+          "on-tertiary": "#ffffff",
+          "secondary-fixed": "#e2e2e2",
+          "surface-container": "#edeeeb",
+          "inverse-surface": "#2e312f",
+          "outline-variant": "#c7c4d8",
+          "on-surface": "#191c1a",
+          "secondary-container": "#dfe0e0",
+          "error-container": "#ffdad6",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#ffb695",
+          "on-tertiary-container": "#ffd2c0",
+          "on-primary": "#ffffff",
+          "on-primary-fixed": "#100069",
+          "on-primary-container": "#dbd8ff",
+          "primary": "#3725cd",
+          "secondary-fixed-dim": "#c6c6c7",
+          "outline": "#777587",
+          "inverse-on-surface": "#f0f1ee",
+          "on-background": "#191c1a",
+          "primary-fixed": "#e3dfff",
+          "on-secondary": "#ffffff",
+          "surface-dim": "#d9dad7",
+          "surface-tint": "#4f43e3",
+          "tertiary-container": "#a54100",
+          "on-tertiary-fixed-variant": "#7b2f00",
+          "tertiary": "#7e3000",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#616363",
+          "primary-fixed-dim": "#c3c0ff",
+          "inverse-primary": "#c3c0ff",
+          "on-surface-variant": "#464555",
+          "background": "#f8faf6",
+          "surface-variant": "#e1e3df"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "space-xl": "2rem",
+          "gutter": "1rem",
+          "margin": "1rem",
+          "space-md": "0.75rem",
+          "gutter-desktop": "1.5rem",
+          "space-sm": "0.5rem",
+          "space-lg": "1.25rem",
+          "margin-desktop": "2.5rem"
+        },
+        "fontFamily": {
+          "label-md": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Inter"
+          ],
+          "tabular-data": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "headline-md": [
+            "Inter"
+          ],
+          "headline-lg": [
+            "Inter"
+          ],
+          "display-lg-mobile": [
+            "Inter"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "display-lg": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "tabular-data": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "28px",
+            {
+              "lineHeight": "34px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "30px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-7xl mx-auto px-margin lg:px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-xl"><a class="flex items-center gap-space-sm group focus:outline-none" data-path="explore" href="#"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary transition-transform group-hover:scale-95"><span class="material-symbols-outlined text-[20px]">waves</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface">BrandWaves</span></div></a><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-label-md text-label-md"><a aria-current="page" class="transition-colors py-space-xs text-primary font-label-md text-label-md" data-path="explore" href="#">Explore</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="campaigns" href="#">Campaigns</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="community" href="#">Community</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="how-it-works" href="#">How it works</a></nav></div><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-md py-space-sm rounded-lg transition-colors" data-path="sign-in" href="#">Sign in</a><a class="inline-flex items-center justify-center font-label-md text-label-md bg-primary-container text-on-primary px-space-lg py-space-sm rounded-lg shadow-sm hover:bg-primary transition-all active:translate-y-[0.5px]" data-path="join-brandwaves" href="#">Join BrandWaves</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- Top Ambient Background Glow Element -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[840px] h-[340px] bg-gradient-to-b from-primary-container/10 via-primary-container/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+<!-- HERO SECTION -->
+<section class="relative max-w-7xl mx-auto px-margin lg:px-margin-desktop pt-8 pb-16">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
+<!-- Hero Typography & CTAs -->
+<div class="lg:col-span-6 flex flex-col gap-space-lg">
+<div class="inline-flex items-center gap-space-xs self-start px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">Curated Creator Marketplace</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-[1.08]">
+              Your creativity deserves to be seen.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+              Discover brand campaigns, share your perspective, and find opportunities to create content that matters.
+            </p>
+</div>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="inline-flex items-center justify-center font-label-md text-label-md bg-primary-container text-on-primary px-space-xl py-3 rounded-lg shadow-md hover:bg-primary transition-all active:translate-y-[0.5px] group" data-path="campaigns" href="#">
+<span>Explore campaigns</span>
+<span class="material-symbols-outlined text-[18px] ml-space-xs transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center font-label-md text-label-md bg-surface-container-lowest text-on-surface px-space-xl py-3 rounded-lg shadow-sm hover:bg-surface-container transition-all" data-path="community" href="#">
+              Join the community
+            </a>
+</div>
+<!-- Live Velocity Micro-stat -->
+<div class="flex items-center gap-space-md pt-space-sm text-on-surface-variant">
+<div class="flex -space-x-2 overflow-hidden">
+<div class="inline-block h-7 w-7 rounded-full bg-surface-container-high shadow-sm flex items-center justify-center text-primary font-label-sm text-label-sm">AL</div>
+<div class="inline-block h-7 w-7 rounded-full bg-surface-container text-on-secondary font-label-sm text-label-sm flex items-center justify-center">SM</div>
+<div class="inline-block h-7 w-7 rounded-full bg-surface-container-highest text-tertiary font-label-sm text-label-sm flex items-center justify-center">GR</div>
+</div>
+<span class="font-body-sm text-body-sm"><strong class="text-on-surface font-headline-sm text-body-sm">480+ creators</strong> actively accepted this week</span>
+</div>
+</div>
+<!-- Hero Curated Editorial Collage -->
+<div class="lg:col-span-6 relative">
+<div class="grid grid-cols-2 gap-space-md items-start">
+<!-- Left Collage Column -->
+<div class="flex flex-col gap-space-md">
+<!-- Tile 1: Lifestyle Audio -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-md transition-all hover:shadow-lg group">
+<div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Cinematic close-up portrait of a chic young creator wearing matte charcoal over-ear wireless headphones while strolling through a bright rain-cleansed city street at golden hour, gentle bokeh highlights, warm tactile grain, editorial fashion aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABq9C5bK95SLU_h1rRDb39plciY-W8PL_nBr6aNL4LpYJ6Yefi5RX5HXy5zpygJmDSc99c_syiYyDY_bkhmy1XXuB-1j0KnWnp936vHZcKpH0HA3lYJIXx5Gs3tc6JQVUR8Hocbtr8vmbzgCQ3qa0sz5mv-UkFzluRFNc5dBm7sjIJdpf4ev6bE27ZxKzIX-pSRHUkQEi5UgnE3dHlsxbkqIMv_gFjgeJzZLB7JzmeovqDhz8QNztiHA"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-sm text-label-sm uppercase">
+                    Lifestyle Audio
+                  </div>
+<div class="absolute bottom-2 right-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/90 text-primary font-tabular-data text-tabular-data">
+                    $550 Fixed
+                  </div>
+</div>
+<div class="p-space-xs flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface truncate">Aura Acoustics · Urban Tempo</span>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+</div>
+<!-- Tile 2: Artisanal Coffee -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm transition-all hover:shadow-md group">
+<div class="relative w-full aspect-[1/1] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Aesthetic overhead composition of handcrafted ceramic mug with velvety latte art on warm reclaimed oak table with artisan pour-over brass kettle and linen notebook, soft morning window light, high-end lifestyle editorial photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBFRjYTOtpmGIIFo5O3PcGzpl2hiqfJdkBqR28JcqHr0cvjy2LoRpu1NZk2lCJBHUkr_yockfXn5_fBg-pVCQcNTrwEj0jGQ_oDIDbJmFz6t1MtCHyaq_w8CICQTANm8OPaNHfvkeHNqYCuDM7MSe8qutUg6LB3e044mQs_EcGSxlOcOLUsekJlP65N3GCyhYfeWS7nxnDpxTzsBxpXkL0niBRGscPUDYs03ekTuORJl6hh0hmmOJnBw"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-sm text-label-sm uppercase">
+                    Craft Coffee
+                  </div>
+</div>
+<div class="p-space-xs flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface truncate">Cinder &amp; Bean</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Photo Series</span>
+</div>
+</div>
+</div>
+<!-- Right Collage Column (staggered overlap) -->
+<div class="flex flex-col gap-space-md pt-space-xl">
+<!-- Tile 3: Minimalist Skincare -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-md transition-all hover:shadow-lg group">
+<div class="relative w-full aspect-[1/1] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close-up of dewy hydrated glowing facial skin with frosted glass serum dropper bottle resting on smooth sculptural travertine stone, clear water droplets, gentle sunlight refraction, calm muted neutral tones, organic botanical beauty style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcV8-0PCUNwDCPPht2CzzpsJ6Od3T6PUtC98S7hRhCTWwVMWzaV1nRSxN0547jyW4UBjLu2KfsYW3ZW6rX2nZCXQogzAHJjzOoOaA-QSJ982xpdLifXubKemsuU92Hv-rk0y23kY8orB_dHr1AdXemb2abmYhIv8pYcLmj1B0Cxz7neCcLg_tVZF3S7I7yxi-VsMIxohUArENYw2_7EsUQFGGBE7lOfJ3HfzrLxmPO1J4LfL6thVFXVw"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-sm text-label-sm uppercase">
+                    Clean Skincare
+                  </div>
+</div>
+<div class="p-space-xs flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface truncate">Solstice Lab Botanicals</span>
+<span class="font-tabular-data text-tabular-data text-primary">$400 + Kit</span>
+</div>
+</div>
+<!-- Tile 4: Urban Tech -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm transition-all hover:shadow-md group">
+<div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Ergonomic architectural workstation with minimal anodized aluminum mechanical keyboard and sleek wireless mechanical pencil, subtle neon indicator, warm oak backdrop, architectural desk setup for modern digital creators" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Z3fiZTDyVCIFuU2_BR2JTcbOa7g6dqRMFwayeJVFjUadwlFES1GSjrSuehEjPOpRDCRXnOqbNevupIzy_mZm3z_dfP9FLlPe4x4vqXWkg--J_LZsmULYEmPx-F0q6jYITtSSx33vuuqxo-YGQxu2WsBIgjOnyeMDbFQ4h_RDD7fKhBO9Y2OrVTtmy_TAyb3Riv2KkVaynjd3TeZJed9Jp7NRCtQVfyo1L76boC4ELLxAi3Kr6G_whQ"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-sm text-label-sm uppercase">
+                    Workspace Tech
+                  </div>
+<div class="absolute bottom-2 left-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/90 font-label-sm text-label-sm text-on-surface">
+                    9:16 Video Brief
+                  </div>
+</div>
+<div class="p-space-xs flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface truncate">Kroma Modular Studio</span>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Stat Strip -->
+<div class="mt-space-xl bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg items-center divide-y md:divide-y-0 divide-surface-container-highest">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Verified Brand Collaborations</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Direct enterprise contracts &amp; verified campaign briefs</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md pt-space-md md:pt-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Fair &amp; Transparent Rewards</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Guaranteed escrow and rapid 72h payout clearance</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md pt-space-md md:pt-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">100% Authentic Community</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Real creators, non-scripted genuine creative viewpoints</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- SECTION 2 — FEATURED CAMPAIGNS -->
+<section class="max-w-7xl mx-auto w-full px-margin lg:px-margin-desktop py-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Live Opportunities</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Featured Campaigns</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-lg">Selected briefs curated for visual excellence, honest reviews, and standout storytelling.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<a class="inline-flex items-center font-label-md text-label-md text-primary hover:text-primary-container gap-1 transition-colors" data-path="campaigns" href="#">
+<span>View all 38 campaigns</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+<!-- Active Campaign Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop">
+<!-- Campaign Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group">
+<div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Sleek urban professional navigating a modern subway platform at dusk wearing premium minimalist over-ear headphones, glowing platform lighting, atmospheric street mist, high resolution contemporary editorial" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA68qlHzFOvFndgEjIpqKu_LiQ8x8O5-QJd6xd4XvrPpsy19BN6ufw6jauEquIE4J3hMWYKp35HSVGL3l8VH3wF3Ac5upt_6X3-quGoyBqUjfupSljkYJt-jQWGzOohtWzM8fsTi-QS9a-sGS80wXyG3n4hV0762BEUEi9CN67jWGm9D2kTLi7ukeOaTGtSxcvnViTrjJeQs1Wqk08MrNocpqlUdfgTK7CKEA3GKWsgBD6Y7r-RipwBtA"/>
+<div class="absolute top-3 left-3 flex gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm">Audio &amp; Tech</span>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary font-label-sm text-label-sm">9:16 Video</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-md font-tabular-data text-tabular-data text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">schedule</span>
+<span>4 days left</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Lumino Audio</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface">12 spots left</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Urban Commuter Sound Experience</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Capture your daily transit routine testing active noise cancellation and ergonomic city comfort.</p>
+</div>
+<div class="pt-space-sm flex items-center justify-between bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fixed Reward</span>
+<span class="font-headline-sm text-headline-sm text-primary font-tabular-data">$450 USD</span>
+</div>
+<a class="px-space-md py-space-xs rounded bg-surface-container-lowest font-label-md text-label-md text-on-surface hover:bg-primary-container hover:text-on-primary transition-colors shadow-sm" data-path="campaign-lumino" href="#">
+              Apply Brief
+            </a>
+</div>
+</div>
+</article>
+<!-- Campaign Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group">
+<div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Artisanal glass dropper bottle surrounded by botanical wild flora and fresh morning dew on an organic mossy stone slab, soft natural sun flare, minimalist clean beauty photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLjZ6BDxdMwz4FgrO2gBnFAWhZOTeczF8vsGzVw_wRbRbDZxU6OSgew5duZ7aHz4YRdYW-l6VJbTKfP1EkjwHfSzRzGSLBA435xDaI16qrlzVqVzvr3CVIBTd1k5xoRyYU2tpsynzBcr94X-cB5KpAaLotoncOv4gNuS8Q8tQZdM9oPWg95E8AEOQLbhAdRHUX6vXZ7CJORr3lb8Aj-LdmhR-eQtJLZIW4DElryaft_4rJfX4z3Pq5rA"/>
+<div class="absolute top-3 left-3 flex gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm">Beauty</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/90 text-on-surface font-label-sm text-label-sm">Photo Series</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-md font-tabular-data text-tabular-data text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">schedule</span>
+<span>6 days left</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Solstice Lab</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface">5 spots left</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Morning Dew Botanical Glow</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Authentic unboxing and 7-day skin barrier transformation journal documented across 5 clean images.</p>
+</div>
+<div class="pt-space-sm flex items-center justify-between bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Compensation</span>
+<span class="font-headline-sm text-headline-sm text-primary font-tabular-data">$350 + Bundle</span>
+</div>
+<a class="px-space-md py-space-xs rounded bg-surface-container-lowest font-label-md text-label-md text-on-surface hover:bg-primary-container hover:text-on-primary transition-colors shadow-sm" data-path="campaign-solstice" href="#">
+              Apply Brief
+            </a>
+</div>
+</div>
+</article>
+<!-- Campaign Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group">
+<div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Dynamic outdoor athletic runner sprinting along a modern concrete coastal bridge at sunrise, wearing sleek lightweight performance apparel, motion blur on feet, crisp clean architectural framing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJay6wa8mHyFbsg8gKRpa0PLdeDX16HsIWVpjphG4KwMfhrnWsEp08FAUEkqw4EhRe9-obzPNUFbC2TFC769PTF3aPVPM5NyJ7jrajNemdEIoZ1wKlBC6OzCqT365oIGeg18xLqAOsawqgZaen-BT-ZaEAgTRnEWMgSRJWHRQFVOcn42NL4FZOxxQrkw2yD_DcOrP9j5BUe1owtrcmKnEnid95mF5kfssOBWhGAi17bt0-FPvYGUxH2A"/>
+<div class="absolute top-3 left-3 flex gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm">Movement</span>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary font-label-sm text-label-sm">Video Reel</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-md font-tabular-data text-tabular-data text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">schedule</span>
+<span>2 days left</span>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Velox Athletics</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface">Urgent</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Summer Velocity Drop</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Test endurance and breathability during high-intensity intervals or track workouts.</p>
+</div>
+<div class="pt-space-sm flex items-center justify-between bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fixed Reward</span>
+<span class="font-headline-sm text-headline-sm text-primary font-tabular-data">$600 USD</span>
+</div>
+<a class="px-space-md py-space-xs rounded bg-surface-container-lowest font-label-md text-label-md text-on-surface hover:bg-primary-container hover:text-on-primary transition-colors shadow-sm" data-path="campaign-velox" href="#">
+              Apply Brief
+            </a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- SECTION 3 — HOW IT WORKS -->
+<section class="w-full bg-surface-container-low py-space-xl my-space-lg">
+<div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop">
+<div class="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-headline-sm mb-space-xs">Three-Step Process</span>
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface">How BrandWaves works for creators</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">We removed opaque agency middle-men so you can create with clarity and get paid immediately upon approval.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-desktop relative">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between transition-all hover:shadow-md relative group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-display-lg text-display-lg text-surface-container-highest font-headline-lg group-hover:text-primary-container/30 transition-colors">01</span>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">travel_explore</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Discover a campaign that interests you</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Browse verified brand briefs, inspect creative parameters, and review eligibility guidelines matching your audience.</p>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Guaranteed escrow upfront</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between transition-all hover:shadow-md relative group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-display-lg text-display-lg text-surface-container-highest font-headline-lg group-hover:text-primary-container/30 transition-colors">02</span>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">video_camera_front</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Review requirements &amp; create content</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Follow concise production checklists, core talking points, and specific tagging guidelines while maintaining your authentic aesthetic.</p>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Full creative autonomy</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between transition-all hover:shadow-md relative group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-display-lg text-display-lg text-surface-container-highest font-headline-lg group-hover:text-primary-container/30 transition-colors">03</span>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">task_alt</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Submit &amp; track review status</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Upload raw or edited content to our asset tracker. Receive rapid editorial clearance and immediate verified payment disbursement.</p>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">72h turn-around guarantee</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4 — POPULAR CATEGORIES -->
+<section class="max-w-7xl mx-auto w-full px-margin lg:px-margin-desktop py-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Explore Niches</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Popular Categories</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">From technical setups to holistic daily regimens, discover campaigns built for your specialty.</p>
+</div>
+<!-- Category Bento Matrix -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-space-md">
+<!-- Category 1 -->
+<a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group" data-path="category-tech" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary mb-space-sm group-hover:bg-primary-container group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-[24px]">headphones</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Audio &amp; Tech</span>
+<span class="font-tabular-data text-tabular-data text-on-surface-variant mt-0.5">14 campaigns</span>
+</a>
+<!-- Category 2 -->
+<a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group" data-path="category-beauty" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary mb-space-sm group-hover:bg-primary-container group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-[24px]">spa</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Beauty &amp; Wellness</span>
+<span class="font-tabular-data text-tabular-data text-on-surface-variant mt-0.5">22 campaigns</span>
+</a>
+<!-- Category 3 -->
+<a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group" data-path="category-apparel" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary mb-space-sm group-hover:bg-primary-container group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-[24px]">directions_run</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Movement &amp; Apparel</span>
+<span class="font-tabular-data text-tabular-data text-on-surface-variant mt-0.5">18 campaigns</span>
+</a>
+<!-- Category 4 -->
+<a class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group" data-path="category-culinary" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary mb-space-sm group-hover:bg-primary-container group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-[24px]">coffee</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Coffee &amp; Culinary</span>
+<span class="font-tabular-data text-tabular-data text-on-surface-variant mt-0.5">9 campaigns</span>
+</a>
+<!-- Category 5 -->
+<a class="col-span-2 md:col-span-1 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group" data-path="category-living" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary mb-space-sm group-hover:bg-primary-container group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-[24px]">chair</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Home &amp; Living</span>
+<span class="font-tabular-data text-tabular-data text-on-surface-variant mt-0.5">11 campaigns</span>
+</a>
+</div>
+</section>
+<!-- SECTION 5 — COMMUNITY CONTENT HIGHLIGHTS -->
+<section class="max-w-7xl mx-auto w-full px-margin lg:px-margin-desktop py-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Live Gallery</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Community Content Highlights</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Publicly authorized, approved UGC created by independent creators across our network.</p>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm">Creator Rights Reserved &amp; Licensed</span>
+</div>
+</div>
+<!-- Editorial Gallery Mosaic -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop">
+<!-- Highlight Tile 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group flex flex-col">
+<div class="relative aspect-[9/14] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Vertical authentic smartphone format clip: creative tech reviewer unboxing modern matte black studio monitors with soft diffused ring light reflection in minimalist room with potted monstera plant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBexGz2EWuSeYi0bIpFiLjYBWG63VfHJPlczo6tJpZh43lQFRjnx37lVBbeAbaci2tWh_gC23o9hpwkGaUOoohstiorUctLlVEl4q0F9_Sv641F2VIZGhDVMP_KMKiOY8NUj-JxUnZk9y9X0HOAU3-hdj9J0D72CD4Z4yeFMUL3z6fy0lAtKAG3cc2kHQSyhIIzLhiSIlbdTjsrPx5moYD-3PtbeYlZtipUWRF06FwVFy1v_Hc_NoK2qA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent opacity-90"></div>
+<!-- Creator Attribution Overlay -->
+<div class="absolute bottom-4 left-4 right-4 flex flex-col gap-space-xs text-inverse-on-surface">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-md text-label-md">AC</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-inverse-on-surface">@alexcreates</span>
+<span class="font-label-sm text-label-sm text-inverse-on-surface/80">Audio Tech Creator</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/20 backdrop-blur-md text-inverse-on-surface font-label-sm text-label-sm">
+                Approved
+              </span>
+</div>
+<div class="pt-2 flex items-center justify-between text-inverse-on-surface/90">
+<span class="font-body-sm text-body-sm">Paired with <strong class="underline decoration-1">Aura Acoustics</strong></span>
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Highlight Tile 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group flex flex-col">
+<div class="relative aspect-[9/14] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Vertical authentic format: natural morning skincare routine video frame showing female creator gently patting face oil onto cheeks in front of warm sunlit bathroom mirror with clean neutral stone finishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqO5QFo6X_LHZXQqWC-GAGlE9U6jERGxLBAhQK8fofMbyY0F10cB2e04Jz70BRJurxXqj5xjgu4kGIGIfowqPB45HZBm5z5St1_VqFB8U5-SMKjZNRgDPMwCtopH9AjLMq-ncQEyIIIkQpIQo2x4qZXH7oXCskHZ2Q-ZXC5Y4YCYmA3Ej1bZyyWO6N5wczoZL0X6KAFRTi2liSII4UZONi_NunnEuAhE_7r4WN6xSpj5Ry5hXg7ndnSw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent opacity-90"></div>
+<!-- Creator Attribution Overlay -->
+<div class="absolute bottom-4 left-4 right-4 flex flex-col gap-space-xs text-inverse-on-surface">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-md text-label-md">SM</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-inverse-on-surface">@sarah.m</span>
+<span class="font-label-sm text-label-sm text-inverse-on-surface/80">Wellness &amp; Skin</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/20 backdrop-blur-md text-inverse-on-surface font-label-sm text-label-sm">
+                Approved
+              </span>
+</div>
+<div class="pt-2 flex items-center justify-between text-inverse-on-surface/90">
+<span class="font-body-sm text-body-sm">Paired with <strong class="underline decoration-1">Solstice Lab</strong></span>
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Highlight Tile 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group flex flex-col">
+<div class="relative aspect-[9/14] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Vertical creator lifestyle shot: morning coffee brewing process with manual lever espresso machine, rich amber crema pouring into glass cup with warm natural daylight casting textured shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmObC2GgSd_Q4kJa3B2rZp_TDE7QRwacLldIAPH_ECAwUrRlDvoBipj1lSoyUbd93lFCot6vC0lx2PnFw1OlOn-hR9Ts5Y_7GYgpnjGXUyeYNSCbSjQ4oz3is0Ze9x93kmFUwS9doOrz0ESC-PF7lCQkCD53kgCuwaMxzx-mk6vcopKvJCKPOOa3mXjD4L6O30xGNxBQ3W-e4JlxyO8EYRpCcNJVQ5EIpoCjE3aC1DxYqi8TPeT_cbCg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent opacity-90"></div>
+<!-- Creator Attribution Overlay -->
+<div class="absolute bottom-4 left-4 right-4 flex flex-col gap-space-xs text-inverse-on-surface">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-label-md text-label-md">GR</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-inverse-on-surface">@glowroutine</span>
+<span class="font-label-sm text-label-sm text-inverse-on-surface/80">Culinary &amp; Daily Living</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/20 backdrop-blur-md text-inverse-on-surface font-label-sm text-label-sm">
+                Approved
+              </span>
+</div>
+<div class="pt-2 flex items-center justify-between text-inverse-on-surface/90">
+<span class="font-body-sm text-body-sm">Paired with <strong class="underline decoration-1">Cinder &amp; Bean</strong></span>
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6 — CALL TO ACTION BANNER -->
+<section class="max-w-7xl mx-auto w-full px-margin lg:px-margin-desktop py-space-xl">
+<div class="relative rounded-2xl overflow-hidden bg-inverse-surface text-inverse-on-surface p-space-xl lg:p-16 shadow-xl">
+<!-- Subtle Decorative SVG Graph Line for visual richness -->
+<svg class="absolute right-0 bottom-0 opacity-10 w-96 h-64 pointer-events-none" fill="none" viewbox="0 0 400 200">
+<path d="M0 150 C 100 120, 150 180, 250 80 C 320 20, 360 40, 400 10 L 400 200 L 0 200 Z" fill="currentColor"></path>
+<path d="M0 150 C 100 120, 150 180, 250 80 C 320 20, 360 40, 400 10" stroke="currentColor" stroke-width="3"></path>
+</svg>
+<div class="relative z-10 max-w-2xl flex flex-col gap-space-lg">
+<div class="inline-flex items-center gap-space-xs self-start px-space-md py-space-xs rounded-full bg-surface-container-lowest/10 backdrop-blur-md">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-surface-container-low">Immediate Onboarding</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<h2 class="font-display-lg text-headline-lg lg:text-display-lg font-headline-lg tracking-tight text-surface-container-lowest">
+            Ready to share your voice?
+          </h2>
+<p class="font-body-lg text-body-lg text-surface-container-high">
+            Join thousands of authentic creators partnering directly with forward-thinking brands. No agency fees, guaranteed escrow, and complete creative ownership.
+          </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="inline-flex items-center justify-center font-label-md text-label-md bg-primary-container text-on-primary px-space-xl py-3 rounded-lg shadow-md hover:bg-primary transition-all active:translate-y-[0.5px]" data-path="join-brandwaves" href="#">
+            Join BrandWaves
+          </a>
+<a class="inline-flex items-center justify-center font-label-md text-label-md text-surface-container-lowest hover:text-surface-container-high px-space-md py-3 rounded-lg transition-colors group" data-path="creator-eligibility" href="#">
+<span>Learn About Creator Eligibility</span>
+<span class="material-symbols-outlined text-[18px] ml-space-xs transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-space-xl"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-gutter-desktop mb-space-xl"><div class="lg:col-span-4 flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[16px]">waves</span></div><span class="font-headline-sm text-headline-sm text-on-surface">BrandWaves</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm mt-space-xs">The verified orchestration network for premier user-generated content, authentic creator narratives, and brand velocity.</p></div><div class="lg:col-span-2 md:col-span-1 flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Platform</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-body-sm text-body-sm"><a aria-current="page" class="transition-colors text-primary font-body-sm text-body-sm" data-path="explore" href="#">Discover</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="campaigns" href="#">Campaigns</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="creators-directory" href="#">Creators</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works</a></nav></div><div class="lg:col-span-3 md:col-span-1 flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Standards &amp; Safety</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-body-sm text-body-sm"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="guidelines" href="#">Guidelines</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="community-code-of-conduct" href="#">Community Code of Conduct</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="brand-trust-safety" href="#">Brand Trust &amp; Safety</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="faq" href="#">FAQ</a></nav></div><div class="lg:col-span-3 md:col-span-2 flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Integrity &amp; Legal</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-body-sm text-body-sm"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy</a></nav><div class="mt-space-md p-space-md rounded-lg bg-surface-container flex items-start gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">verified_user</span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">Enterprise Proof &amp; Escrow</span><span class="font-body-sm text-body-sm text-on-surface-variant">Guaranteed verification for creators and partners.</span></div></div></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 BrandWaves Inc. Built for authentic creative collaboration.</span><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Legal Notice</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="brand-trust-safety" href="#">Security Operations</a></div></div></div></footer></body></html>

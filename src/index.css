@@ -1,0 +1,952 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #F9F7F7;
+    color: #112D4E;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* ============================================================================
+   LIQUID GLASS DESIGN SYSTEM — BrandWaves
+   Uses CSS custom properties, layered gradients, and lightweight GPU transforms.
+   No WebGL. Backdrop-filter with graceful fallback.
+   ============================================================================ */
+
+/* ------ Design Tokens ------ */
+:root {
+  /* BrandWaves Core Palette */
+  --bw-porcelain: #F9F7F7;
+  --bw-soft-blue: #DBE2EF;
+  --bw-confident-blue: #3F72AF;
+  --bw-deep-navy: #112D4E;
+  --bw-text-primary: #172033;
+  --bw-text-secondary: #64748B;
+  --bw-border: #E5E7EB;
+  --bw-success: #10B981;
+  --bw-warning: #F59E0B;
+  --bw-error: #EF4444;
+
+  /* Water Precision Commerce Tokens */
+  --bw-water-porcelain: #F8FAFC;
+  --bw-water-mist: #E7F2F8;
+  --bw-water-ocean: #73B8D8;
+  --bw-water-deep: #153D56;
+  --bw-water-midnight: #102B3C;
+  --bw-water-graphite: #26323A;
+  --bw-water-border: #DCE5EB;
+
+  --glass-bg: rgba(255, 255, 255, 0.68);
+  --glass-bg-strong: rgba(255, 255, 255, 0.88);
+  --glass-bg-subtle: rgba(219, 226, 239, 0.36);
+  --glass-bg-fallback: #FFFFFF;
+
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-border-soft: rgba(17, 45, 78, 0.08);
+  --glass-border-highlight: rgba(63, 114, 175, 0.35);
+
+  --glass-blur: 24px;
+  --glass-blur-strong: 32px;
+  --glass-blur-subtle: 12px;
+
+  --glass-shadow: 0 12px 36px rgba(17, 45, 78, 0.06), 0 2px 8px rgba(17, 45, 78, 0.03);
+  --glass-shadow-hover: 0 20px 48px rgba(17, 45, 78, 0.10), 0 4px 12px rgba(17, 45, 78, 0.05);
+
+  --glass-radius: 1.5rem;
+  --glass-inner-radius: 1.25rem;
+  --motion-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast: 160ms;
+  --motion-medium: 260ms;
+  --motion-slow: 420ms;
+}
+
+/* ------ Atmospheric Background ------ */
+.atmospheric-mesh-bg {
+  background-color: #F9F7F7;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(219, 226, 239, 0.65) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(63, 114, 175, 0.10) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(219, 226, 239, 0.45) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(219, 226, 239, 0.55) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(63, 114, 175, 0.08) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+.glass-bg-gradient {
+  background: linear-gradient(
+    135deg,
+    #0d2240 0%,
+    #112D4E 30%,
+    #1a3d66 55%,
+    #0f2540 80%,
+    #0a1a2e 100%
+  );
+}
+
+.glass-noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+}
+
+/* ------ Liquid Glass Surfaces ------ */
+.liquid-glass-surface {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border-radius: var(--glass-radius);
+  transition: all var(--motion-medium) var(--motion-spring);
+}
+
+.liquid-glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(var(--glass-blur)) saturate(135%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(135%);
+  border-radius: var(--glass-radius);
+  transition: transform var(--motion-fast) ease-out, box-shadow var(--motion-fast) ease-out, border-color var(--motion-fast) ease-out;
+}
+
+.liquid-glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(63, 114, 175, 0.35);
+  box-shadow: 
+    var(--glass-shadow-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.liquid-glass-header {
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.90);
+  box-shadow: 0 4px 20px rgba(17, 45, 78, 0.04);
+  backdrop-filter: blur(var(--glass-blur-strong)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(150%);
+}
+
+.liquid-glass-pill {
+  background: var(--glass-bg-subtle);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 2px 6px rgba(17, 45, 78, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.60);
+  backdrop-filter: blur(var(--glass-blur-subtle));
+  -webkit-backdrop-filter: blur(var(--glass-blur-subtle));
+  transition: all var(--motion-fast) ease-out;
+}
+
+.liquid-glass-pill:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: var(--glass-border-highlight);
+  transform: translateY(-1px);
+}
+
+.liquid-glass-pill-active {
+  background: #112D4E !important;
+  color: #FFFFFF !important;
+  border-color: #112D4E !important;
+  box-shadow: 0 4px 12px rgba(17, 45, 78, 0.20) !important;
+}
+
+.liquid-glass-input {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 2px rgba(17, 45, 78, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--motion-fast) ease-out;
+}
+
+.liquid-glass-input:focus {
+  background: #FFFFFF;
+  border-color: #3F72AF;
+  box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.18);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .liquid-glass-surface,
+  .liquid-glass-card {
+    background: #FFFFFF;
+    border-color: #DBE2EF;
+  }
+  .liquid-glass-header {
+    background: #FFFFFF;
+    border-color: #DBE2EF;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass-card:hover {
+    transform: none;
+  }
+  .liquid-glass-pill:hover {
+    transform: none;
+  }
+}
+
+/* Progressive enhancement: real glass when supported */
+@supports (backdrop-filter: blur(1px)) {
+  .glass-surface {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  }
+}
+
+/* ------ Inner Top Highlight Line ------ */
+.glass-inner-highlight {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 40%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.35) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ------ Liquid Highlight Sweep ------ */
+.glass-highlight-sweep {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.055) 50%,
+    transparent 65%
+  );
+  pointer-events: none;
+  transform: skewX(-15deg);
+}
+
+.glass-highlight-sweep-active {
+  animation: glassSweep 1.6s var(--motion-spring) forwards;
+}
+
+@keyframes glassSweep {
+  0%   { left: -100%; opacity: 1; }
+  100% { left: 160%;  opacity: 0.3; }
+}
+
+/* ------ Glass Input Fields ------ */
+.glass-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.875rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color var(--motion-fast) ease,
+              background var(--motion-fast) ease,
+              box-shadow var(--motion-fast) ease;
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.glass-input:focus {
+  border-color: rgba(63, 114, 175, 0.7);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* ------ Glass Primary Button ------ */
+.glass-btn-primary {
+  background: linear-gradient(135deg, #3F72AF 0%, #2d5a8f 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(63, 114, 175, 0.5);
+  box-shadow: 0 4px 16px rgba(63, 114, 175, 0.28), inset 0 1px 0 rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--motion-spring),
+              box-shadow var(--motion-fast) ease,
+              background var(--motion-fast) ease;
+  will-change: transform;
+}
+
+.glass-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4a7fc0 0%, #3a6a9f 100%);
+  box-shadow: 0 6px 22px rgba(63, 114, 175, 0.38), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-1px);
+}
+
+.glass-btn-primary:active:not(:disabled) {
+  transform: scale(0.97) translateY(0);
+}
+
+.glass-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.4), 0 4px 16px rgba(63, 114, 175, 0.28);
+}
+
+.glass-btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ------ Persona Card Animations ------ */
+.persona-card-selected {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.persona-card-idle {
+  cursor: pointer;
+}
+
+/* ------ Onboarding Card Stagger Entrance ------ */
+.onboarding-card-stagger {
+  animation: cardStaggerEnter 400ms var(--motion-spring) both;
+}
+
+@keyframes cardStaggerEnter {
+  0%   { opacity: 0; transform: translateY(16px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ------ Question Entrance ------ */
+.onboarding-question-enter {
+  animation: questionEnter 350ms var(--motion-spring) both;
+}
+
+@keyframes questionEnter {
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ------ Step Transition ------ */
+.onboarding-step-enter {
+  animation: stepSlideForward 380ms var(--motion-spring) both;
+}
+
+.onboarding-step-enter-back {
+  animation: stepSlideBack 380ms var(--motion-spring) both;
+}
+
+@keyframes stepSlideForward {
+  0%   { opacity: 0; transform: translateX(32px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes stepSlideBack {
+  0%   { opacity: 0; transform: translateX(-32px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ------ Completion Animation ------ */
+.animate-completion-fade {
+  animation: completionFade 500ms var(--motion-spring) both;
+}
+
+@keyframes completionFade {
+  0%   { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.completion-ring {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 2px solid rgba(63, 114, 175, 0.6);
+  opacity: 0;
+}
+
+.completion-ring-active {
+  animation: ringExpand 1s var(--motion-spring) forwards;
+}
+
+@keyframes ringExpand {
+  0%   { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ------ Auth Page Glass ------ */
+.auth-glass-panel {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 60px rgba(17, 45, 78, 0.4), 0 4px 16px rgba(17, 45, 78, 0.2);
+  overflow: hidden;
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .auth-glass-panel {
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  }
+}
+
+/* Glass auth input */
+.auth-glass-input {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.875rem;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  color: white;
+  font-size: 0.875rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.auth-glass-input::placeholder { color: rgba(255, 255, 255, 0.35); }
+
+.auth-glass-input:focus {
+  border-color: rgba(63, 114, 175, 0.65);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.15);
+}
+
+/* ------ Custom Scrollbar (inside summary) ------ */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+.custom-scrollbar { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }/* ============================================================================
+   BRANDWAVES DESIGN SYSTEM — MICRO-INTERACTIONS & MOTION TOKENS
+   ============================================================================ */
+
+/* Material Symbols Outlined helper */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbar for clean tab and horizontal rails */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Heatmap cell hover effect */
+.heat-cell {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease;
+}
+.heat-cell:hover {
+  transform: scale(1.35);
+  z-index: 20;
+  box-shadow: 0 2px 6px rgba(17, 45, 78, 0.25);
+}
+
+/* ------ Tactile Buttons & Controls ------ */
+.btn-tactile {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 150ms ease,
+              border-color 150ms ease,
+              color 150ms ease;
+  will-change: transform;
+}
+.btn-tactile:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Spring Press for icons and bookmarks */
+.spring-press {
+  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 180ms ease,
+              color 150ms ease;
+  will-change: transform;
+}
+.spring-press:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+/* Brand Blue Focus Glow */
+.btn-glow:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.3), 0 4px 12px rgba(63, 114, 175, 0.2);
+}
+.btn-glow:hover:not(:disabled) {
+  box-shadow: 0 4px 14px rgba(63, 114, 175, 0.18);
+}
+
+/* High-Contrast Accessible Focus Rings */
+.focus-ring-bw:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #F9F7F7, 0 0 0 4px #3F72AF;
+}
+
+/* ------ Interactive Cards (3-4px subtle lift on pointer devices) ------ */
+.card-interactive {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease;
+  will-change: transform, box-shadow;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-interactive:hover {
+    transform: translateY(-3.5px);
+    border-color: rgba(63, 114, 175, 0.38);
+    box-shadow: 0 14px 28px -6px rgba(17, 45, 78, 0.09), 0 6px 12px -4px rgba(17, 45, 78, 0.05);
+  }
+}
+
+/* Clear visual feedback for selected cards */
+.card-selected {
+  border-color: #3F72AF !important;
+  box-shadow: 0 0 0 2px rgba(63, 114, 175, 0.35), 0 10px 25px -5px rgba(17, 45, 78, 0.08) !important;
+}
+
+/* ------ Smooth Tab & Filter transitions ------ */
+.tab-transition {
+  transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease,
+              transform 150ms ease;
+}
+.tab-transition:active {
+  transform: scale(0.98);
+}
+
+/* ------ SIGNATURE BRANDWAVES LIQUID-FLOW TRANSITION ------ */
+@keyframes liquidWaveFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.wave-flow-active {
+  position: relative;
+  background: linear-gradient(135deg, #112D4E 0%, #1d3d63 50%, #3F72AF 100%);
+  background-size: 200% 200%;
+  animation: liquidWaveFlow 5s ease infinite;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(17, 45, 78, 0.16);
+}
+
+.wave-flow-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3.5px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #DBE2EF 0%, #3F72AF 100%);
+  box-shadow: 0 0 6px rgba(219, 226, 239, 0.8);
+}
+
+/* Horizontal tab liquid wave underline indicator */
+.liquid-wave-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 15%;
+  right: 15%;
+  height: 2.5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent 0%, #3F72AF 35%, #DBE2EF 50%, #3F72AF 65%, transparent 100%);
+  background-size: 200% 100%;
+  animation: liquidWaveFlow 3.5s ease-in-out infinite;
+}
+
+/* ------ Profile Completion Circular Progress Ring ------ */
+.progress-ring-circle {
+  transition: stroke-dashoffset 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Checkmark SVG Draw Animation */
+@keyframes checkmarkStroke {
+  0%   { stroke-dashoffset: 48; }
+  100% { stroke-dashoffset: 0; }
+}
+.animate-checkmark {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: checkmarkStroke 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards 100ms;
+}
+
+/* Icon Pop Spring */
+@keyframes iconPopSpring {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.32); }
+  75%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+.animate-icon-pop {
+  animation: iconPopSpring 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Celebration Scale Pop */
+@keyframes celebrationScaleUp {
+  0%   { transform: scale(0.85); opacity: 0; }
+  60%  { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-celebrate-pop {
+  animation: celebrationScaleUp 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Soft Ring Expanding Pulse */
+@keyframes softRingPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(63, 114, 175, 0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(63, 114, 175, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(63, 114, 175, 0); }
+}
+.animate-soft-pulse {
+  animation: softRingPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Shimmer Loading Sweep */
+@keyframes shimmerSweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+  animation: shimmerSweep 1.6s infinite;
+}
+
+/* Ripple effect container */
+.ripple-surface { position: relative; overflow: hidden; }
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(63, 114, 175, 0.22);
+  transform: scale(0);
+  animation: rippleSpread 450ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  pointer-events: none;
+}
+@keyframes rippleSpread {
+  to { transform: scale(3.5); opacity: 0; }
+}
+
+@keyframes waterRipple {
+  0%   { transform: scale(0); opacity: 0.75; }
+  100% { transform: scale(28); opacity: 0; }
+}
+.animate-ripple {
+  animation: waterRipple 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Cloud parallax keyframe animations for Sky Section */
+@keyframes cloudDrift1 {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes cloudDrift2 {
+  0%   { transform: translateX(-15%); }
+  100% { transform: translateX(-65%); }
+}
+@keyframes cloudDrift3 {
+  0%   { transform: translateX(-30%); }
+  100% { transform: translateX(-80%); }
+}
+
+.animate-cloud-slow   { animation: cloudDrift1 120s linear infinite; }
+.animate-cloud-medium { animation: cloudDrift2 85s linear infinite; }
+.animate-cloud-fast   { animation: cloudDrift3 55s linear infinite; }
+
+/* Cohesive BrandWaves Water-Motion System */
+@keyframes waterSwell {
+  0%   { transform: translateY(0px) scaleY(1); }
+  50%  { transform: translateY(-4px) scaleY(1.02); }
+  100% { transform: translateY(0px) scaleY(1); }
+}
+
+@keyframes waterRipplePulse {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(115, 184, 216, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(115, 184, 216, 0);
+  }
+  100% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(115, 184, 216, 0);
+  }
+}
+
+.animate-water-swell  { animation: waterSwell 4s ease-in-out infinite; will-change: transform; }
+.animate-ripple-pulse { animation: waterRipplePulse 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* FadeIn utility */
+@keyframes fadeIn {
+  0%   { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.3s ease-out forwards; }
+
+/* Progress Ring Animation */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.65s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s ease;
+}
+
+/* Checkmark draw-on animation */
+@keyframes strokeCheckmark {
+  to { stroke-dashoffset: 0; }
+}
+.animate-checkmark {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: strokeCheckmark 0.5s cubic-bezier(0.65, 0, 0.45, 1) forwards 0.15s;
+}
+
+/* ============================================================================
+   SIGNATURE BRANDWAVES LIQUID-FLOW MOTION
+   A soft, silky wave shimmer inspired by ocean swells for active navigation/tabs
+   ============================================================================ */
+@keyframes liquidWaveFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Sidebar active navigation liquid wave state */
+.wave-flow-active {
+  background: linear-gradient(110deg, #112D4E 0%, #1A3E6D 40%, #204C84 55%, #112D4E 100%);
+  background-size: 220% 100%;
+  animation: liquidWaveFlow 4.5s ease-in-out infinite;
+  color: #ffffff !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 10px -2px rgba(17, 45, 78, 0.32);
+}
+
+.wave-flow-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 3.5px;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(180deg, #93C5FD, #3F72AF);
+  box-shadow: 0 0 8px rgba(147, 197, 253, 0.7);
+}
+
+/* Horizontal tab active indicator wave rail */
+.liquid-wave-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #3F72AF, #60A5FA, #3F72AF);
+  background-size: 200% 100%;
+  border-radius: 9999px;
+  animation: liquidWaveFlow 3s ease-in-out infinite;
+  box-shadow: 0 1px 6px rgba(63, 114, 175, 0.45);
+}
+
+/* ============================================================================
+   REDUCED MOTION — comprehensive accessibility across the entire platform
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cloud-slow,
+  .animate-cloud-medium,
+  .animate-cloud-fast,
+  .animate-walk-ltr,
+  .animate-walk-rtl,
+  .animate-walk-cadence,
+  .animate-shimmer::after,
+  .animate-soft-pulse,
+  .animate-celebrate-pop,
+  .animate-icon-pop,
+  .animate-fadeIn,
+  .wave-flow-active,
+  .liquid-wave-indicator {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .wave-flow-active {
+    background: #112D4E !important;
+  }
+
+  .animate-checkmark {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+
+  .btn-tactile,
+  .spring-press,
+  .card-interactive,
+  .tab-transition,
+  .heat-cell,
+  .progress-ring-circle {
+    transition: none !important;
+  }
+
+  .btn-tactile:active,
+  .spring-press:active,
+  .card-interactive:hover,
+  .tab-transition:active,
+  .heat-cell:hover {
+    transform: none !important;
+  }
+
+  .ripple-effect {
+    display: none !important;
+  }
+
+  /* Glass and onboarding tokens */
+  .glass-highlight-sweep,
+  .glass-highlight-sweep-active,
+  .onboarding-card-stagger,
+  .onboarding-question-enter,
+  .onboarding-step-enter,
+  .onboarding-step-enter-back,
+  .animate-completion-fade,
+  .completion-ring,
+  .completion-ring-active {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .glass-btn-primary,
+  .glass-btn-primary:hover,
+  .glass-btn-primary:active {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .editorial-enter-title,
+  .editorial-enter-desc,
+  .editorial-enter-actions,
+  .editorial-enter-visuals,
+  .editorial-section-reveal {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ============================================================================
+   EDITORIAL DESIGN SYSTEM — BrandWaves Signature Motion & Tokens
+   Restrained, purposeful, responsive. Left-to-right desktop sweep, top-to-bottom mobile.
+   ============================================================================ */
+
+.editorial-card {
+  background-color: #FFFFFF;
+  border: 1px solid #DCE5EB;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(22, 59, 83, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.editorial-card:hover {
+  border-color: #397AA8;
+  box-shadow: 0 10px 25px -5px rgba(22, 59, 83, 0.08);
+  transform: translateY(-2px);
+}
+
+.editorial-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: #EAF2F7;
+  color: #163B53;
+  border: 1px solid #DCE5EB;
+}
+
+/* Staggered entrance animation sequence */
+@keyframes editorialReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes editorialHorizontalReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.editorial-enter-title {
+  animation: editorialReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.editorial-enter-desc {
+  animation: editorialReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  opacity: 0;
+}
+
+.editorial-enter-actions {
+  animation: editorialReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+.editorial-enter-visuals {
+  animation: editorialHorizontalReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .editorial-enter-visuals {
+    animation: editorialReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+  }
+}
+
+

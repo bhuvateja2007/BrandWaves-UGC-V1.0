@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#351000", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#100069", "secondary-fixed": "#e2e2e2", "on-primary": "#ffffff", "on-primary-container": "#dbd8ff", "surface-container-low": "#f3f4f0", "on-secondary-fixed": "#1a1c1c", "outline-variant": "#c7c4d8", "outline": "#777587", "error": "#ba1a1a", "primary": "#3725cd", "primary-fixed-dim": "#c3c0ff", "surface-bright": "#f8faf6", "tertiary-container": "#a54100", "surface": "#f8faf6", "primary-container": "#5146e5", "secondary-fixed-dim": "#c6c6c7", "on-secondary-fixed-variant": "#454747", "on-tertiary-container": "#ffd2c0", "on-surface-variant": "#464555", "surface-dim": "#d9dad7", "on-primary-fixed-variant": "#3522cb", "on-secondary-container": "#616363", "primary-fixed": "#e3dfff", "surface-container-highest": "#e1e3df", "tertiary-fixed-dim": "#ffb695", "surface-variant": "#e1e3df", "on-surface": "#191c1a", "tertiary": "#7e3000", "secondary": "#5d5f5f", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#7b2f00", "inverse-primary": "#c3c0ff", "on-tertiary": "#ffffff", "surface-tint": "#4f43e3", "on-background": "#191c1a", "surface-container-high": "#e7e9e5", "on-error-container": "#93000a", "surface-container": "#edeeeb", "background": "#f8faf6", "secondary-container": "#dfe0e0", "inverse-surface": "#2e312f", "error-container": "#ffdad6", "tertiary-fixed": "#ffdbcc", "on-secondary": "#ffffff", "inverse-on-surface": "#f0f1ee" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1rem", "margin-desktop": "2.5rem", "gutter-desktop": "1.5rem", "space-lg": "1.25rem", "space-sm": "0.5rem", "space-md": "0.75rem", "margin": "1rem", "space-xl": "2rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg": [ "Inter" ], "display-lg-mobile": [ "Inter" ], "tabular-data": [ "Inter" ], "body-sm": [ "Inter" ], "body-md": [ "Inter" ], "label-md": [ "Inter" ], "headline-sm": [ "Inter" ], "body-lg": [ "Inter" ], "label-sm": [ "Inter" ], "headline-md": [ "Inter" ], "display-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "display-lg-mobile": [ "30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "tabular-data": [ "13px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "body-sm": [ "13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-md": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "headline-md": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="px-space-lg mb-space-xl flex items-center gap-space-sm"><img alt="BrandWaves Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoPAUsZkMAV4KPrruDOOKwWnIxFc6Tr6rxFegdhSmrK5fsqMTvrr8BUi0RpjSgFDB74POE5cQV7uXsVAEIMlIgl5S3gwggPgPvRED7i_sk43lP98jYmAN1rCIBRfRG10-2z7YGGScH92b2bYGl9kIAgvGb2c3SKPTW64Q6G0Bg5toIWUgHEAMY1v1aQUbZbqFR0KHkYllzXQx3_VdHxtt231I892uAmqYHV00wGGIyBvubRE8gl_HsMg"/><div class="flex flex-col leading-none"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">BrandWaves</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Creator Studio</span></div></div><div class="px-space-md mb-space-xs"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider px-space-sm">Workspace</span></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-primary-container text-on-primary font-medium"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary font-medium" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Overview</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="discover-campaigns" href="#"><span class="material-symbols-outlined text-[20px]">explore</span><span>Discover Campaigns</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-submissions" href="#"><span class="material-symbols-outlined text-[20px]">video_library</span><span>My Submissions</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-performance" href="#"><span class="material-symbols-outlined text-[20px]">trending_up</span><span>My Performance</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="leaderboard" href="#"><span class="material-symbols-outlined text-[20px]">military_tech</span><span>Leaderboard</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="notifications" href="#"><span class="material-symbols-outlined text-[20px]">notifications</span><span>Notifications</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="px-space-sm mb-space-xs"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Account</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-medium"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="profile-and-settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Profile &amp; Settings</span></a></nav><div class="mt-space-md pt-space-md px-space-sm bg-surface-container rounded-lg p-space-sm flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary uppercase">Tier</span><span class="font-label-md text-label-md text-on-surface font-semibold">Elite Partner</span></div><span class="material-symbols-outlined text-primary text-[20px]">verified</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-md flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm pl-10 pr-space-md py-space-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-[0_1px_3px_rgba(32,35,33,0.05)]" placeholder="Search active briefs, brands, hashtags..." type="text"/></div></div><div class="flex items-center gap-space-lg"><a class="inline-flex items-center gap-space-xs bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md px-space-md py-space-sm rounded-lg transition-colors" data-path="discover-campaigns" href="#"><span class="material-symbols-outlined text-[18px]">travel_explore</span><span>Explore Campaigns</span></a><div class="relative flex items-center justify-center"><a class="p-space-xs rounded-full hover:bg-surface-container transition-colors text-on-surface-variant hover:text-on-surface" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span></a></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9FAH421hAgr9kaZnvLMGTNubxmnj4ufFoj4C5tcaCd6oD57OP7LPtQDqpv0YvkKHCHFU1HVKQ6EamqkgqL9ISEZWIm89ngnI0-cnZRsYej01hG79uPrEGXs_qnv4fMlt2IOeBfYldmDFEx2Kp6mSr11-EEVzEFy9_L0CJOYUN-BIFm6oMySmQw0zaamJpukrBOdq0X595_02Hp2e_5jALssGB8Zk75cnW77WrD-eBliZhzn1iOYOGWA"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface font-semibold leading-none">Alex Rivera</span><span class="font-label-sm text-label-sm text-secondary leading-none mt-1">@alexcreates</span></div></div></div></header><main class="relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-gutter-desktop py-space-xl max-w-[1520px] w-full mx-auto flex flex-col gap-space-xl">
+<!-- Top Editorial Header & Quick Action -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Creator Workspace • October Briefing</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Welcome back, Alex</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          Your next great collaboration starts here. 3 brands are currently reviewing your submitted deliverables.
+        </p>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="inline-flex items-center gap-space-xs bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md px-space-md py-space-sm rounded-lg shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span>Preferences</span>
+</button>
+<a class="inline-flex items-center gap-space-sm bg-primary-container hover:bg-primary text-on-primary transition-colors font-label-md text-label-md px-space-lg py-space-sm rounded-lg shadow-sm" data-path="discover-campaigns" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span>Explore campaigns</span>
+</a>
+</div>
+</section>
+<!-- 4-Column Compact Metric Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-desktop">
+<!-- 1. Active submissions -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Active submissions</span>
+<span class="font-headline-lg text-headline-lg text-on-surface mt-1">3</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">In progress</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant font-semibold">
+            2 awaiting review
+          </span>
+</div>
+</div>
+<!-- 2. Approved submissions -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Approved submissions</span>
+<span class="font-headline-lg text-headline-lg text-on-surface mt-1">28</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lifetime deliverables</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-primary font-semibold">
+            +4 this month
+          </span>
+</div>
+</div>
+<!-- 3. Revision requests -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Revision requests</span>
+<span class="font-headline-lg text-headline-lg text-on-surface mt-1">1</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">priority_high</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Action needed</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+            Needs edit
+          </span>
+</div>
+</div>
+<!-- 4. Campaigns joined -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Campaigns joined</span>
+<span class="font-headline-lg text-headline-lg text-on-surface mt-1">12</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Active engagements</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+            3 brands
+          </span>
+</div>
+</div>
+</section>
+<!-- Main Content Area: 8 Columns Left / 4 Columns Right -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
+<!-- LEFT COLUMN (8 Columns) -->
+<div class="lg:col-span-8 flex flex-col gap-space-xl">
+<!-- 1. Urgent Reviewer Feedback Alert Banner -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pl-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center justify-center p-1 rounded-md bg-error-container text-error">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Submission Feedback Required</span>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Submitted 18h ago • v1.0</span>
+</div>
+<!-- Feedback Details Box -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col sm:flex-row gap-space-md items-start">
+<div class="relative w-20 h-28 sm:w-24 sm:h-32 shrink-0 rounded-lg overflow-hidden shadow-sm bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Vertical 9:16 mobile video still showing an athletic creator in morning dawn lighting unboxing technical running shorts with urban city background, high visual quality cinematic grain." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEzbLqUvRiyxj3i3AkNcwy9jZtlJSlSBWKs47NKmuyYQHjUrcnx-MHKqrzmcUfsgv7XxUlOTFo_opOMsuiFWXw3tIDZfleeZfyw-FWtLJ2C-6RL0iugwDseiFA8GklUi7RUxsdV6X-8ImK19WanJfcpB9jVk1OkuXdtObXJ9Ezdm7KjdyXYMVSsVWEgzU1x57NOkZn2xk9JQxQ3EYMk2JT4MPJKmfqSyUqwx7rCTRtAz0MR8T6MR3jeg"/>
+<div class="absolute top-1 right-1 bg-surface-dim/80 text-on-surface px-1 py-0.5 rounded text-[10px] font-semibold">0:24</div>
+</div>
+<div class="flex flex-col justify-between flex-1 gap-space-sm min-w-0">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Velox Activewear — Sprint UGC Reel</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-error-container text-error font-semibold">Needs Revision</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">
+                  “Hey Alex! Love the lighting and intro hook. Could you please re-trim the first 2 seconds to jump straight into the product unboxing? Once updated, we'll approve right away!”
+                </p>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-surface text-[11px] font-semibold">SM</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Sarah M. (Brand Reviewer) • Velox Athletics</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm" type="button">
+                    View Brief
+                  </button>
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary transition-colors font-label-md text-label-md shadow-sm flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<span>Update Submission</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Recommended Eligible Campaigns -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recommended Eligible Campaigns</h2>
+<p class="font-body-sm text-body-sm text-secondary">Curated based on your high engagement in Tech, Fitness &amp; Lifestyle niches.</p>
+</div>
+<a class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors inline-flex items-center gap-0.5" data-path="discover-campaigns" href="#">
+<span>View all 24 briefs</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</a>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Campaign Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container shrink-0 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Matte charcoal minimalist wireless over-ear noise-canceling headphones resting on architectural concrete desk, soft diffused studio lighting, deep aesthetic tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbBjbjdpnbzJOjeXk_6tPODsBHlDYJ2IyZKOxFDSa3ZwLNQTqyxre8mBjddk1H6nwWI6l4ESCkjVdRArzrllcmknKJ1QlY6v63_y0a1NiLvSLTiyvFIj_UN_e0TMv4xvuA2DCE3ZdpP7z2pvZO_GpCpYdVSSNGp3kZpUg8jpa_9ni-RvPWKC1WBhgoG3zszt2Y-k7KzpoSDolcj4cMDnaLopC-0rncViGiYF4e10Z-x1fzh8nBXNUzDg"/>
+<div class="absolute bottom-1 left-1 bg-surface-dim/80 text-on-surface px-1 py-0.5 rounded text-[10px] font-bold">TECH</div>
+</div>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">Lumino Sound</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-on-surface-variant">TikTok • 9:16 Video</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-surface-container text-primary">Eligible</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Lumino Audio — Urban Commuter Wireless</h3>
+<div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                      $450 base + rev share
+                    </span>
+<span class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                      Deadline in 4 days
+                    </span>
+</div>
+</div>
+</div>
+<div class="flex md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-space-sm shrink-0">
+<span class="font-label-sm text-label-sm text-secondary">8 of 15 spots filled</span>
+<a class="px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary text-on-surface transition-colors font-label-md text-label-md" data-path="discover-campaigns" href="#">
+                  View Campaign
+                </a>
+</div>
+</div>
+<!-- Campaign Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container shrink-0 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Editorial close up flat lay of breathable technical sportswear apparel in deep navy and indigo with reflective running accents, styled on textured limestone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH49SekUv2jS4yoSSsV8CBkX4J424drca-u4mipTTCi9SqKojcksP8A6YYLX138yujAdkWZsDNQid9p4J6Rzs-uqChqR5KnB_o6R577wymKrnAIh0e9gQEcTM84rE750vmxwKpWrtgb2SWt0KCVUeR_fO0eRbXnjxYPWXRUa1o-bYd7xd7IPt3CB6XEdC94ubQtgQk4cUNFogAu6EVVjRHidXYmvwEgG6uYxiaCMmTy03N__ytn2QQtw"/>
+<div class="absolute bottom-1 left-1 bg-surface-dim/80 text-on-surface px-1 py-0.5 rounded text-[10px] font-bold">FITNESS</div>
+</div>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">Velox Athletics</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-on-surface-variant">IG Reel / TikTok</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-surface-container text-primary">Eligible</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Velox Activewear — Summer Sprint Drop</h3>
+<div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                      $600 + apparel gifted
+                    </span>
+<span class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                      Deadline in 7 days
+                    </span>
+</div>
+</div>
+</div>
+<div class="flex md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-space-sm shrink-0">
+<span class="font-label-sm text-label-sm text-secondary">12 of 20 spots filled</span>
+<a class="px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary text-on-surface transition-colors font-label-md text-label-md" data-path="discover-campaigns" href="#">
+                  View Campaign
+                </a>
+</div>
+</div>
+<!-- Campaign Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container shrink-0 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Amber glass skincare dropper bottle with subtle golden serum reflection on bathroom marble counter with natural warm sunbeams and monstera leaf shadow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNYqiC4GDCNyX51pJ6BmnaD_fCR_45XoJeOsO1tt7AYHnrSb-8ijFlAQdyViQDaeRt0-1XF7459b2y0U0rEAGL1lPn0BTqSvjaqch78xx6yN28csQN5UTHT1u46HragyCZEy9EOYznxEbim0dV1EHs2fxBVKUQ4ieO1hj9-eFV-IIWp3NHt_Wy4GR5ocGeHWGyABrDECsiwrGxA7lg4QyCsQ_FDd-GFjcE6d5zpP5PH_GcKAN5sSxncA"/>
+<div class="absolute bottom-1 left-1 bg-surface-dim/80 text-on-surface px-1 py-0.5 rounded text-[10px] font-bold">BEAUTY</div>
+</div>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">Solstice Lab</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-on-surface-variant">YouTube Short / Reel</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-surface-container text-primary">Eligible</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Solstice Skincare — Dewy Morning Glow</h3>
+<div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                      $350 + product kit
+                    </span>
+<span class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                      Deadline in 10 days
+                    </span>
+</div>
+</div>
+</div>
+<div class="flex md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-space-sm shrink-0">
+<span class="font-label-sm text-label-sm text-secondary">4 of 10 spots filled</span>
+<a class="px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-primary-container hover:text-on-primary text-on-surface transition-colors font-label-md text-label-md" data-path="discover-campaigns" href="#">
+                  View Campaign
+                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Personal Activity Heatmap Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Creator Activity Overview</h2>
+<span class="material-symbols-outlined text-[18px] text-secondary cursor-pointer" title="Logged UGC draft uploads, edits, and final deliverable approvals.">info</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Your UGC submissions and content activity over time • <span class="text-on-surface font-semibold">128 activities</span> logged in the last year.</p>
+</div>
+<!-- Heatmap Range Filter Pills -->
+<div class="inline-flex items-center bg-surface-container-low p-1 rounded-lg self-start">
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded text-secondary hover:text-on-surface transition-colors" type="button">30D</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded text-secondary hover:text-on-surface transition-colors" type="button">90D</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded text-secondary hover:text-on-surface transition-colors" type="button">6M</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded bg-surface-container-lowest text-on-surface font-semibold shadow-xs" type="button">12M</button>
+</div>
+</div>
+<!-- Heatmap Canvas Container -->
+<div class="overflow-x-auto pb-2">
+<div class="min-w-[680px] flex flex-col gap-1.5">
+<!-- Month labels row -->
+<div class="flex items-center text-label-sm font-label-sm text-secondary pl-7 justify-between pr-2">
+<span>Nov</span>
+<span>Dec</span>
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+<span>Apr</span>
+<span>May</span>
+<span>Jun</span>
+<span>Jul</span>
+<span>Aug</span>
+<span>Sep</span>
+<span>Oct</span>
+</div>
+<!-- Main Grid: 7 Day Rows x 52 Columns -->
+<div class="flex gap-2">
+<!-- Day Labels -->
+<div class="flex flex-col justify-between text-label-sm font-label-sm text-secondary text-[10px] w-5 py-0.5 select-none">
+<span>Mon</span>
+<span>Wed</span>
+<span>Fri</span>
+</div>
+<!-- Heatmap SVG Squares Matrix -->
+<div class="flex-1">
+<svg class="w-full h-auto text-on-surface" preserveaspectratio="none" viewbox="0 0 780 105">
+<!-- Column generator using indigo palette -->
+<g transform="translate(0, 0)">
+<!-- Sample clustered historical data columns for 52 weeks -->
+<!-- Repeated week columns across year with varying intensity tiers -->
+<!-- Tier 0: fill="#f3f4f0", Tier 1: fill="#e3dfff", Tier 2: fill="#c3c0ff", Tier 3: fill="#5146e5", Tier 4: fill="#3725cd" -->
+<!-- Week 1-4 -->
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+<!-- Repeating algorithmic layout for months 2-12 -->
+<!-- Group Q1 -->
+<g transform="translate(60, 0)">
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Group Q2 -->
+<g transform="translate(120, 0)">
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Mid-year (Spring / Summer boost) -->
+<g transform="translate(180, 0)">
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Summer to Autumn High Velocity Section -->
+<g transform="translate(240, 0)">
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Continuation for remaining weeks to 780 width -->
+<g transform="translate(300, 0)">
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Block 6 -->
+<g transform="translate(360, 0)">
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Block 7 -->
+<g transform="translate(420, 0)">
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Block 8 -->
+<g transform="translate(480, 0)">
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Block 9 -->
+<g transform="translate(540, 0)">
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Block 10 (Recent Weeks in Sept-Oct) -->
+<g transform="translate(600, 0)">
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+<!-- Current Final Weeks (October) -->
+<g transform="translate(660, 0)">
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="0"></rect>
+<rect class="fill-primary" height="11" rx="2" width="11" x="0" y="15"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="0" y="30"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="0" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="0" y="90"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="0"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="15"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="15" y="30"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="15" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="15" y="90"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="30" y="0"></rect>
+<rect class="fill-primary-fixed" height="11" rx="2" width="11" x="30" y="15"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="30"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="30" y="45"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="60"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="75"></rect>
+<rect class="fill-surface-container-low" height="11" rx="2" width="11" x="30" y="90"></rect>
+<!-- Current Week (Oct 26-28) -->
+<rect class="fill-primary" height="11" rx="2" width="11" x="45" y="0"></rect>
+<rect class="fill-primary-container" height="11" rx="2" width="11" x="45" y="15"></rect>
+<rect class="fill-primary-fixed-dim" height="11" rx="2" width="11" x="45" y="30"></rect>
+<rect class="fill-surface-container-low opacity-40" height="11" rx="2" width="11" x="45" y="45"></rect>
+<rect class="fill-surface-container-low opacity-40" height="11" rx="2" width="11" x="45" y="60"></rect>
+<rect class="fill-surface-container-low opacity-40" height="11" rx="2" width="11" x="45" y="75"></rect>
+<rect class="fill-surface-container-low opacity-40" height="11" rx="2" width="11" x="45" y="90"></rect>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<!-- Legend Footer -->
+<div class="flex items-center justify-between text-label-sm font-label-sm text-secondary pt-2">
+<span class="text-xs">Peak streak: 19 consecutive active days (Jul 2024)</span>
+<div class="flex items-center gap-1.5">
+<span>Less</span>
+<div class="w-2.5 h-2.5 rounded-xs bg-surface-container-low"></div>
+<div class="w-2.5 h-2.5 rounded-xs bg-primary-fixed"></div>
+<div class="w-2.5 h-2.5 rounded-xs bg-primary-fixed-dim"></div>
+<div class="w-2.5 h-2.5 rounded-xs bg-primary-container"></div>
+<div class="w-2.5 h-2.5 rounded-xs bg-primary"></div>
+<span>More</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (4 Columns Sidebar Widgets) -->
+<div class="lg:col-span-4 flex flex-col gap-space-xl">
+<!-- 1. Personal Leaderboard Position Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Creator Standings</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary/10 text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">military_tech</span>
+              Top 2% Creator
+            </span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-display-lg text-display-lg text-on-surface">#4</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-medium">in Monthly UGC Standings</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+            You're only 2 verified video approvals away from claiming the #3 podium spot.
+          </p>
+<div class="bg-surface-container-low rounded-lg p-space-md grid grid-cols-2 gap-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">Approved Videos</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-0.5">28</span>
+<span class="font-label-sm text-label-sm text-secondary">+6 vs last month</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">Acceptance Rate</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold mt-0.5">94.2%</span>
+<span class="font-label-sm text-label-sm text-secondary">Platform avg 78%</span>
+</div>
+</div>
+<a class="w-full text-center py-space-sm px-space-md rounded-lg bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-space-xs" data-path="leaderboard" href="#">
+<span>View Full Leaderboard</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- 2. Upcoming Campaign Deadlines -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-error">event_upcoming</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Upcoming Deadlines</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">3 Pending</span>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Deadline 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-2 h-10 rounded-full bg-error shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Lumino Audio</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Draft Submission • Due Oct 28</span>
+</div>
+</div>
+<span class="inline-flex items-center text-label-sm font-label-sm px-2 py-0.5 rounded bg-error-container text-on-error-container font-semibold shrink-0">
+                In 2 days
+              </span>
+</div>
+<!-- Deadline 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-2 h-10 rounded-full bg-primary-container shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Solstice Skincare</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Script &amp; Angle Outline • Due Oct 31</span>
+</div>
+</div>
+<span class="inline-flex items-center text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-medium shrink-0">
+                In 5 days
+              </span>
+</div>
+<!-- Deadline 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-2 h-10 rounded-full bg-secondary shrink-0"></div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Velo Brew Coffee</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Final Cut Delivery • Due Nov 4</span>
+</div>
+</div>
+<span class="inline-flex items-center text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-medium shrink-0">
+                In 9 days
+              </span>
+</div>
+</div>
+</div>
+<!-- 3. Quick Stats & Payout Summary -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Financial Highlights</span>
+<span class="material-symbols-outlined text-[20px] text-primary">account_balance_wallet</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary">Total Earned (Lifetime)</span>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">$11,450.00</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">USD</span>
+</div>
+</div>
+<!-- Payout progress strip -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-secondary">Pending Clearance</span>
+<span class="text-on-surface font-semibold tabular-nums">$1,050.00</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden mt-1">
+<div class="bg-primary-container h-full rounded-full" style="width: 72%;"></div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-secondary mt-1">
+<span>Next deposit batch: Nov 01</span>
+<span>Direct Bank Deposit</span>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<a class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors inline-flex items-center gap-1" data-path="my-performance" href="#">
+<span>View full earnings breakdown</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Creator Studio Trust & Guidelines Card -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Auto-Review Guarantee</span>
+<span class="font-body-sm text-body-sm text-secondary line-clamp-2">Brand partners respond to your submitted revisions within 48 business hours.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

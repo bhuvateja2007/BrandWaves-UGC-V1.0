@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#351000", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#100069", "secondary-fixed": "#e2e2e2", "on-primary": "#ffffff", "on-primary-container": "#dbd8ff", "surface-container-low": "#f3f4f0", "on-secondary-fixed": "#1a1c1c", "outline-variant": "#c7c4d8", "outline": "#777587", "error": "#ba1a1a", "primary": "#3725cd", "primary-fixed-dim": "#c3c0ff", "surface-bright": "#f8faf6", "tertiary-container": "#a54100", "surface": "#f8faf6", "primary-container": "#5146e5", "secondary-fixed-dim": "#c6c6c7", "on-secondary-fixed-variant": "#454747", "on-tertiary-container": "#ffd2c0", "on-surface-variant": "#464555", "surface-dim": "#d9dad7", "on-primary-fixed-variant": "#3522cb", "on-secondary-container": "#616363", "primary-fixed": "#e3dfff", "surface-container-highest": "#e1e3df", "tertiary-fixed-dim": "#ffb695", "surface-variant": "#e1e3df", "on-surface": "#191c1a", "tertiary": "#7e3000", "secondary": "#5d5f5f", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#7b2f00", "inverse-primary": "#c3c0ff", "on-tertiary": "#ffffff", "surface-tint": "#4f43e3", "on-background": "#191c1a", "surface-container-high": "#e7e9e5", "on-error-container": "#93000a", "surface-container": "#edeeeb", "background": "#f8faf6", "secondary-container": "#dfe0e0", "inverse-surface": "#2e312f", "error-container": "#ffdad6", "tertiary-fixed": "#ffdbcc", "on-secondary": "#ffffff", "inverse-on-surface": "#f0f1ee" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1rem", "margin-desktop": "2.5rem", "gutter-desktop": "1.5rem", "space-lg": "1.25rem", "space-sm": "0.5rem", "space-md": "0.75rem", "margin": "1rem", "space-xl": "2rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg": [ "Inter" ], "display-lg-mobile": [ "Inter" ], "tabular-data": [ "Inter" ], "body-sm": [ "Inter" ], "body-md": [ "Inter" ], "label-md": [ "Inter" ], "headline-sm": [ "Inter" ], "body-lg": [ "Inter" ], "label-sm": [ "Inter" ], "headline-md": [ "Inter" ], "display-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "display-lg-mobile": [ "30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "tabular-data": [ "13px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "body-sm": [ "13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-md": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "headline-md": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="px-space-lg mb-space-xl flex items-center gap-space-sm"><img alt="BrandWaves Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoPAUsZkMAV4KPrruDOOKwWnIxFc6Tr6rxFegdhSmrK5fsqMTvrr8BUi0RpjSgFDB74POE5cQV7uXsVAEIMlIgl5S3gwggPgPvRED7i_sk43lP98jYmAN1rCIBRfRG10-2z7YGGScH92b2bYGl9kIAgvGb2c3SKPTW64Q6G0Bg5toIWUgHEAMY1v1aQUbZbqFR0KHkYllzXQx3_VdHxtt231I892uAmqYHV00wGGIyBvubRE8gl_HsMg"/><div class="flex flex-col leading-none"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">BrandWaves</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Creator Studio</span></div></div><div class="px-space-md mb-space-xs"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider px-space-sm">Workspace</span></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-primary-container text-on-primary font-medium"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Overview</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="discover-campaigns" href="#"><span class="material-symbols-outlined text-[20px]">explore</span><span>Discover Campaigns</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary font-medium" data-path="my-submissions" href="#"><span class="material-symbols-outlined text-[20px]">video_library</span><span>My Submissions</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="my-performance" href="#"><span class="material-symbols-outlined text-[20px]">trending_up</span><span>My Performance</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="leaderboard" href="#"><span class="material-symbols-outlined text-[20px]">military_tech</span><span>Leaderboard</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="notifications" href="#"><span class="material-symbols-outlined text-[20px]">notifications</span><span>Notifications</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="px-space-sm mb-space-xs"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Account</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-medium"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="profile-and-settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Profile &amp; Settings</span></a></nav><div class="mt-space-md pt-space-md px-space-sm bg-surface-container rounded-lg p-space-sm flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary uppercase">Tier</span><span class="font-label-md text-label-md text-on-surface font-semibold">Elite Partner</span></div><span class="material-symbols-outlined text-primary text-[20px]">verified</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-md flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm pl-10 pr-space-md py-space-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-[0_1px_3px_rgba(32,35,33,0.05)]" placeholder="Search active briefs, brands, hashtags..." type="text"/></div></div><div class="flex items-center gap-space-lg"><a class="inline-flex items-center gap-space-xs bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md px-space-md py-space-sm rounded-lg transition-colors" data-path="discover-campaigns" href="#"><span class="material-symbols-outlined text-[18px]">travel_explore</span><span>Explore Campaigns</span></a><div class="relative flex items-center justify-center"><a class="p-space-xs rounded-full hover:bg-surface-container transition-colors text-on-surface-variant hover:text-on-surface" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span></a></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9FAH421hAgr9kaZnvLMGTNubxmnj4ufFoj4C5tcaCd6oD57OP7LPtQDqpv0YvkKHCHFU1HVKQ6EamqkgqL9ISEZWIm89ngnI0-cnZRsYej01hG79uPrEGXs_qnv4fMlt2IOeBfYldmDFEx2Kp6mSr11-EEVzEFy9_L0CJOYUN-BIFm6oMySmQw0zaamJpukrBOdq0X595_02Hp2e_5jALssGB8Zk75cnW77WrD-eBliZhzn1iOYOGWA"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface font-semibold leading-none">Alex Rivera</span><span class="font-label-sm text-label-sm text-secondary leading-none mt-1">@alexcreates</span></div></div></div></header><main class="relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-space-md md:px-margin-desktop py-space-xl max-w-[1600px] mx-auto w-full">
+<!-- Top Action / Context Row -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div class="flex flex-col max-w-2xl">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">Asset Governance</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-secondary">Q4 Campaign Deliverables</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight mb-space-xs">My Submissions</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Track review progress, reviewer feedback, and revision requests for all your UGC deliveries.
+        </p>
+</div>
+<!-- Quick Summary Metric Pills -->
+<div class="flex items-center gap-space-sm self-start lg:self-auto flex-wrap">
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">1 Action Required</span>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+<span class="font-label-md text-label-md text-on-surface-variant">2 Pending Validation</span>
+</div>
+</div>
+</div>
+<!-- Main Two-Column Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-desktop items-start">
+<!-- Left / Primary Stream (8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Filter Tabs Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md bg-surface-container-lowest p-space-sm rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs md:pb-0" id="filter-tabs">
+<button class="filter-tab active flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary font-label-md text-label-md transition-all whitespace-nowrap" data-filter="all">
+<span>All Submissions</span>
+<span class="px-1.5 py-0.5 rounded-full text-[10px] bg-surface-container-lowest/20 font-bold">18</span>
+</button>
+<button class="filter-tab flex items-center gap-space-xs px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all whitespace-nowrap" data-filter="in-review">
+<span>In Review</span>
+<span class="px-1.5 py-0.5 rounded-full text-[10px] bg-surface-container text-secondary font-bold">2</span>
+</button>
+<button class="filter-tab flex items-center gap-space-xs px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all whitespace-nowrap" data-filter="revision">
+<span>Revision Requested</span>
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+</button>
+<button class="filter-tab flex items-center gap-space-xs px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all whitespace-nowrap" data-filter="approved">
+<span>Approved</span>
+<span class="px-1.5 py-0.5 rounded-full text-[10px] bg-surface-container text-secondary font-bold">14</span>
+</button>
+<button class="filter-tab flex items-center gap-space-xs px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all whitespace-nowrap" data-filter="archived">
+<span>Archived</span>
+<span class="px-1.5 py-0.5 rounded-full text-[10px] bg-surface-container text-secondary font-bold">1</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs px-space-xs">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase hidden lg:inline">Sort:</span>
+<div class="relative inline-block text-left">
+<select class="bg-surface-container text-on-surface font-label-md text-label-md py-1.5 pl-3 pr-8 rounded-lg appearance-none cursor-pointer focus:outline-none">
+<option>Last Updated (Desc)</option>
+<option>Submission Date (Newest)</option>
+<option>Payout Amount (High-Low)</option>
+<option>Brand Name (A-Z)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Filter Sub-bar: Search & Platform Chips -->
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm pl-10 pr-space-md py-2.5 rounded-xl shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" id="campaign-search" placeholder="Filter by campaign brief, brand or handle..." type="text"/>
+</div>
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs md:pb-0">
+<button class="platform-filter active px-space-md py-2 rounded-xl text-on-primary bg-on-surface font-label-sm text-label-sm transition-colors whitespace-nowrap" data-platform="all">All Channels</button>
+<button class="platform-filter px-space-md py-2 rounded-xl text-on-surface-variant bg-surface-container-lowest hover:bg-surface-container font-label-sm text-label-sm shadow-sm transition-colors whitespace-nowrap" data-platform="tiktok">TikTok</button>
+<button class="platform-filter px-space-md py-2 rounded-xl text-on-surface-variant bg-surface-container-lowest hover:bg-surface-container font-label-sm text-label-sm shadow-sm transition-colors whitespace-nowrap" data-platform="instagram">Instagram</button>
+<button class="platform-filter px-space-md py-2 rounded-xl text-on-surface-variant bg-surface-container-lowest hover:bg-surface-container font-label-sm text-label-sm shadow-sm transition-colors whitespace-nowrap" data-platform="youtube">YouTube</button>
+</div>
+</div>
+<!-- Submissions List Matrix -->
+<div class="flex flex-col gap-space-lg" id="submissions-container">
+<!-- ITEM 1: Revision Requested (Action Required) -->
+<article class="submission-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col" data-platform="tiktok" data-status="revision">
+<div class="p-space-lg flex flex-col md:flex-row gap-space-lg">
+<!-- Video Preview Thumbnail with Badge -->
+<div class="relative w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-surface-container group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="High-energy vertical UGC video frame of a fit athletic creator sprinting along a sunset urban track, wearing performance runner gear, warm amber backlit lens flare, cinematic sharp 4K color grading, BrandWaves review workspace aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdOhc6ovKob5-Fyzi55KDv4IoIxGpHHghDGe6U9RHs0sQG4AXMfbobIKiInqyjJ3JD4VKZjEKcEJHfJIr51xpRQmf26BFC1-A3aGqnGOWlJANr8yZSQXxB8NWn2qCJZtDQjvzkIe121kbH9a1rfk5JJ9DL1objLGYvzsmEamYbEazPgbOWeqqQ2S9L_O8LTyqMiN6rQkaNvMlJzaSZHvuoxb5pffvAi3ZQa6qr-xxfIU4Vx4E7q_isHA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold tracking-wider uppercase bg-black/60 text-white backdrop-blur-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> 0:42
+                    </span>
+<span class="material-symbols-outlined text-white text-[20px] drop-shadow">play_circle</span>
+</div>
+<div class="flex items-center gap-1.5 text-white/90">
+<span class="material-symbols-outlined text-[16px]">music_note</span>
+<span class="font-label-sm text-[11px] truncate">Velox - Original Track (142 BPM)</span>
+</div>
+</div>
+</div>
+<!-- Main Content & Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase font-semibold">Velox Athletics</span>
+<span class="text-outline text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-secondary">TikTok Campaign</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-error-container text-on-error-container">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                      Revision Requested
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface tracking-tight mb-space-xs">
+                    Summer Velocity Training Drop
+                  </h3>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md text-on-surface-variant font-body-sm text-body-sm mb-space-md">
+<span class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">link</span>
+<span class="font-tabular-data text-tabular-data">@alex.creates/v/8920194</span>
+</span>
+<span class="text-outline">•</span>
+<span>Submitted: Oct 24, 2026</span>
+<span class="text-outline">•</span>
+<span class="text-error font-medium">Updated 2h ago</span>
+</div>
+<!-- Reviewer Feedback Box -->
+<div class="bg-surface-container-low rounded-lg p-space-md mb-space-md">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px]">rate_review</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Reviewer Sarah M. (Senior Brand Strategist)</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Today, 2:14 PM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                      "Love the energetic footage and footwork angles! Please trim the 3-second black title screen and dive straight into the running hook. Also verify the tag <span class="font-semibold text-primary">#VeloxSpeed</span> is explicitly placed in the caption before resubmission."
+                    </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Campaign Bounty:</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-tabular-data">$650.00</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-surface-container text-on-surface-variant">Escrow Locked</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                      View Full Thread
+                    </button>
+<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+                      Update Submission
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- ITEM 2: In Review -->
+<article class="submission-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col" data-platform="instagram" data-status="in-review">
+<div class="p-space-lg flex flex-col md:flex-row gap-space-lg">
+<!-- Video Preview Thumbnail -->
+<div class="relative w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-surface-container group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Close-up unboxing aesthetic photography of sleek matte black noise-canceling headphones resting on a minimalist concrete plinth, soft studio lighting, editorial technology magazine styling, muted charcoal shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO8qa1WzHzmwHNBYdTWD9YmN9H50GOfl6DP5MO2PDRAS_O5b0R61keoJlPNu52uYLyNxJ3NT-rqMmu4xDAE7M9fcvsuzQYriF82tV3h2pcj2YiBTOcXjUgs_zyu744ocnEmf1_nlR9fw3Z8wjEXIF37qUpHc4YBu3UkEhM7GmvFjOUwFUkxxQC_4ns5-pG5CLeDysdaq4-ag4-NCbC5OzgWmK4XTv6OHreWMF53IPCrm1-58TdvWuqoA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold tracking-wider uppercase bg-black/60 text-white backdrop-blur-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> 0:58
+                    </span>
+<span class="material-symbols-outlined text-white text-[20px] drop-shadow">play_circle</span>
+</div>
+<div class="flex items-center gap-1.5 text-white/90">
+<span class="material-symbols-outlined text-[16px]">graphic_eq</span>
+<span class="font-label-sm text-[11px] truncate">Spatial Audio Studio Demo</span>
+</div>
+</div>
+</div>
+<!-- Main Content & Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase font-semibold">Lumino Audio</span>
+<span class="text-outline text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-secondary">Instagram Reel</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-primary/10 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                      Under Review
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface tracking-tight mb-space-xs">
+                    Urban Commuter Sound Experience
+                  </h3>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md text-on-surface-variant font-body-sm text-body-sm mb-space-md">
+<span class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">link</span>
+<span class="font-tabular-data text-tabular-data">@alex.creates/reel/39201</span>
+</span>
+<span class="text-outline">•</span>
+<span>Submitted: Yesterday, 4:15 PM</span>
+<span class="text-outline">•</span>
+<span class="text-primary font-medium">ETA: Within 24 hours</span>
+</div>
+<!-- Review Status Note -->
+<div class="bg-surface-container-low rounded-lg p-space-md mb-space-md flex items-start gap-space-md">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">hourglass_top</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Queued with Lumino Brand Review Team</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Asset is undergoing audio clearance and narrative alignment checks. Average turnaround is 18 hours.
+                      </p>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Potential Bounty:</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-tabular-data">$450.00</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                      Preview Media
+                    </button>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">launch</span>
+                      View Submission
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- ITEM 3: Approved & Paid -->
+<article class="submission-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col" data-platform="tiktok" data-status="approved">
+<div class="p-space-lg flex flex-col md:flex-row gap-space-lg">
+<!-- Video Preview Thumbnail -->
+<div class="relative w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-surface-container group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Serene morning natural skin care routine video frame, warm golden sunbeams through soft linen curtains, droplets on botanical dropper bottle, fresh glowing complexion, clean organic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB2KnVaKSNcNk1QfKiO2LNQc1sgyNSMDLsqqiidXmBxU3AJKADYaXBqj2aXmCave2kCih0T2pq8cnkpZTvOBMT4VU67oMn9tYaYrtdfYI_lIPiaRJd9sxfdHFE3MhAJPC-X3OwWxUzt_C7zsGfHIqXznQVOF39Ag0FLSDRBz-67faMMH-PWc1-KxtBCtJo6V22d_5L8haEUvKqUyNivemeNXlF8HTsGfbbEzLfHd1eUUoLSz1wnvByjQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold tracking-wider uppercase bg-black/60 text-white backdrop-blur-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> 0:35
+                    </span>
+<span class="material-symbols-outlined text-white text-[20px] drop-shadow">check_circle</span>
+</div>
+<div class="flex items-center gap-1.5 text-white/90">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-label-sm text-[11px] truncate">100% Brand Compliance</span>
+</div>
+</div>
+</div>
+<!-- Main Content & Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase font-semibold">Solstice Lab</span>
+<span class="text-outline text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-secondary">TikTok Campaign</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                      Approved &amp; Scheduled
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface tracking-tight mb-space-xs">
+                    Morning Dew Botanical Glow Routine
+                  </h3>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md text-on-surface-variant font-body-sm text-body-sm mb-space-md">
+<span class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">link</span>
+<span class="font-tabular-data text-tabular-data">@alex.creates/v/7482910</span>
+</span>
+<span class="text-outline">•</span>
+<span>Submitted: Oct 19, 2026</span>
+<span class="text-outline">•</span>
+<span class="text-emerald-700 font-medium">Approved Oct 20 by Dr. Elena Vance</span>
+</div>
+<!-- Review Note -->
+<div class="bg-surface-container-low rounded-lg p-space-md mb-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed italic">
+                      "Outstanding execution! Loved the natural light and authentic texture demo. Payout released instantly to creator wallet."
+                    </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Settled Payout:</span>
+<span class="font-headline-sm text-headline-sm text-emerald-700 font-tabular-data font-bold">+$350.00</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-emerald-100 text-emerald-800">Paid to Wallet</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+                      Download Proof
+                    </button>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">file_open</span>
+                      View Deliverable
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- ITEM 4: Approved -->
+<article class="submission-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col" data-platform="tiktok" data-status="approved">
+<div class="p-space-lg flex flex-col md:flex-row gap-space-lg">
+<!-- Video Preview Thumbnail -->
+<div class="relative w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-surface-container group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Sensory slow motion close up of rich cold brew coffee pouring over crystal clear ice spheres in a rippled glass tumbler, warm ambient kitchen morning light, artisan coffee shop aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP0mrPx-O7tO5jDoB5ZvGYZ3Nt0MpNUH_eAHctCm1ae8CmwyO8DhwEWeU5VIiWgeny_myyaMJonCBRov_0DnjDEjZ0lHYKjw3URitVSu81aid-NZy74TUWijGNc5G5zL3OTI-pdiWnZqXGzJvLvrEZTSzR3sNnxXnNfUduGw4PaaDD4xfNyeLKoFThvu6dWVg2tpsbLHeg1qpmR-J0fxIh0-J0y-LtsG8hDjpaM3bdq9uvYt168gIZ3g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold tracking-wider uppercase bg-black/60 text-white backdrop-blur-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> 0:28
+                    </span>
+<span class="material-symbols-outlined text-white text-[20px] drop-shadow">check_circle</span>
+</div>
+<div class="flex items-center gap-1.5 text-white/90">
+<span class="material-symbols-outlined text-[16px]">grade</span>
+<span class="font-label-sm text-[11px] truncate">Featured in Brand Showcase</span>
+</div>
+</div>
+</div>
+<!-- Main Content & Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase font-semibold">Bean &amp; Bloom</span>
+<span class="text-outline text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-secondary">TikTok Campaign</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                      Approved
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface tracking-tight mb-space-xs">
+                    Workday Reset Coffee Ritual
+                  </h3>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md text-on-surface-variant font-body-sm text-body-sm mb-space-md">
+<span class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">link</span>
+<span class="font-tabular-data text-tabular-data">@alex.creates/v/6102934</span>
+</span>
+<span class="text-outline">•</span>
+<span>Submitted: Oct 12, 2026</span>
+<span class="text-outline">•</span>
+<span class="text-emerald-700 font-medium">Approved: Oct 13, 2026</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-space-md">
+                    Campaign objective fulfilled: demonstrated morning ritual transition with focus on cold concentrate dilution ratio and glassware presentation.
+                  </p>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Settled Payout:</span>
+<span class="font-headline-sm text-headline-sm text-emerald-700 font-tabular-data font-bold">+$400.00</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-emerald-100 text-emerald-800">Paid</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">file_open</span>
+                      View Deliverable
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- ITEM 5: Approved -->
+<article class="submission-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col" data-platform="youtube" data-status="approved">
+<div class="p-space-lg flex flex-col md:flex-row gap-space-lg">
+<!-- Video Preview Thumbnail -->
+<div class="relative w-full md:w-56 h-48 md:h-auto shrink-0 rounded-lg overflow-hidden bg-surface-container group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="High tech minimalist dusk workspace setup with ambient LED backlighting, walnut wooden desk shelf, curved ultra-wide monitor with code editor, sleek mechanical keyboard and coffee mug" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf4gvsm8Zd3PVOFPRNwbjnbYtYniyS0F1cYmcHypw7LiJPt5LbnOOamTTobDMhGvU3uERrQjIjYe4XMRYiEcbLkZKrNlcxCwVbxGlKG5656-S9_rz4ecF9OHUp3Hfk4UvOVFgHDBIMBevM8M3949BYw6-UidC5Gx_do1ElBjLkJeTxe5k7SgP0tSv6bCjo_GEgDcQHvRTcS3r9kkxh_QRVB0C5IT5-mvM4k3RR9PuGdrKB6Mo4qu7s8A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex flex-col justify-between p-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold tracking-wider uppercase bg-black/60 text-white backdrop-blur-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> 0:45
+                    </span>
+<span class="material-symbols-outlined text-white text-[20px] drop-shadow">check_circle</span>
+</div>
+<div class="flex items-center gap-1.5 text-white/90">
+<span class="material-symbols-outlined text-[16px]">smart_display</span>
+<span class="font-label-sm text-[11px] truncate">YouTube Shorts (9:16 HD)</span>
+</div>
+</div>
+</div>
+<!-- Main Content & Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase font-semibold">Halo Living</span>
+<span class="text-outline text-[12px]">•</span>
+<span class="font-label-sm text-label-sm text-secondary">YouTube Shorts</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                      Approved
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface tracking-tight mb-space-xs">
+                    Evening Ambience Desk Setup
+                  </h3>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md text-on-surface-variant font-body-sm text-body-sm mb-space-md">
+<span class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">link</span>
+<span class="font-tabular-data text-tabular-data">youtube.com/shorts/hL921k</span>
+</span>
+<span class="text-outline">•</span>
+<span>Submitted: Sep 28, 2026</span>
+<span class="text-outline">•</span>
+<span class="text-emerald-700 font-medium">Approved: Sep 29, 2026</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-space-md">
+                    Light bar color matching demo achieved over 45k organic impressions in first 48 hours following brand licensing whitelisting.
+                  </p>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Settled Payout:</span>
+<span class="font-headline-sm text-headline-sm text-emerald-700 font-tabular-data font-bold">+$500.00</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-emerald-100 text-emerald-800">Paid</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">file_open</span>
+                      View Deliverable
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Stream status -->
+<div class="flex items-center justify-between pt-space-md pb-space-xl">
+<span class="font-body-sm text-body-sm text-secondary">
+            Showing <strong class="text-on-surface font-medium">5</strong> of <strong class="text-on-surface font-medium">18</strong> UGC submissions
+          </span>
+<div class="flex items-center gap-space-xs">
+<button class="p-2 rounded-lg bg-surface-container-lowest text-outline hover:text-on-surface hover:bg-surface-container transition-colors disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container font-label-md text-label-md flex items-center justify-center">3</button>
+<button class="p-2 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar / Summary Drawer Widget (4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg sticky top-24">
+<!-- Submission Health Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">analytics</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Submission Health</h2>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">Tier 1 Creator</span>
+</div>
+<!-- SVG Donut Chart + Rate Metric -->
+<div class="flex items-center gap-space-lg p-space-md bg-surface-container-low rounded-xl">
+<div class="relative w-24 h-24 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background Ring -->
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<!-- Stroke Progress (93.3%) -->
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="93.3, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-headline-sm text-headline-sm text-on-surface font-tabular-data leading-none">93%</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Approval Rate</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-tabular-data font-semibold">93.3%</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">
+                14 approvals across last 15 submissions. Top 5% across creator network.
+              </p>
+</div>
+</div>
+<!-- Key Metrics Grid -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col">
+<div class="flex items-center gap-1 text-secondary mb-1">
+<span class="material-symbols-outlined text-[16px]">speed</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Avg Turnaround</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface font-tabular-data font-bold">22 hrs</span>
+<span class="font-label-sm text-label-sm text-emerald-700 mt-1">4h faster than network avg</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col">
+<div class="flex items-center gap-1 text-secondary mb-1">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Lifetime Payouts</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface font-tabular-data font-bold">$11,450</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1">Across 28 campaigns</span>
+</div>
+</div>
+<!-- Micro Breakdown List -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Lifecycle Status Summary</span>
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Approved &amp; Settled
+              </span>
+<span class="font-tabular-data text-tabular-data text-on-surface font-semibold">14 (77.8%)</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> In Brand Review
+              </span>
+<span class="font-tabular-data text-tabular-data text-on-surface font-semibold">2 (11.1%)</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-error"></span> Revision Requested
+              </span>
+<span class="font-tabular-data text-tabular-data text-error font-semibold">1 (5.5%)</span>
+</div>
+<div class="flex items-center justify-between py-1.5">
+<span class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Archived &amp; Complete
+              </span>
+<span class="font-tabular-data text-tabular-data text-secondary font-semibold">1 (5.5%)</span>
+</div>
+</div>
+</div>
+<!-- Creator Support Liaison Callout Card -->
+<div class="bg-gradient-to-br from-primary-fixed to-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Need help with a revision?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                Connect with your assigned creator liaison, Marcus Vance, to review guidelines or request a delivery extension.
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary">Marcus is Online</span>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-on-surface text-surface font-label-md text-label-md hover:bg-black transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+              Chat with Liaison
+            </button>
+</div>
+</div>
+<!-- UGC Deliverables Guidelines Hint -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Delivering revisions within <strong class="text-on-surface">12 hours</strong> grants a +10 Speed Multiplier badge on your profile and prioritizes high-bounty brief recommendations.
+          </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive tab and filter system
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const platformFilters = document.querySelectorAll('.platform-filter');
+    const cards = document.querySelectorAll('.submission-card');
+    const searchInput = document.getElementById('campaign-search');
+
+    let currentStatus = 'all';
+    let currentPlatform = 'all';
+    let searchQuery = '';
+
+    function applyFilters() {
+      cards.forEach(card => {
+        const cardStatus = card.getAttribute('data-status');
+        const cardPlatform = card.getAttribute('data-platform');
+        const cardText = card.innerText.toLowerCase();
+
+        const statusMatch = (currentStatus === 'all') || (cardStatus === currentStatus);
+        const platformMatch = (currentPlatform === 'all') || (cardPlatform === currentPlatform);
+        const searchMatch = !searchQuery || cardText.includes(searchQuery);
+
+        if (statusMatch && platformMatch && searchMatch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Status tab handlers
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-primary-container', 'text-on-primary');
+          t.classList.add('text-on-surface-variant');
+        });
+        tab.classList.add('bg-primary-container', 'text-on-primary');
+        tab.classList.remove('text-on-surface-variant');
+
+        currentStatus = tab.getAttribute('data-filter');
+        applyFilters();
+      });
+    });
+
+    // Platform pill handlers
+    platformFilters.forEach(pill => {
+      pill.addEventListener('click', () => {
+        platformFilters.forEach(p => {
+          p.classList.remove('bg-on-surface', 'text-on-primary');
+          p.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+        });
+        pill.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+        pill.classList.add('bg-on-surface', 'text-on-primary');
+
+        currentPlatform = pill.getAttribute('data-platform');
+        applyFilters();
+      });
+    });
+
+    // Search filter input
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        applyFilters();
+      });
+    }
+  });
+</script></main></div></body></html>

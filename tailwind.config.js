@@ -1,0 +1,120 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          bg: "#F9F7F7",
+          surface: "#DBE2EF",
+          blue: "#3F72AF",
+          navy: "#112D4E",
+        },
+        // Stitch design system tokens mapped to BrandWaves palette
+        background: "#F9F7F7",
+        surface: "#F9F7F7",
+        "surface-bright": "#FFFFFF",
+        "surface-dim": "#D9DAD7",
+        "surface-container-lowest": "#FFFFFF",
+        "surface-container-low": "#F3F4F0",
+        "surface-container": "#DBE2EF",
+        "surface-container-high": "#C8D4E5",
+        "surface-container-highest": "#B6C6DB",
+        primary: "#3F72AF",
+        "primary-container": "#3F72AF",
+        "primary-fixed": "#DBE2EF",
+        "primary-fixed-dim": "#B6C6DB",
+        "on-primary": "#FFFFFF",
+        "on-primary-container": "#FFFFFF",
+        "on-surface": "#112D4E",
+        "on-surface-variant": "#4A5568",
+        "on-background": "#112D4E",
+        secondary: "#5D6874",
+        "secondary-container": "#DBE2EF",
+        "secondary-fixed": "#E2E8F0",
+        "secondary-fixed-dim": "#CBD5E1",
+        outline: "#777587",
+        "outline-variant": "#C7C4D8",
+        error: "#BA1A1A",
+        "error-container": "#FFDAD6",
+        "on-error": "#FFFFFF",
+        "on-error-container": "#93000A",
+        success: "#059669",
+        "success-container": "#ECFDF5",
+        // Editorial design tokens per BrandWaves visual specification
+        editorial: {
+          porcelain: "#F8FAFC",
+          mist: "#EAF2F7",
+          ocean: "#397AA8",
+          deep: "#163B53",
+          graphite: "#26323A",
+          secondary: "#64748B",
+          border: "#DCE5EB",
+          white: "#FFFFFF",
+        },
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+        display: ["Cabinet Grotesk", "Inter", "system-ui", "sans-serif"],
+      },
+      borderRadius: {
+        DEFAULT: "0.25rem",
+        md: "0.375rem",
+        lg: "0.5rem",
+        xl: "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+      },
+      boxShadow: {
+        subtle: "0 1px 3px rgba(22, 59, 83, 0.05), 0 1px 2px rgba(22, 59, 83, 0.03)",
+        card: "0 4px 6px -1px rgba(22, 59, 83, 0.06), 0 2px 4px -2px rgba(22, 59, 83, 0.04)",
+        editorial: "0 10px 30px -5px rgba(22, 59, 83, 0.08), 0 4px 12px -2px rgba(22, 59, 83, 0.03)",
+        floating: "0 20px 40px -10px rgba(22, 59, 83, 0.12), 0 8px 16px -4px rgba(22, 59, 83, 0.05)",
+      },
+      keyframes: {
+        cloudDrift1: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        cloudDrift2: {
+          "0%": { transform: "translateX(-15%)" },
+          "100%": { transform: "translateX(-65%)" },
+        },
+        cloudDrift3: {
+          "0%": { transform: "translateX(-30%)" },
+          "100%": { transform: "translateX(-80%)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(4px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideHorizontal: {
+          "0%": { opacity: "0", transform: "translateX(-16px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        slideVertical: {
+          "0%": { opacity: "0", transform: "translateY(-12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        revealScale: {
+          "0%": { opacity: "0", transform: "scale(0.97)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+      },
+      animation: {
+        "cloud-slow": "cloudDrift1 120s linear infinite",
+        "cloud-medium": "cloudDrift2 85s linear infinite",
+        "cloud-fast": "cloudDrift3 55s linear infinite",
+        "fade-in": "fadeIn 0.3s ease-out forwards",
+        "slide-horizontal": "slideHorizontal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "slide-vertical": "slideVertical 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "reveal-scale": "revealScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+      },
+    },
+  },
+  plugins: [],
+}

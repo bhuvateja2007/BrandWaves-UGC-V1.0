@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-low": "#f3f4f0",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-highest": "#e1e3df",
+          "surface": "#f8faf6",
+          "surface-bright": "#f8faf6",
+          "surface-container-high": "#e7e9e5",
+          "on-secondary-fixed-variant": "#454747",
+          "tertiary-fixed": "#ffdbcc",
+          "on-tertiary-fixed": "#351000",
+          "primary-container": "#5146e5",
+          "on-secondary-fixed": "#1a1c1c",
+          "error": "#ba1a1a",
+          "on-primary-fixed-variant": "#3522cb",
+          "secondary": "#5d5f5f",
+          "on-tertiary": "#ffffff",
+          "secondary-fixed": "#e2e2e2",
+          "surface-container": "#edeeeb",
+          "inverse-surface": "#2e312f",
+          "outline-variant": "#c7c4d8",
+          "on-surface": "#191c1a",
+          "secondary-container": "#dfe0e0",
+          "error-container": "#ffdad6",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#ffb695",
+          "on-tertiary-container": "#ffd2c0",
+          "on-primary": "#ffffff",
+          "on-primary-fixed": "#100069",
+          "on-primary-container": "#dbd8ff",
+          "primary": "#3725cd",
+          "secondary-fixed-dim": "#c6c6c7",
+          "outline": "#777587",
+          "inverse-on-surface": "#f0f1ee",
+          "on-background": "#191c1a",
+          "primary-fixed": "#e3dfff",
+          "on-secondary": "#ffffff",
+          "surface-dim": "#d9dad7",
+          "surface-tint": "#4f43e3",
+          "tertiary-container": "#a54100",
+          "on-tertiary-fixed-variant": "#7b2f00",
+          "tertiary": "#7e3000",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#616363",
+          "primary-fixed-dim": "#c3c0ff",
+          "inverse-primary": "#c3c0ff",
+          "on-surface-variant": "#464555",
+          "background": "#f8faf6",
+          "surface-variant": "#e1e3df"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "space-xl": "2rem",
+          "gutter": "1rem",
+          "margin": "1rem",
+          "space-md": "0.75rem",
+          "gutter-desktop": "1.5rem",
+          "space-sm": "0.5rem",
+          "space-lg": "1.25rem",
+          "margin-desktop": "2.5rem"
+        },
+        "fontFamily": {
+          "label-md": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "headline-sm": [
+            "Inter"
+          ],
+          "tabular-data": [
+            "Inter"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "headline-md": [
+            "Inter"
+          ],
+          "headline-lg": [
+            "Inter"
+          ],
+          "display-lg-mobile": [
+            "Inter"
+          ],
+          "label-sm": [
+            "Inter"
+          ],
+          "display-lg": [
+            "Inter"
+          ]
+        },
+        "fontSize": {
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "tabular-data": [
+            "13px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "28px",
+            {
+              "lineHeight": "34px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "30px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-7xl mx-auto px-margin lg:px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-xl"><a class="flex items-center gap-space-sm group focus:outline-none" data-path="explore" href="#"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary transition-transform group-hover:scale-95"><span class="material-symbols-outlined text-[20px]">waves</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface">BrandWaves</span></div></a><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-label-md text-label-md"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="explore" href="#">Explore</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="campaigns" href="#">Campaigns</a><a aria-current="page" class="transition-colors py-space-xs text-primary font-label-md text-label-md" data-path="community" href="#">Community</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" data-path="how-it-works" href="#">How it works</a></nav></div><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-md py-space-sm rounded-lg transition-colors" data-path="sign-in" href="#">Sign in</a><a class="inline-flex items-center justify-center font-label-md text-label-md bg-primary-container text-on-primary px-space-lg py-space-sm rounded-lg shadow-sm hover:bg-primary transition-all active:translate-y-[0.5px]" data-path="join-brandwaves" href="#">Join BrandWaves</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- Dynamic Background Tone Accent -->
+<div class="relative w-full overflow-hidden pb-space-xl">
+<div class="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none -translate-y-1/2"></div>
+<div class="absolute top-24 left-10 w-80 h-80 rounded-full bg-tertiary-fixed/20 blur-3xl pointer-events-none"></div>
+<!-- Editorial Header Block -->
+<section class="max-w-7xl mx-auto px-margin lg:px-margin-desktop pt-space-xl pb-space-lg w-full relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm tracking-wider uppercase">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+              Enterprise Certified Feed
+            </span>
+<span class="text-outline-variant font-label-sm text-label-sm">•</span>
+<span class="font-tabular-data text-tabular-data text-on-surface-variant">Q2 Public Ledger</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Community Content Feed</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs leading-relaxed">
+            Explore real, approved user-generated content created by the BrandWaves community. Filter by category, campaign, or platform.
+          </p>
+</div>
+<!-- Privacy & Ledger Integrity Callout -->
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-full shadow-sm max-w-md">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-snug">
+            Only approved, authorized public submissions are showcased. Private reviews remain confidential.
+          </p>
+</div>
+</div>
+<!-- Live Pipeline Telemetry Ribbon -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-space-xl p-space-md rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Audited Deliverables</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tabular-nums">4,281</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">100% Rights-Cleared</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Campaigns</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tabular-nums">142</span>
+<span class="font-label-sm text-label-sm text-secondary">Across 18 Niches</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Platform Integrity</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tabular-nums">Zero</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Vanity Metrics Policy</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Average Review Turnaround</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tabular-nums">14.2h</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Live Escrow Sync</span>
+</div>
+</div>
+</div>
+<!-- Filter, Search, and Curation Bar -->
+<div class="flex flex-col gap-space-md p-space-md rounded-xl bg-surface-container shadow-sm">
+<!-- Category Pill Tabs -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 scrollbar-none" id="category-filter-bar">
+<button class="category-btn active px-space-md py-space-xs rounded-full font-label-md text-label-md bg-primary-container text-on-primary shadow-sm whitespace-nowrap transition-all" data-category="all" type="button">
+            All Showcases
+          </button>
+<button class="category-btn px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" data-category="audio" type="button">
+            Audio &amp; Gear
+          </button>
+<button class="category-btn px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" data-category="skincare" type="button">
+            Skincare &amp; Rituals
+          </button>
+<button class="category-btn px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" data-category="fitness" type="button">
+            Fitness &amp; Movement
+          </button>
+<button class="category-btn px-space-md py-space-xs rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container-high whitespace-nowrap transition-all" data-category="spaces" type="button">
+            Coffee &amp; Spaces
+          </button>
+</div>
+<!-- Search & Sorter Controls -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" id="ugc-search-input" placeholder="Search community posts, creators, or brand campaigns..." type="text"/>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-2 rounded-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Sort by:</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="sort-select">
+<option value="latest">Latest Approved</option>
+<option value="staff">Curated Staff Picks</option>
+</select>
+</div>
+<div class="hidden sm:flex items-center bg-surface-container-lowest p-1 rounded-lg shadow-sm">
+<button class="p-1 rounded text-primary bg-surface-container-high" id="grid-view-btn" title="Masonry Grid View" type="button">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1 rounded text-outline hover:text-on-surface" id="list-view-btn" title="High-Density View" type="button">
+<span class="material-symbols-outlined text-[20px]">view_agenda</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial UGC Grid Section -->
+<section class="max-w-7xl mx-auto px-margin lg:px-margin-desktop w-full">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop items-start" id="ugc-card-container">
+<!-- Card 1: Alex Rivera / Lumino Audio -->
+<article class="ugc-item flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group" data-category="audio" data-creator="Alex Rivera @alexcreates Lumino Audio" data-title="Subway transit ANC test">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Candid vertical frame of a young man wearing sleek Lumino matte-graphite over-ear noise-canceling headphones inside a cinematic Tokyo subway train, moody warm backlighting contrasting cool interior shadows, crisp natural skin texture, handheld camera authenticity, subtle motion blur out the carriage window, high-end editorial UGC look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQzeIRGXF4bZXGew0h52GXSvr_DCS5GxuU0TiPBhghRW_agQSNRkfNKBdhGwL17XaqgesO4VlgTpEeiQDu09CbBQiqFWP0xx7yjw4dXWTHF2rZJ81bGje1hrXvWNf6b9rgbtqqNV5M1D8avtgBO_45kVSEM56tZy39CptaIE2qQ2W6dO_4FVTrR1L4Wg6nzLLtSo9jMYR1xDQ4Xk8xXfNk4P9gfAwUBNDHOVYXVjz1R4Z7A8IIRkO1-A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/20 pointer-events-none"></div>
+<!-- Platform & Format Overlays -->
+<div class="absolute top-space-md left-space-md flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-md text-surface-container-lowest font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="material-symbols-outlined text-[14px]">music_note</span>
+                TikTok
+              </span>
+<span class="px-2 py-1 rounded-full bg-inverse-surface/60 backdrop-blur-md text-surface-container-lowest font-tabular-data text-tabular-data">
+                0:42
+              </span>
+</div>
+<div class="absolute top-space-md right-space-md">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+                Approved
+              </span>
+</div>
+<!-- Media Play Indicator & Content Overlay Title -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[30px] ml-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold block mb-0.5">Campaign Deliverable</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest leading-snug drop-shadow-sm">Subway transit ANC test</h3>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div>
+<!-- Creator Row -->
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Editorial profile portrait of Alex Rivera, creative technologist, warm studio side-lighting, neutral backdrop, candid authentic gaze." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_InUKbfeXY36yPBHyRN0OckY50QwZaUHBaxQ490ukshZJvnTy3v-armPnDXNV3l8W2Wrd4puCiIG8fsDMnTxOPN39RRB0HMPRc3A6hmDIJtnsZg6v0AAUU3kU5jOngBlA0Zk9PQ-qAFsouzAHfYJqYm80c-JYcL_ImiqpA26KsYP6IbK5OCVAR0ZmCzUgUXN-vHa9bYVxQZ-LNTD0Rf6YCKKZL4bFh8KRzkBaT2jdj_vLBn-GA9WIGw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Alex Rivera</span>
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">@alexcreates</span>
+</div>
+</div>
+<!-- Associated Campaign & Brand Ribbon -->
+<div class="flex items-center gap-2 p-space-xs px-space-sm rounded-lg bg-surface-container-low mb-space-sm">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">campaign</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">
+                  Brand: <strong class="text-on-surface font-semibold">Lumino Audio</strong> • Commuter Series V2
+                </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 mb-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#LuminoAudio</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#CommuteVibes</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline">#Ad</span>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="pt-space-sm flex items-center justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Authorized Public Embed
+              </span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:text-primary-container transition-colors group/link" href="#">
+                View Original Post
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 2: Maya Chen / Solstice Lab -->
+<article class="ugc-item flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group" data-category="skincare" data-creator="Maya Chen @glownotes.maya Solstice Lab" data-title="Morning routine with Hyaluronic Dew Serum">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Sunlit minimalist Scandinavian bathroom counter with lush botanical Monstera leaf casting soft geometric shadows, Maya gently applying glass dropper with Solstice Lab Hyaluronic Dew Serum on cheekbone, dewy fresh skin texture, macro water droplet reflections, calm morning atmosphere, warm ivory and soft sage tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH7fAS3AAuj_06p9Sut-bQ1AyJRhF-FnCC9D-0r1-SHf7xHhjkwBwoGOYoP67i52JMAMnjN5QoRKDl_YRWTcpo2fEwc7_nqB5-304sMPxJiOBpKmq1vKIsRFthnS1_Ag57BFJGbzNUZtT_kUqUnBV_goab5NaNmzJVDmKxUt_y3kPOSGUtWznsRpDh5TrhAbQQMm9o5zdtC3eVPU2tX0NeJYBTmwFMsf4l8s5YGjIyIpFoc1fZLi7cNQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/20 pointer-events-none"></div>
+<div class="absolute top-space-md left-space-md flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-md text-surface-container-lowest font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span>
+                IG Reels
+              </span>
+<span class="px-2 py-1 rounded-full bg-inverse-surface/60 backdrop-blur-md text-surface-container-lowest font-tabular-data text-tabular-data">
+                0:28
+              </span>
+</div>
+<div class="absolute top-space-md right-space-md">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+                Approved
+              </span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[30px] ml-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold block mb-0.5">Skincare Showcase</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest leading-snug drop-shadow-sm">Morning routine with Hyaluronic Dew Serum</h3>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Natural daylight portrait of Maya Chen with soft smile, glowing clean skin, muted cream sweater, editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCbVqREC4xSwqSuk2IuJZmAIPEBAo3hQBTIq3dV0lBqPN2s1WVU-jNoMGlOvgUtV0HUX1njvNtU7_SnmP94q32_FGD4BUQMU3_yhhMvaHKbGgEoMnuXqteNkrE-C7RGVPQrgmH8QKSg2-api9E9lnXuKXMalX8-HlwUFShT0lzJjVKXhWIJ1xjjYfzJphVmGB3XDwDPT1TKDngDXbn8yJT3fZZjVAg636S3rZ5hDQcstwuEQ9GfKaquA"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Maya Chen</span>
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">@glownotes.maya</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs px-space-sm rounded-lg bg-surface-container-low mb-space-sm">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">spa</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">
+                  Brand: <strong class="text-on-surface font-semibold">Solstice Lab</strong> • Dew Drop Formula
+                </span>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#SolsticeSkin</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#GlassSkinRitual</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline">#Sponsored</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Verified Escrow Release
+              </span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:text-primary-container transition-colors group/link" href="#">
+                View Original Post
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 3: Marcus Vance / Velox Athletics -->
+<article class="ugc-item flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group" data-category="fitness" data-creator="Marcus Vance @marcus_vibe Velox Athletics" data-title="Sprint training in charcoal seamless set">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Dynamic golden hour athletic track shot, male runner Marcus Vance paused in sprinting stance wearing charcoal gray seamless compression kit by Velox Athletics, dramatic rim-light against twilight purple and amber sky, sharp focus on fabric texture and athletic muscle tone, authentic documentary sports photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXCezNxwNKDkozNBvyJ5sLqVFhT-lTHCP2FwrI24d0HohTQqYaC-_cuzUGrRKXjFBzOgCr81oaIqvEdnbg-EUwlYHjJv8EFBEYLaWi2NLDL82pFOUCh8159VfQp1ar6y5gdH6jJ_S2SygP6L-BiCjsuluMiHWQPxFUw6AIWnHaRXhCRZj4vWKH_iGoJcQoQ9TLe_CfZDw9SofM1mupnGk2WTRLythJXO-q9JzrHUmT7f5dpehDxpSMHQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/20 pointer-events-none"></div>
+<div class="absolute top-space-md left-space-md flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-md text-surface-container-lowest font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="material-symbols-outlined text-[14px]">music_note</span>
+                TikTok
+              </span>
+<span class="px-2 py-1 rounded-full bg-inverse-surface/60 backdrop-blur-md text-surface-container-lowest font-tabular-data text-tabular-data">
+                0:35
+              </span>
+</div>
+<div class="absolute top-space-md right-space-md">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+                Approved
+              </span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[30px] ml-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold block mb-0.5">High Performance</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest leading-snug drop-shadow-sm">Sprint training in charcoal seamless set</h3>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Athletic headshot of Marcus Vance in dusk natural light, smiling, clean athletic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5b0Td1Dbc7ls9KJDBIS7ZO2Lj8nUJCuvcGuECKrc8eol6JKXs6gJE7pJYCK7gj_Cbiki5R4cBU8aw6IEOFhXflP8zoB73IMns9thd4ctlclap6FI1WpgywUZD_Z7MkeV8rMRwtH5IKj6_1PrYdDsDU63B-B0XfR7_wRcWz4sI5EXJmRTB2THEI2npn_rjg3zd0uqSVRFObxAQCsL8LoB9xTMtmnhF7wNmYoWuw3MLIhLYBf79gV6Meg"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Marcus Vance</span>
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">@marcus_vibe</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs px-space-sm rounded-lg bg-surface-container-low mb-space-sm">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">fitness_center</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">
+                  Brand: <strong class="text-on-surface font-semibold">Velox Athletics</strong> • Seamless Pro Launch
+                </span>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#VeloxSprint</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#TrackSeason</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline">#Partner</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Brand Compliance Cleared
+              </span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:text-primary-container transition-colors group/link" href="#">
+                View Original Post
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 4: Emma Lindqvist / Bean & Bloom -->
+<article class="ugc-item flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group" data-category="spaces" data-creator="Emma Lindqvist @emma.coffeelover Bean &amp; Bloom" data-title="Pouring nitro cold brew over clear ice">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Editorial warm coffee shot, crystal clear fluted glassware with giant spherical ice cube on a rich walnut desk, smooth creamy cascara crema pouring over ice, micro-bubbles floating, warm natural morning window light, tactile ceramic mug and linen napkin in subtle background blur, slow luxury living tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz1V2B9p3TVazgIa-3ebGYwxWJ4y0ZPAj7IPgizPSk6bOLFg2roHkvfk_zXf0gF3xymvXdsTes801pnzGGwrciAxb0DVSVaxOaRhDIEqOthPzYy0RKL0uLMAnz5qreBUnfwZE9OBa3Cb--Hv3_tIPlmpsrr8lYev5NBpUTugOQGIxOc0BpnBOQfdJ7BCUw0FposcwqAuOtXdX6wFZPaUpRYmH1nuHHPpqxCIOHc2f6_CKIupVHCKX40g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/20 pointer-events-none"></div>
+<div class="absolute top-space-md left-space-md flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-md text-surface-container-lowest font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span>
+                IG Reels
+              </span>
+<span class="px-2 py-1 rounded-full bg-inverse-surface/60 backdrop-blur-md text-surface-container-lowest font-tabular-data text-tabular-data">
+                0:19
+              </span>
+</div>
+<div class="absolute top-space-md right-space-md">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+                Approved
+              </span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[30px] ml-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold block mb-0.5">Artisanal Beverage</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest leading-snug drop-shadow-sm">Pouring nitro cold brew over clear ice</h3>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Editorial portrait of Emma Lindqvist in knit beige cardigan holding a ceramic coffee cup, bright cafe background with warm timber wood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIT5OUwXvVCVrhShSOF2Ob3aJynbBFP5VhkX5r5AKNarUyGFGs1h0CfM6SDlQYfbU8lAQu1Aq3YKgrS0UIgozjJaJR5-p2k4RpWnLe2jN540pnRrNmTXsSsEFft9c8YY6CSLYZjeTp7CwdLn04qSVBeiAhmVYnva_r4W5PksgZ_6bmhwKttWvzNv8t5_TW2IvYDqEcbAB0hxJVtqApBUlEYfBxbnyn_2iMhe_3vCh9XHQYKxet7lKlAQ"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Emma Lindqvist</span>
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">@emma.coffeelover</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs px-space-sm rounded-lg bg-surface-container-low mb-space-sm">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">local_cafe</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">
+                  Brand: <strong class="text-on-surface font-semibold">Bean &amp; Bloom</strong> • Craft Brew Series
+                </span>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#BeanAndBloom</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#CoffeeRoutine</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline">#UGCAuthorized</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Authorized Public Embed
+              </span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:text-primary-container transition-colors group/link" href="#">
+                View Original Post
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 5: David Kim / Halo Living -->
+<article class="ugc-item flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group" data-category="spaces" data-creator="David Kim @dkim_spaces Halo Living" data-title="Ambient desk lamp sunset transformation">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Interior architectural desk setup, minimal concrete wall with curated wall art, custom curved matte-black Halo Living desk lamp turning on with a gradient warm sunset glow illuminating an ultra-clean mechanical keyboard and notebooks, moody cinematic lighting transition, editorial Japanese minimalist aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzo2RectudhBzAWbP0gsMhZmN6IDld_4_hIcJkEUk0x4R360NreDMLVfjAtT6izAdsRxuUQmchEVw-XqU7NoPAKf8Ghw9eK-GliVqUqrbVHHRIIR4W9VbmPM94uT_KaTA0SMpT3D8CfVDcVJCkAn3XlG3_T76-Zm9-Xq2HErzphZ5b4pwbJpFVru6bkCXYQj9sCTKcq7uC827ydIo8TCUp2Z8EHa9OL5_c9B0nh49lKY3wObAvpCMF4A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/20 pointer-events-none"></div>
+<div class="absolute top-space-md left-space-md flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-md text-surface-container-lowest font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="material-symbols-outlined text-[14px]">music_note</span>
+                TikTok
+              </span>
+<span class="px-2 py-1 rounded-full bg-inverse-surface/60 backdrop-blur-md text-surface-container-lowest font-tabular-data text-tabular-data">
+                0:54
+              </span>
+</div>
+<div class="absolute top-space-md right-space-md">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+                Approved
+              </span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[30px] ml-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold block mb-0.5">Interior Design</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest leading-snug drop-shadow-sm">Ambient desk lamp sunset transformation</h3>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Monochrome studio portrait of David Kim with designer glasses and dark turtleneck sweater, clean architectural styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeViWege3qM3ZAMw55O_6PYkHmJ3oKp4TcR83kSZV2evf8gbAWja8Tznp5rhAZNbYEcqcvzuBenqHJKJpuvUwjr-QkDtyN47P-sOOjU4U-HNCSe9XWz58h0uLBCCpBDhGoXoHfetZc1Rl86_CdBZguTXB4Vj2ADFsZvnd0e9tE5-PS-TqxLsGEmVE2RbMkphTroOw4vnNFaVGSL0qVy5bBXdObm_olV6tLcinyq5YHTr8v2uhbuQHX5Q"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">David Kim</span>
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">@dkim_spaces</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs px-space-sm rounded-lg bg-surface-container-low mb-space-sm">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">lightbulb</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">
+                  Brand: <strong class="text-on-surface font-semibold">Halo Living</strong> • Sunset Lamp Edition
+                </span>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#HaloLiving</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#DeskSetup</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline">#CreatorAd</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Brand Compliance Cleared
+              </span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:text-primary-container transition-colors group/link" href="#">
+                View Original Post
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 6: Sophia Ray / PurePulse Nutrition -->
+<article class="ugc-item flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group" data-category="fitness" data-creator="Sophia Ray @sophiar_wellness PurePulse Nutrition" data-title="Post-workout bag essentials">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Overhead flatlay photography on sleek polished gym locker bench, open luxury taupe canvas duffle bag revealing PurePulse electrolyte shaker, protein snacks, neatly rolled sports towel, and wireless earbuds, soft studio diffusion, modern wellness palette of terracotta, warm sand, and brushed silver." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtmLVrQsxy1k0nRx7RahBYikpEyqhOLuTQ7RzIZJsIg-VA5IUv9eKYPaJFhCGn_wtlv_5pGbSX_9sdcbe-cAdd4Fqb7XaaXKOB4AUkL_-1k-yWUGrle3PlhoN5LIkG0GRSJEKtIQXccjk6qYrhUvF7zXKXzppHKNU4q-CerPER9mXXWRytb4TQwin6fjKbt5YBIsFDUnHCX7-_nOwjGwC4abn1ZjHOdGx-qDR2_vcZ11YqFpgSssphDA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-black/20 pointer-events-none"></div>
+<div class="absolute top-space-md left-space-md flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-inverse-surface/85 backdrop-blur-md text-surface-container-lowest font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span>
+                IG Reels
+              </span>
+<span class="px-2 py-1 rounded-full bg-inverse-surface/60 backdrop-blur-md text-surface-container-lowest font-tabular-data text-tabular-data">
+                0:31
+              </span>
+</div>
+<div class="absolute top-space-md right-space-md">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+                Approved
+              </span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[30px] ml-1">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-surface-container-lowest">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold block mb-0.5">Wellness Essentials</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest leading-snug drop-shadow-sm">Post-workout bag essentials</h3>
+</div>
+</div>
+<div class="p-space-lg flex flex-col flex-1 justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Warm outdoor daylight portrait of Sophia Ray smiling in athletic apparel, sunny park backdrop, healthy vibrant lifestyle aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ0wjayX0bF3MDCvSY613i8j0nLBWiPOpEjM5u3LE8q6qYlK4Mju_8AHEmndX2L0HhfBg-lCzHsXH-s1CgTZFaxsox7dGcqHoa07hhNQckrFHzK2CoDNibjKYLM7Yylt87eb7If4T-es9jj0vtWlyY6Fxt9rjUsIAzqv8l_ZshE5Q6UBVy1Ir-d7WiEj9eo-DxM3sMP4mqQ6kMYmbA5jiOKi_8UeDjp-f4RSuOH8B1cTAJnAodC_iUkA"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Sophia Ray</span>
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">@sophiar_wellness</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs px-space-sm rounded-lg bg-surface-container-low mb-space-sm">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">local_fire_department</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">
+                  Brand: <strong class="text-on-surface font-semibold">PurePulse Nutrition</strong> • Hydration Daily
+                </span>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#PurePulse</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">#GymBagEssentials</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-outline">#Partner</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Verified Escrow Release
+              </span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:text-primary-container transition-colors group/link" href="#">
+                View Original Post
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">arrow_outward</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<!-- No Search Results Found State -->
+<div class="hidden flex-col items-center justify-center p-space-xl bg-surface-container-lowest rounded-xl shadow-sm text-center my-space-lg" id="empty-state">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-outline mb-space-md">
+<span class="material-symbols-outlined text-[32px]">manage_search</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">No verified showcases match your filter</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-md">
+          Try adjusting your search criteria or reset filters to display the latest approved creator submissions.
+        </p>
+<button class="px-space-lg py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md" id="reset-filters-btn" type="button">
+          Reset Filter Selections
+        </button>
+</div>
+</section>
+<!-- Institutional UGC Quality Statement Banner -->
+<section class="max-w-7xl mx-auto px-margin lg:px-margin-desktop mt-space-xl w-full">
+<div class="p-space-lg md:p-space-xl rounded-xl bg-surface-container-low shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-start gap-space-md max-w-2xl">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[26px]">gavel</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Verification Protocol v3.8</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-1">Direct Brand-To-Creator Public Escrow</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Every deliverable shown on this ledger has been legally cleared by brand management and cryptographically authorized by the content author. We do not generate synthetic vanity metrics, bot engagements, or scraped unattributed assets.
+            </p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-sm shrink-0 w-full md:w-auto">
+<a class="px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md text-center hover:bg-surface-container-high transition-colors shadow-sm" href="#">
+            Read Creator Charter
+          </a>
+<a class="px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md text-center hover:bg-primary transition-colors shadow-sm" href="#">
+            Submit Deliverable
+          </a>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  (function initCommunityFeed() {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const searchInput = document.getElementById('ugc-search-input');
+    const sortSelect = document.getElementById('sort-select');
+    const cards = Array.from(document.querySelectorAll('.ugc-item'));
+    const emptyState = document.getElementById('empty-state');
+    const cardContainer = document.getElementById('ugc-card-container');
+    const resetFiltersBtn = document.getElementById('reset-filters-btn');
+    const gridViewBtn = document.getElementById('grid-view-btn');
+    const listViewBtn = document.getElementById('list-view-btn');
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const category = card.dataset.category;
+        const textToMatch = `${card.dataset.title} ${card.dataset.creator} ${card.textContent}`.toLowerCase();
+        
+        const matchesCategory = (currentCategory === 'all') || (category === currentCategory);
+        const matchesSearch = !searchQuery || textToMatch.includes(searchQuery.toLowerCase());
+
+        if (matchesCategory && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+    }
+
+    // Category Buttons
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryButtons.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          b.classList.add('bg-surface-container-lowest', 'text-on-surface');
+        });
+
+        btn.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+        btn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+
+        currentCategory = btn.dataset.category;
+        applyFilters();
+      });
+    });
+
+    // Realtime Search
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      applyFilters();
+    });
+
+    // Sort Re-ordering
+    sortSelect.addEventListener('change', () => {
+      if (sortSelect.value === 'staff') {
+        // Reverse nodes for curated demo effect
+        const fragment = document.createDocumentFragment();
+        [...cards].reverse().forEach(c => fragment.appendChild(c));
+        cardContainer.appendChild(fragment);
+      } else {
+        const fragment = document.createDocumentFragment();
+        cards.forEach(c => fragment.appendChild(c));
+        cardContainer.appendChild(fragment);
+      }
+    });
+
+    // Reset Filter Button
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        const allBtn = document.querySelector('.category-btn[data-category="all"]');
+        if (allBtn) allBtn.click();
+      });
+    }
+
+    // Density / Layout Toggle
+    if (gridViewBtn && listViewBtn) {
+      gridViewBtn.addEventListener('click', () => {
+        cardContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop items-start';
+        gridViewBtn.classList.add('text-primary', 'bg-surface-container-high');
+        gridViewBtn.classList.remove('text-outline');
+        listViewBtn.classList.remove('text-primary', 'bg-surface-container-high');
+        listViewBtn.classList.add('text-outline');
+      });
+
+      listViewBtn.addEventListener('click', () => {
+        cardContainer.className = 'grid grid-cols-1 md:grid-cols-2 gap-gutter-desktop items-start';
+        listViewBtn.classList.add('text-primary', 'bg-surface-container-high');
+        listViewBtn.classList.remove('text-outline');
+        gridViewBtn.classList.remove('text-primary', 'bg-surface-container-high');
+        gridViewBtn.classList.add('text-outline');
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-space-xl"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-gutter-desktop mb-space-xl"><div class="lg:col-span-4 flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[16px]">waves</span></div><span class="font-headline-sm text-headline-sm text-on-surface">BrandWaves</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm mt-space-xs">The verified orchestration network for premier user-generated content, authentic creator narratives, and brand velocity.</p></div><div class="lg:col-span-2 md:col-span-1 flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Platform</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-body-sm text-body-sm"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="explore" href="#">Discover</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="campaigns" href="#">Campaigns</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="creators-directory" href="#">Creators</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works</a></nav></div><div class="lg:col-span-3 md:col-span-1 flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Standards &amp; Safety</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-body-sm text-body-sm"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="guidelines" href="#">Guidelines</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="community-code-of-conduct" href="#">Community Code of Conduct</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="brand-trust-safety" href="#">Brand Trust &amp; Safety</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="faq" href="#">FAQ</a></nav></div><div class="lg:col-span-3 md:col-span-2 flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Integrity &amp; Legal</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-body-sm text-body-sm"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy</a></nav><div class="mt-space-md p-space-md rounded-lg bg-surface-container flex items-start gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">verified_user</span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">Enterprise Proof &amp; Escrow</span><span class="font-body-sm text-body-sm text-on-surface-variant">Guaranteed verification for creators and partners.</span></div></div></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 BrandWaves Inc. Built for authentic creative collaboration.</span><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Legal Notice</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="brand-trust-safety" href="#">Security Operations</a></div></div></div></footer></body></html>

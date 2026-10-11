@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BrandWave — Brand Overview Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb695",
+            "surface": "#f8faf6",
+            "secondary-container": "#dfe0e0",
+            "outline-variant": "#c7c4d8",
+            "surface-container-high": "#e7e9e5",
+            "on-secondary-fixed": "#1a1c1c",
+            "secondary": "#5d5f5f",
+            "primary-fixed": "#e3dfff",
+            "tertiary-container": "#a54100",
+            "secondary-fixed": "#e2e2e2",
+            "error-container": "#ffdad6",
+            "surface-bright": "#f8faf6",
+            "on-secondary-container": "#616363",
+            "primary-container": "#5146e5",
+            "on-tertiary-fixed-variant": "#7b2f00",
+            "inverse-surface": "#2e312f",
+            "on-surface": "#191c1a",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#ffd2c0",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-background": "#191c1a",
+            "on-error-container": "#93000a",
+            "tertiary": "#7e3000",
+            "primary": "#3725cd",
+            "on-tertiary-fixed": "#351000",
+            "surface-container-highest": "#e1e3df",
+            "surface-dim": "#d9dad7",
+            "on-primary-container": "#dbd8ff",
+            "on-secondary": "#ffffff",
+            "surface-container": "#edeeeb",
+            "background": "#f8faf6",
+            "surface-tint": "#4f43e3",
+            "on-primary-fixed-variant": "#3522cb",
+            "on-surface-variant": "#464555",
+            "inverse-on-surface": "#f0f1ee",
+            "surface-container-low": "#f3f4f0",
+            "outline": "#777587",
+            "inverse-primary": "#c3c0ff",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#c6c6c7",
+            "surface-variant": "#e1e3df",
+            "on-primary-fixed": "#100069",
+            "tertiary-fixed": "#ffdbcc",
+            "on-secondary-fixed-variant": "#454747"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.25rem",
+            "space-md": "0.75rem",
+            "gutter-desktop": "1.5rem",
+            "margin-desktop": "2.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "display-lg-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "tabular-data": ["Inter"]
+          },
+          "fontSize": {
+            "display-lg-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "tabular-data": ["13px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Heatmap cell transition & tooltip helpers */
+    .heat-cell {
+      transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease;
+    }
+    .heat-cell:hover {
+      transform: scale(1.35);
+      z-index: 20;
+      box-shadow: 0 2px 6px rgba(49, 37, 205, 0.25);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body-md min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-[#f9f8fb] group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<!-- Top Action / Nav Bar (Included Brand Overview Header) -->
+<div class="flex items-center bg-[#f9f8fb] p-4 pb-2 justify-between border-b border-[#e9e8f3]">
+<div class="text-[#0f0e1b] flex size-12 shrink-0 items-center" data-icon="List" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+</svg>
+</div>
+<div class="flex flex-col flex-1 pl-2">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-outline">BrandWave OS</span>
+<h2 class="text-[#0f0e1b] text-lg font-bold leading-tight tracking-[-0.015em]">Brand Overview</h2>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-12 bg-transparent text-[#0f0e1b] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 relative hover:bg-surface-container-high transition-colors">
+<div class="text-[#0f0e1b]" data-icon="Bell" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+</svg>
+</div>
+<span class="absolute top-2 right-1 size-2 rounded-full bg-primary-container ring-2 ring-[#f9f8fb]"></span>
+</button>
+</div>
+</div>
+<!-- Core KPI Metrics -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#d2d1e6] bg-surface-container-lowest shadow-sm">
+<p class="text-[#0f0e1b] text-base font-medium leading-normal">Total Submissions</p>
+<p class="text-[#0f0e1b] tracking-light text-2xl font-bold leading-tight">24.8k</p>
+<p class="text-[#078841] text-base font-medium leading-normal flex items-center gap-1">
+<span class="text-xs">↑</span> +14.2%
+        </p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#d2d1e6] bg-surface-container-lowest shadow-sm">
+<p class="text-[#0f0e1b] text-base font-medium leading-normal">Active Campaigns</p>
+<p class="text-[#0f0e1b] tracking-light text-2xl font-bold leading-tight">18</p>
+<p class="text-[#078841] text-base font-medium leading-normal flex items-center gap-1">
+<span class="text-xs">↑</span> +4.0%
+        </p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded p-6 border border-[#d2d1e6] bg-surface-container-lowest shadow-sm">
+<p class="text-[#0f0e1b] text-base font-medium leading-normal">Pending Reviews</p>
+<p class="text-[#0f0e1b] tracking-light text-2xl font-bold leading-tight">42</p>
+<p class="text-[#e74008] text-base font-medium leading-normal flex items-center gap-1">
+<span class="text-xs">↓</span> -8.5%
+        </p>
+</div>
+</div>
+<!-- Submission Velocity Chart -->
+<div class="flex flex-col px-4">
+<h2 class="text-[#0f0e1b] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-2">Submission Velocity</h2>
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded border border-[#d2d1e6] p-6 bg-surface-container-lowest shadow-sm">
+<p class="text-[#0f0e1b] text-base font-medium leading-normal">Velocity Trends</p>
+<p class="text-[#0f0e1b] tracking-light text-[32px] font-bold leading-tight truncate">1,840/wk</p>
+<div class="flex gap-1 items-center">
+<p class="text-[#555095] text-base font-normal leading-normal">Last 30 days</p>
+<p class="text-[#078841] text-base font-medium leading-normal font-semibold">+18.5%</p>
+</div>
+<div class="flex min-h-[180px] flex-1 flex-col gap-8 py-4">
+<svg fill="none" height="148" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_1131_5935)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#555095" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_1131_5935" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#e9e8f3"></stop>
+<stop offset="1" stop-color="#e9e8f3" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-around border-t border-surface-container-high pt-2">
+<p class="text-[#555095] text-[13px] font-bold leading-normal tracking-[0.015em]">W1</p>
+<p class="text-[#555095] text-[13px] font-bold leading-normal tracking-[0.015em]">W2</p>
+<p class="text-[#555095] text-[13px] font-bold leading-normal tracking-[0.015em]">W3</p>
+<p class="text-[#555095] text-[13px] font-bold leading-normal tracking-[0.015em]">W4</p>
+</div>
+</div>
+</div>
+</div>
+<!-- FEATURED ADDITION: Activity Overview (GitHub-Style Contribution Heatmap) -->
+<section aria-labelledby="activity-overview-heading" class="flex flex-col px-4 pt-6">
+<div class="relative flex flex-col rounded border border-[#d2d1e6] bg-surface-container-lowest p-5 sm:p-6 shadow-sm">
+<!-- Header & Range Controls -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-[#e9e8f3]">
+<div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary-container inline-block"></span>
+<h2 class="text-[#0f0e1b] text-lg font-bold leading-tight tracking-[-0.015em]" id="activity-overview-heading">
+                Activity Overview
+              </h2>
+</div>
+<p class="text-[#555095] text-xs font-normal leading-normal mt-0.5">
+              Your activity and consistency over time.
+            </p>
+</div>
+<!-- Time Period Selector Pills -->
+<div aria-label="Activity period" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1" role="tablist">
+<button aria-selected="false" class="period-tab px-3 py-1.5 rounded-full text-xs font-medium transition-all text-secondary hover:text-on-surface hover:bg-surface-container-low" onclick="switchPeriod(30, '148', this)" role="tab" type="button">
+              Last 30 days
+            </button>
+<button aria-selected="false" class="period-tab px-3 py-1.5 rounded-full text-xs font-medium transition-all text-secondary hover:text-on-surface hover:bg-surface-container-low" onclick="switchPeriod(90, '412', this)" role="tab" type="button">
+              Last 90 days
+            </button>
+<button aria-selected="false" class="period-tab px-3 py-1.5 rounded-full text-xs font-medium transition-all text-secondary hover:text-on-surface hover:bg-surface-container-low" onclick="switchPeriod(180, '789', this)" role="tab" type="button">
+              Last 6 months
+            </button>
+<button aria-selected="true" class="period-tab px-3 py-1.5 rounded-full text-xs font-semibold transition-all bg-primary-container text-on-primary shadow-xs" onclick="switchPeriod(365, '1,234', this)" role="tab" type="button">
+              Last 12 months
+            </button>
+</div>
+</div>
+<!-- Dynamic Headline Stat & Metrics Strip -->
+<div class="flex flex-wrap items-baseline justify-between gap-3 pt-4 pb-3">
+<div class="flex items-baseline gap-2">
+<span class="text-2xl sm:text-3xl font-bold tracking-tight text-[#202321]" id="activity-count">
+              1,234
+            </span>
+<span class="text-sm font-medium text-secondary" id="activity-period-label">
+              activities in the last year
+            </span>
+</div>
+<div class="flex items-center gap-4 text-xs font-medium text-secondary">
+<span class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-[#078841]"></span>
+              Longest streak: <strong class="text-on-surface">32 days</strong>
+</span>
+<span class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-primary-container"></span>
+              Current streak: <strong class="text-on-surface">9 days</strong>
+</span>
+</div>
+</div>
+<!-- Heatmap Container with Tooltip Positioning Context -->
+<div class="relative w-full pt-2">
+<!-- Floating Interactive Tooltip -->
+<div class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full rounded-md bg-[#191c1a] px-2.5 py-1.5 text-xs font-medium text-white shadow-lg transition-all duration-75" id="heatmap-tooltip">
+<div class="whitespace-nowrap" id="tooltip-text">October 8, 2026 — 12 activities</div>
+<div class="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-[#191c1a]"></div>
+</div>
+<!-- Horizontally Scrollable Heatmap Board -->
+<div class="overflow-x-auto pb-3 pt-1 no-scrollbar select-none">
+<div class="min-w-[690px] flex flex-col gap-1.5">
+<!-- Month Labels (12 columns spread evenly over 52 weeks) -->
+<div class="flex pl-8 text-[11px] font-medium text-outline">
+<span class="w-[52px]">Jan</span>
+<span class="w-[54px]">Feb</span>
+<span class="w-[58px]">Mar</span>
+<span class="w-[54px]">Apr</span>
+<span class="w-[56px]">May</span>
+<span class="w-[54px]">Jun</span>
+<span class="w-[56px]">Jul</span>
+<span class="w-[56px]">Aug</span>
+<span class="w-[54px]">Sep</span>
+<span class="w-[56px]">Oct</span>
+<span class="w-[54px]">Nov</span>
+<span class="flex-1">Dec</span>
+</div>
+<!-- Main Grid Area: Weekday Labels + 52 Column Heatmap -->
+<div class="flex items-start gap-2">
+<!-- Day-of-week Labels (Mon, Wed, Fri) -->
+<div class="flex flex-col justify-between h-[89px] text-[10px] font-medium text-outline pt-[11px] pb-[9px] w-6 text-right leading-none shrink-0">
+<span>Mon</span>
+<span>Wed</span>
+<span>Fri</span>
+</div>
+<!-- 52 Columns Grid (7 Days / Column) -->
+<div aria-label="Activity contributions calendar" class="flex gap-[2.5px] items-center" id="heatmap-grid" role="grid">
+<!-- Generated via script or pre-rendered with semantic attributes -->
+</div>
+</div>
+</div>
+</div>
+<!-- Heatmap Footer: Legend & Detail Indicator -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-[#e9e8f3] text-xs text-secondary">
+<div class="flex items-center gap-1.5 text-[11px]">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-size: 15px;">insights</span>
+<span>Updated 5 minutes ago • All campaign submissions &amp; review actions</span>
+</div>
+<!-- 5-Level Intensity Legend -->
+<div class="flex items-center gap-1.5 text-xs text-outline font-medium self-end sm:self-auto">
+<span>Less</span>
+<div class="flex items-center gap-[3px]">
+<div class="size-[10px] rounded-[2px] bg-[#ebedf0]" title="Level 0: No activity"></div>
+<div class="size-[10px] rounded-[2px] bg-[#c4bbf8]" title="Level 1: 1-3 activities"></div>
+<div class="size-[10px] rounded-[2px] bg-[#9382f7]" title="Level 2: 4-6 activities"></div>
+<div class="size-[10px] rounded-[2px] bg-[#6355ee]" title="Level 3: 7-9 activities"></div>
+<div class="size-[10px] rounded-[2px] bg-[#4338ca]" title="Level 4: 10+ activities"></div>
+</div>
+<span>More</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Urgent Review Queue Section -->
+<div class="flex flex-col px-4 pt-6">
+<div class="flex items-center justify-between pb-3">
+<h2 class="text-[#0f0e1b] text-[20px] font-bold leading-tight tracking-[-0.015em]">Urgent Review Queue</h2>
+<a class="text-xs font-semibold text-primary hover:underline" href="#">View All (42)</a>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Review Item 1 -->
+<div class="flex items-center justify-between p-4 rounded border border-[#d2d1e6] bg-surface-container-lowest shadow-sm hover:border-primary-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-sm">
+              AC
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-[#0f0e1b] text-sm font-semibold">Aura Glow — TikTok Reel</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-error-container text-on-error-container">2h left</span>
+</div>
+<span class="text-xs text-[#555095]">Creator: @alexachoi • Campaign: Fall Glowup</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded bg-primary-container text-on-primary text-xs font-semibold hover:bg-primary transition-colors">
+            Review
+          </button>
+</div>
+<!-- Review Item 2 -->
+<div class="flex items-center justify-between p-4 rounded border border-[#d2d1e6] bg-surface-container-lowest shadow-sm hover:border-primary-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary font-bold text-sm">
+              MK
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-[#0f0e1b] text-sm font-semibold">Pulse Hydration — IG Story</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#ffdbcc] text-[#7e3000]">5h left</span>
+</div>
+<span class="text-xs text-[#555095]">Creator: @marcusk • Campaign: Sport Refuel</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded bg-primary-container text-on-primary text-xs font-semibold hover:bg-primary transition-colors">
+            Review
+          </button>
+</div>
+</div>
+</div>
+<!-- Active Campaigns Snapshot -->
+<div class="flex flex-col px-4 pt-6 pb-6">
+<div class="flex items-center justify-between pb-3">
+<h2 class="text-[#0f0e1b] text-[20px] font-bold leading-tight tracking-[-0.015em]">Active Campaigns</h2>
+<span class="text-xs font-medium text-secondary">18 active running</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Campaign Card 1 -->
+<div class="flex flex-col p-4 rounded border border-[#d2d1e6] bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between pb-2">
+<span class="text-sm font-bold text-[#0f0e1b]">Spring Velocity '26</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#dbd8ff] text-primary">High Reach</span>
+</div>
+<p class="text-xs text-[#555095] pb-3">Targeting micro-influencers in lifestyle and fitness niches.</p>
+<div class="flex items-center justify-between text-xs text-secondary pt-2 border-t border-[#e9e8f3]">
+<span>Submissions: <strong>1,420</strong></span>
+<span>Approval Rate: <strong>94.2%</strong></span>
+</div>
+</div>
+<!-- Campaign Card 2 -->
+<div class="flex flex-col p-4 rounded border border-[#d2d1e6] bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between pb-2">
+<span class="text-sm font-bold text-[#0f0e1b]">BioEnergy Pro Launch</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#dbd8ff] text-primary">Tier 1</span>
+</div>
+<p class="text-xs text-[#555095] pb-3">Video testimonial format on YouTube Shorts and Instagram Reels.</p>
+<div class="flex items-center justify-between text-xs text-secondary pt-2 border-t border-[#e9e8f3]">
+<span>Submissions: <strong>890</strong></span>
+<span>Approval Rate: <strong>88.5%</strong></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer before bottom navigation -->
+<div class="h-8 bg-[#f9f8fb]"></div>
+<!-- Shared Bottom Navigation Bar (Preserved as Required) -->
+<div class="flex gap-2 border-t border-[#e9e8f3] bg-[#f9f8fb] px-4 pb-3 pt-2 sticky bottom-0 z-40">
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#0f0e1b]" href="#">
+<div class="text-[#0f0e1b] flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="fill">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path>
+</svg>
+</div>
+<p class="text-[#0f0e1b] text-xs font-medium leading-normal tracking-[0.015em]">Overview</p>
+</a>
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#555095]" href="#">
+<div class="text-[#555095] flex h-8 items-center justify-center" data-icon="Megaphone" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M240,120a48.05,48.05,0,0,0-48-48H152.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,24,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,151.12,214l11,7.33A16,16,0,0,0,186.5,212l11.77-44.36A48.07,48.07,0,0,0,240,120ZM40,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C126.65,155,82.84,164.07,40,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM192,152H160V88h32a32,32,0,1,1,0,64Z"></path>
+</svg>
+</div>
+<p class="text-[#555095] text-xs font-medium leading-normal tracking-[0.015em]">Campaigns</p>
+</a>
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#555095]" href="#">
+<div class="text-[#555095] flex h-8 items-center justify-center" data-icon="CheckSquare" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM224,48V208a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM208,208V48H48V208H208Z"></path>
+</svg>
+</div>
+<p class="text-[#555095] text-xs font-medium leading-normal tracking-[0.015em]">Reviews</p>
+</a>
+<a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#555095]" href="#">
+<div class="text-[#555095] flex h-8 items-center justify-center" data-icon="ChartBar" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"></path>
+</svg>
+</div>
+<p class="text-[#555095] text-xs font-medium leading-normal tracking-[0.015em]">Analytics</p>
+</a>
+</div>
+</div>
+<!-- Heatmap Population & Interactive Script -->
+<script>
+    const intensityColors = [
+      '#ebedf0', // Level 0 (no activity)
+      '#c4bbf8', // Level 1 (pale brand tint)
+      '#9382f7', // Level 2 (medium brand tint)
+      '#6355ee', // Level 3 (strong brand tint)
+      '#4338ca'  // Level 4 (deepest brand tint)
+    ];
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const totalWeeks = 52;
+    const daysPerWeek = 7;
+    const gridEl = document.getElementById('heatmap-grid');
+    const tooltip = document.getElementById('heatmap-tooltip');
+    const tooltipText = document.getElementById('tooltip-text');
+
+    // Deterministic pseudo-random pattern based on date index to provide realistic cadence
+    function generateActivity(col, row) {
+      const idx = col * 7 + row;
+      // create seasonal waves and weekend dips
+      const isWeekend = (row === 0 || row === 6);
+      const wave = Math.sin((col / 52) * Math.PI * 3);
+      let prob = 0.55 + wave * 0.25 - (isWeekend ? 0.35 : 0);
+
+      const r = (Math.sin(idx * 997.3) + 1) / 2;
+      if (r > 0.82) return { level: 4, count: Math.floor(10 + r * 6) };
+      if (r > 0.60) return { level: 3, count: Math.floor(7 + r * 3) };
+      if (r > 0.38) return { level: 2, count: Math.floor(4 + r * 3) };
+      if (r > 0.18) return { level: 1, count: Math.floor(1 + r * 3) };
+      return { level: 0, count: 0 };
+    }
+
+    // Build the 52 columns
+    function buildHeatmap() {
+      const baseDate = new Date(2026, 0, 4); // Start near beginning of year
+      let fragment = document.createDocumentFragment();
+
+      for (let c = 0; c < totalWeeks; c++) {
+        const colDiv = document.createElement('div');
+        colDiv.className = 'flex flex-col gap-[2.5px]';
+        colDiv.setAttribute('data-week', c);
+
+        for (let r = 0; r < daysPerWeek; r++) {
+          const dayIndex = c * 7 + r;
+          const cellDate = new Date(baseDate);
+          cellDate.setDate(baseDate.getDate() + dayIndex);
+
+          const { level, count } = generateActivity(c, r);
+
+          const cell = document.createElement('div');
+          cell.className = 'heat-cell size-[10.5px] rounded-[2px] cursor-pointer';
+          cell.style.backgroundColor = intensityColors[level];
+          cell.setAttribute('data-col', c);
+          cell.setAttribute('data-day', r);
+          cell.setAttribute('data-count', count);
+          cell.setAttribute('data-level', level);
+          
+          const monthName = months[cellDate.getMonth()];
+          const formattedDate = `${monthName} ${cellDate.getDate()}, ${cellDate.getFullYear()}`;
+          cell.setAttribute('data-date', formattedDate);
+
+          // Interaction listeners
+          cell.addEventListener('mouseenter', (e) => showTooltip(e, cell, formattedDate, count));
+          cell.addEventListener('mouseleave', hideTooltip);
+
+          colDiv.appendChild(cell);
+        }
+        fragment.appendChild(colDiv);
+      }
+      gridEl.appendChild(fragment);
+    }
+
+    function showTooltip(event, cell, dateStr, count) {
+      const actLabel = count === 1 ? 'activity' : 'activities';
+      tooltipText.textContent = `${dateStr} — ${count} ${actLabel}`;
+      
+      const parentRect = gridEl.closest('.relative').getBoundingClientRect();
+      const cellRect = cell.getBoundingClientRect();
+
+      const left = cellRect.left - parentRect.left + (cellRect.width / 2);
+      const top = cellRect.top - parentRect.top - 8;
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+      tooltip.classList.remove('hidden');
+    }
+
+    function hideTooltip() {
+      tooltip.classList.add('hidden');
+    }
+
+    // Interactive toggle of period tabs
+    function switchPeriod(days, totalFormatted, buttonEl) {
+      document.querySelectorAll('.period-tab').forEach(tab => {
+        tab.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-xs', 'font-semibold');
+        tab.classList.add('text-secondary');
+        tab.setAttribute('aria-selected', 'false');
+      });
+
+      buttonEl.classList.remove('text-secondary');
+      buttonEl.classList.add('bg-primary-container', 'text-on-primary', 'shadow-xs', 'font-semibold');
+      buttonEl.setAttribute('aria-selected', 'true');
+
+      // Update stat labels smoothly
+      const countEl = document.getElementById('activity-count');
+      const labelEl = document.getElementById('activity-period-label');
+
+      countEl.textContent = totalFormatted;
+      if (days === 30) labelEl.textContent = 'activities in the last 30 days';
+      else if (days === 90) labelEl.textContent = 'activities in the last 90 days';
+      else if (days === 180) labelEl.textContent = 'activities in the last 6 months';
+      else labelEl.textContent = 'activities in the last year';
+
+      // Visual highlight filter across columns
+      const cutoffWeek = Math.floor(52 - (days / 7));
+      const columns = gridEl.querySelectorAll('[data-week]');
+      columns.forEach((col, idx) => {
+        if (idx < cutoffWeek) {
+          col.style.opacity = '0.28';
+          col.style.filter = 'grayscale(60%)';
+        } else {
+          col.style.opacity = '1';
+          col.style.filter = 'none';
+        }
+      });
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', buildHeatmap);
+  </script>
+</body></html>

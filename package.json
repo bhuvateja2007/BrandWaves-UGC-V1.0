@@ -1,0 +1,41 @@
+{
+  "name": "brandwaves",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "tsx watch server/src/index.ts",
+    "dev:client": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "node --import tsx server/tests/api.test.mjs && node --import tsx server/tests/data-integrity.test.mjs && node --import tsx server/tests/phase2-auth.test.mjs && node --import tsx server/tests/phase3-customer.test.mjs && node --import tsx server/tests/phase4-creator.test.mjs && node --import tsx server/tests/phase5-brand.test.mjs && node --import tsx server/tests/phase6-ai.test.mjs && node --import tsx server/tests/phase7-smart-review.test.mjs && node --import tsx server/tests/phase8-readiness.test.mjs && node --import tsx server/tests/security-vapt.test.mjs",
+    "test:e2e": "node --import tsx server/tests/e2e-http.test.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "lucide-react": "^0.475.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "postcss": "^8.5.2",
+    "supabase": "^2.120.0",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
